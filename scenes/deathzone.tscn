@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp8sfgrl32him"]
+
+[ext_resource type="Script" path="res://scripts/deathzone.gd" id="1_5bpf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpkup"]
+size = Vector2(1128, 20)
+
+[node name="Deathzone" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_5bpf1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(539, 553)
+shape = SubResource("RectangleShape2D_hpkup")
+one_way_collision_margin = 6.8

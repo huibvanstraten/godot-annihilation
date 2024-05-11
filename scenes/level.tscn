@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://crp8vxotugma0"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_t4jid"]
+[ext_resource type="PackedScene" uid="uid://t24ksn4twhuj" path="res://scenes/player.tscn" id="2_xgqpk"]
+[ext_resource type="PackedScene" uid="uid://btb4ysf6gjm7" path="res://scenes/tile_map.tscn" id="3_m3c2c"]
+[ext_resource type="PackedScene" uid="uid://b7p2ywbtekcub" path="res://scenes/background_city.tscn" id="3_spv06"]
+[ext_resource type="PackedScene" uid="uid://b4frmesrdql5r" path="res://scenes/music_player.tscn" id="5_ck5ct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsqr4"]
+size = Vector2(3324, 28)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_t4jid")
+
+[node name="Player" parent="." instance=ExtResource("2_xgqpk")]
+position = Vector2(119, 308)
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(112, 289)
+
+[node name="Deathzone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone"]
+position = Vector2(903, 958)
+shape = SubResource("RectangleShape2D_hsqr4")
+
+[node name="BackgroundCity" parent="Deathzone/CollisionShape2D" instance=ExtResource("3_spv06")]
+
+[node name="TileMap" parent="." instance=ExtResource("3_m3c2c")]
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("5_ck5ct")]
+
+[connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]

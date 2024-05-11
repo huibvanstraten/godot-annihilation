@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ia6wuuvm2kp"]
+
+[ext_resource type="Script" path="res://scripts/screen_timer.gd" id="1_ctxqk"]
+
+[node name="Scene changer" type="Node2D"]
+script = ExtResource("1_ctxqk")
+next_scene = "res://scenes/intro.tscn"
+
+[node name="Next Scene Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Next Scene Timer" to="." method="_on_next_scene_timer_timeout"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://1eof85rn578q"]
+
+[ext_resource type="Texture2D" uid="uid://cy80v1k5xkmnk" path="res://assets/textures/backgrounds/start menu/moon background.png" id="1_53cvg"]
+[ext_resource type="Script" path="res://scripts/start_screen.gd" id="1_o1oek"]
+[ext_resource type="PackedScene" uid="uid://ch81b0sydj6to" path="res://scenes/tree.tscn" id="2_7h7k8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_51f7q"]
+font_size = 48
+shadow_size = 22
+shadow_color = Color(0.801995, 0.48478, 0.849235, 0)
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_o1oek")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 929.0
+offset_bottom = 737.0
+texture = ExtResource("1_53cvg")
+
+[node name="Tree" parent="." instance=ExtResource("2_7h7k8")]
+
+[node name="PressStartLabel" type="Label" parent="."]
+offset_left = 107.0
+offset_top = 393.0
+offset_right = 376.0
+offset_bottom = 474.0
+text = "Press Start"
+label_settings = SubResource("LabelSettings_51f7q")
