@@ -1,7 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4frmesrdql5r"]
+[gd_scene load_steps=2 format=3 uid="uid://b32bsqhylb4u5"]
 
-[ext_resource type="AudioStream" uid="uid://sk1lh10d4k6g" path="res://assets/audio/music/Game 2.wav" id="1_sy0od"]
+[ext_resource type="Script" path="res://scripts/music_player.gd" id="1_fk0l2"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_sy0od")
-autoplay = true
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_fk0l2")

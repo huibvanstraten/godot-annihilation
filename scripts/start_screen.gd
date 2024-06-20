@@ -1,16 +1,28 @@
+class_name MainMenu
 extends Node2D
 
-var tree_scene = preload("res://scenes/tree.tscn")
-var tree = null
+var start_menu_select = preload("res://scenes/menus/main_menu_select.tscn")
+var start_menu = null
 
 func _ready():
-	tree = tree_scene.instantiate()
-	add_child(tree)
-	tree.connect("tree_animation_finished", _change_scene)
+	start_menu = start_menu_select.instantiate()
+	add_child(start_menu)
+	start_menu.connect("new_game", _new_game)
+	start_menu.connect("continue_game", _continue_game)
 
-func _input(_event):
-	if Input.is_action_just_pressed("start"):
-		tree.play_animation()
+func _new_game(): 
+	print("choose new game")
+	_deactivate()
+	LevelManager.load_level(1)
+	
+	
+func _continue_game():
+	SaverLoader.load_game()
 
-func _change_scene():
-	get_tree().change_scene_to_file("res://scenes/level.tscn")
+func _deactivate():
+	hide()
+	set_process(false)
+	set_process_input(false)
+	set_physics_process(false)
+	set_process_unhandled_input(false)
+	queue_free()

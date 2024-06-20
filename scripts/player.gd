@@ -1,46 +1,50 @@
-extends CharacterBody2D
+class_name Player
+extends Entity
 
-@export var gravity = 600
+var justLeftLedge: bool = false
 
-const SPEED = 500.0
-const JUMP_VELOCITY = -350.0
-const MAX_VELOCITY = 500
+func on_save_game(saved_data: Array[SavedData]):
+	var my_data = SavedData.new()
+	my_data.level_scene_path = scene_file_path
+	
+	saved_data.append(my_data)
 
-@onready var animated_sprite = $AnimatedSprite2D
+func on_load_game(saved_data:SavedData):
+	if saved_data is SavedPlayerData:
+			pass
 
 func _physics_process(delta):
-	var direction = Input.get_axis("move_left", "move_right")
+	var inputAxis = Input.get_axis("move_left", "move_right")
+	var currentState = stateMachine.currentState
 	
-	_move(direction)
-	_jump(delta)
-	_update_animations(direction)
-
-func _move(direction):
-	if direction != 0:
-		animated_sprite.flip_h = (direction == -1)
-		#velocity.x = move_toward(velocity.x, 10, SPEED)
+	if currentState is DieState:
+		physicsComponent.velocityX = 0
 	
-	velocity.x = direction * SPEED
-	
-	move_and_slide()
-	
-
-func _jump(delta): 
-	if not is_on_floor(): 
-		velocity.y += gravity * delta
-		if velocity.y > MAX_VELOCITY: velocity.y = MAX_VELOCITY
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor(): 
-		velocity.y = JUMP_VELOCITY
+	if currentState is HitState: 
+		physicsComponent.knock_back()
 		
-func _update_animations(direction):
-	if is_on_floor():
-		if direction == 0:
-			animated_sprite.play("idle")
-		else:
-			animated_sprite.play("run")	
+	if not is_on_floor():
+		physicsComponent.set_gravity(delta)
+		
+		if inputAxis != 0 and stateMachine.can_move():
+			physicsComponent.move_in_air(delta, inputAxis)
+			flip(true)
+		elif inputAxis == 0 and currentState != HitState:
+			physicsComponent.air_resistance(delta)
+	
 	else:
-		if velocity.y < 0:
-			animated_sprite.play("jump")
-		else: 
-			animated_sprite.play("fall")
+		if inputAxis != 0 and stateMachine.can_move():
+			physicsComponent.move(delta, inputAxis)
+			flip(true)
+		elif inputAxis == 0 and currentState != HitState:
+			physicsComponent.stop(delta)
+		
+	move_and_slide_with_coyote_jump()
+
+func move_and_slide_with_coyote_jump():
+	velocity.x = physicsComponent.velocityX
+	velocity.y = physicsComponent.velocityY
+	var wasOnFloor = is_on_floor()
+	move_and_slide()
+	justLeftLedge = wasOnFloor and not is_on_floor() and velocity.y >= 0
+	
