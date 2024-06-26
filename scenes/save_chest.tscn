@@ -1,0 +1,235 @@
+[gd_scene load_steps=19 format=3 uid="uid://8008audrpq7u"]
+
+[ext_resource type="Script" path="res://scripts/save_chest.gd" id="1_12jp1"]
+[ext_resource type="Texture2D" uid="uid://dy1fvk8yqhwha" path="res://assets/textures/objects/Save chest.png" id="1_mckkn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyoe2"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(0, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqli6"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(429, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a57i6"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(572, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4dvm"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(715, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utrno"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(858, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0mao"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(143, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lqj"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(286, 0, 143, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8obvp"]
+atlas = ExtResource("1_mckkn")
+region = Rect2(429, 0, 143, 151)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10ift"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyoe2")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqli6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a57i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4dvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utrno")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0mao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0lqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8obvp")
+}],
+"loop": true,
+"name": &"unlock",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_s2swl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"closed"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3fwj0"]
+resource_name = "closed"
+length = 0.3
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"closed"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w437n"]
+resource_name = "open"
+length = 1.2
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_i2w7x"]
+resource_name = "unlock"
+length = 3.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"unlock"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8, 1.2, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 2, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqc6h"]
+_data = {
+"RESET": SubResource("Animation_s2swl"),
+"closed": SubResource("Animation_3fwj0"),
+"open": SubResource("Animation_w437n"),
+"unlock": SubResource("Animation_i2w7x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdp2k"]
+size = Vector2(97.5, 65.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxbp1"]
+size = Vector2(91.5, 64)
+
+[node name="Save chest" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_12jp1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_10ift")
+animation = &"closed"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_oqc6h")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 36)
+shape = SubResource("RectangleShape2D_qdp2k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-46, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(44.25, 31)
+shape = SubResource("RectangleShape2D_mxbp1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

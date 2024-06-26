@@ -1,0 +1,199 @@
+[gd_scene load_steps=17 format=3 uid="uid://4kwqay4240lt"]
+
+[ext_resource type="Script" path="res://scenes/obstacles/saw.gd" id="1_irirq"]
+[ext_resource type="Texture2D" uid="uid://co0ufwbnhrrfn" path="res://assets/textures/objects/obstacles/saw.png" id="1_yk63i"]
+[ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="2_b2dvi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x11ft"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(0, 3, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf656"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(104, 3, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs38i"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(208, 3, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y1ug"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(312, 3, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhqdk"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(416, 3, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0te3"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(520, 3, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dca01"]
+atlas = ExtResource("1_yk63i")
+region = Rect2(624, 3, 102, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ohwlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x11ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf656")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs38i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y1ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhqdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0te3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dca01")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_428h0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"spin"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Path2D/PathFollow2D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_t5x3x"]
+resource_name = "spin"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.02922),
+"update": 1,
+"values": [&"spin"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Path2D/PathFollow2D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(-1.5, -1.5, -1.5),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4gyyw"]
+_data = {
+"RESET": SubResource("Animation_428h0"),
+"spin": SubResource("Animation_t5x3x")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_joxt1"]
+radius = 39.0
+
+[sub_resource type="Curve2D" id="Curve2D_w5wkd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3.93543, 0.0480957, 0, 0, 0, 0, 362.935, -0.951904)
+}
+point_count = 2
+
+[node name="Saw" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+position = Vector2(85, 67)
+script = ExtResource("1_irirq")
+animationPlayer = NodePath("Area2D/AnimatedSprite2D/AnimationPlayer")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("attackBodyShape", "pathFollow")]
+position = Vector2(39.1252, 44.9051)
+rotation = -0.00278551
+collision_layer = 8
+collision_mask = 18
+monitorable = false
+script = ExtResource("2_b2dvi")
+attackBodyShape = NodePath("SawBody")
+pathFollow = NodePath("../Path2D/PathFollow2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(-37.9986, -45.5111)
+rotation = 0.00278551
+sprite_frames = SubResource("SpriteFrames_ohwlm")
+animation = &"spin"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_4gyyw")
+}
+
+[node name="SawBody" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-36.9986, -45.5084)
+shape = SubResource("CircleShape2D_joxt1")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(1.06457, -0.0480957)
+curve = SubResource("Curve2D_w5wkd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(3.93543, 0.0480957)
+rotation = -0.00278551
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+position = Vector2(34, 45)
+remote_path = NodePath("../../../Area2D")

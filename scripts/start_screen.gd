@@ -17,7 +17,8 @@ func _new_game():
 	
 	
 func _continue_game():
-	SaverLoader.load_game()
+	pass
+	#SaverLoader.load_game()
 
 func _deactivate():
 	hide()

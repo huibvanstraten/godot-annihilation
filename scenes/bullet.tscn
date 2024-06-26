@@ -1,0 +1,170 @@
+[gd_scene load_steps=15 format=3 uid="uid://cik0dwfufiyv0"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_2o1tp"]
+[ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="1_njacf"]
+[ext_resource type="Texture2D" uid="uid://dc1uvx0md8cxl" path="res://assets/textures/objects/player/bullet.png" id="3_s5dql"]
+[ext_resource type="Texture2D" uid="uid://bby08fmw0p67d" path="res://assets/textures/objects/player/bullet explode.png" id="3_xqd31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stvc4"]
+size = Vector2(12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy1lq"]
+atlas = ExtResource("3_xqd31")
+region = Rect2(0, 0, 22, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw5kx"]
+atlas = ExtResource("3_xqd31")
+region = Rect2(22, 0, 22, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emk3q"]
+atlas = ExtResource("3_s5dql")
+region = Rect2(0, 0, 16, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gx76"]
+atlas = ExtResource("3_s5dql")
+region = Rect2(16, 0, 16, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjx7m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy1lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw5kx")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emk3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gx76")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_oak6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c0h5x"]
+resource_name = "fly"
+length = 0.15
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_bouy2"]
+resource_name = "explode"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explode"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88mqy"]
+_data = {
+"RESET": SubResource("Animation_oak6o"),
+"explode": SubResource("Animation_bouy2"),
+"fly": SubResource("Animation_c0h5x")
+}
+
+[node name="Bullet" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("1_2o1tp")
+speed = 1500.0
+direction = 1.0
+animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("attackBodyShape")]
+collision_layer = 16
+collision_mask = 13
+monitorable = false
+script = ExtResource("1_njacf")
+attackBodyShape = NodePath("CollisionShape2D")
+removeAttackBodyAtTouch = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_stvc4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tjx7m")
+animation = &"fly"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_88mqy")
+}
+
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
