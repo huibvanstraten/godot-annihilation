@@ -23,7 +23,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		return PlayerStateMachine.StateType.Die
 	
 	elif shoot:
-		return PlayerStateMachine.StateType.Shoot 
+		return PlayerStateMachine.StateType.IdleShoot 
 		
 	elif crouched:
 		return PlayerStateMachine.StateType.Crouch

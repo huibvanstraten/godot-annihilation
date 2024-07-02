@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://4kwqay4240lt"]
 
-[ext_resource type="Script" path="res://scenes/obstacles/saw.gd" id="1_irirq"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/saw.gd" id="1_irirq"]
 [ext_resource type="Texture2D" uid="uid://co0ufwbnhrrfn" path="res://assets/textures/objects/obstacles/saw.png" id="1_yk63i"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="2_b2dvi"]
 

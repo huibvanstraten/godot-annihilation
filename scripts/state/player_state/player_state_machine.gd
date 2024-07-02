@@ -1,7 +1,7 @@
 class_name PlayerStateMachine
 extends StateMachine
 
-enum StateType { Idle, Run, Jump, Fall, Attack, Hit, Die, Wall, Shoot, Crouch, Ledge, Invalid }
+enum StateType { Idle, Run, Jump, Fall, Attack, Hit, Die, Wall, Crouch, Ledge, IdleShoot, RunShoot, JumpShoot, FallShoot, Invalid }
 
 var stateTypeDict = {
 	"Idle": StateType.Idle,
@@ -12,9 +12,12 @@ var stateTypeDict = {
 	"Hit": StateType.Hit,
 	"Die": StateType.Die,
 	"Wall": StateType.Wall,
-	"shoot": StateType.Shoot,
 	"crouch": StateType.Crouch,
 	"ledge": StateType.Ledge,
+	"idle_shoot": StateType.IdleShoot,
+	"run_shoot": StateType.RunShoot,
+	"jump_shoot": StateType.JumpShoot,
+	"fall_shoot": StateType.FallShoot,
 	"Invalid": StateType.Invalid
 }
 

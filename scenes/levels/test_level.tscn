@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bwlxmki4oym54"]
 
-[ext_resource type="Script" path="res://scripts/test_level.gd" id="1_wfxty"]
+[ext_resource type="Script" path="res://scripts/level/levels/test_level.gd" id="1_wfxty"]
 [ext_resource type="PackedScene" uid="uid://btb4ysf6gjm7" path="res://scenes/tile_map.tscn" id="3_8k5jh"]
 [ext_resource type="PackedScene" uid="uid://cp8sfgrl32him" path="res://scenes/deathzone.tscn" id="4_7tly0"]
 [ext_resource type="PackedScene" uid="uid://dfjdoxld3jn5a" path="res://scenes/obstacles/toxic.tscn" id="4_21n7d"]

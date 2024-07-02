@@ -1,21 +1,26 @@
-class_name LedgeState
+class_name WallState
 extends State
 
 @onready var physicsComponent: PhysicsComponent = $"../../Components/Physics"
-@onready var ledgeComponent: LedgeComponent = $"../../Components/Ledge"
+@onready var jumpComponent: JumpComponent = $"../../Components/Jump"
 
-var ledgeAnimationFinished: bool = false
+@onready var wallDetector: RayCast2D = $"../../FlipMarker/WallDetector"
+
+const NODE_NAME_AUDIO_JUMP: String = "AudioJump"
+
+var m_NodeAudioJump = null
+
+var didWallJump: bool = false
 
 func enter():
 	super()
-	print("entering ledge")
+	#m_NodeAudioJump.Play()
 	physicsComponent.velocityY = 0
-	physicsComponent.gravity = 0
-	
-func exit():
-	super()
-	physicsComponent.reset_gravity()
+	physicsComponent.gravity = 300
 
+func exit():
+	physicsComponent.reset_gravity()
+	
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
 	
@@ -23,8 +28,9 @@ func stateMainProcess(_delta: float) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
 
 func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
-	var letGo: bool = Input.is_action_just_released("jump")
-	
+	var wallClingReleased: float = Input.is_action_just_released("wall cling")
+	var characterJumped: bool = Input.is_action_just_pressed("jump")
+
 	if entityHit:
 		entityHit = false
 		return PlayerStateMachine.StateType.Hit
@@ -32,17 +38,15 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	elif healthDepleted:
 		healthDepleted = false
 		return PlayerStateMachine.StateType.Die
-		 
-	elif letGo:
-		return PlayerStateMachine.StateType.Fall
-		
-	elif ledgeAnimationFinished:
-		ledgeAnimationFinished = false
-		ledgeComponent.climbLedge()
+			 
+	elif characterBody.is_on_floor():
 		return PlayerStateMachine.StateType.Idle
 	
+	elif characterJumped:
+		jumpComponent.wallJump = true
+		return PlayerStateMachine.StateType.Jump
+	
+	elif wallClingReleased or !wallDetector.is_colliding():
+		return PlayerStateMachine.StateType.Fall
+	
 	return PlayerStateMachine.StateType.Invalid
-
-func _on_animation_player_animation_finished(animName):
-	if animName == "ledge":
-		ledgeAnimationFinished = true

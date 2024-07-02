@@ -8,13 +8,13 @@ extends Node
 @export var jumpGravity: float = 980
 
 @onready var physicsComponent: PhysicsComponent =  $"../Physics"
+@onready var flipComponent: FlipComponent =  $"../Flip"
 
 var wallJump: bool = false
 	
 func jump():
 	if wallJump:
 		wall_jump()
-		wallJump = false
 	else:
 		floor_jump()
 
@@ -26,6 +26,7 @@ func wall_jump():
 	physicsComponent.direction.x = wall_side.x
 	physicsComponent.velocityX = wallJumpVelocityX * wall_side.x
 	physicsComponent.velocityY = wallJumpVelocityY
+	flipComponent.flip()
 
 func stop_jump(hitCeiling: bool):
 	if Input.is_action_just_released("jump") and physicsComponent.velocityY < jumpVelocity / 2:

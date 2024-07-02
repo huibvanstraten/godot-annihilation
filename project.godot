@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Extinction"
-run/main_scene="res://scenes/levels/test_level.tscn"
+run/main_scene="res://scenes/levels/character_test_level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -30,8 +30,6 @@ window/size/viewport_height=735
 window/size/initial_position_type=3
 window/size/transparent=true
 window/size/no_focus=true
-window/size/window_width_override=1720
-window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
 [input]
@@ -128,6 +126,11 @@ crouch={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="obstacle"
 2d_physics/layer_5="projectile"
+
+[physics]
+
+2d/default_gravity=1100.0
+common/solver/solver_iterations=16
 
 [rendering]
 

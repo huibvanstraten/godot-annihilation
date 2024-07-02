@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://8008audrpq7u"]
 
-[ext_resource type="Script" path="res://scripts/save_chest.gd" id="1_12jp1"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/save_chest.gd" id="1_12jp1"]
 [ext_resource type="Texture2D" uid="uid://dy1fvk8yqhwha" path="res://assets/textures/objects/Save chest.png" id="1_mckkn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyoe2"]

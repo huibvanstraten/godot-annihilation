@@ -3,14 +3,15 @@ extends Node
 
 @export var velocityX: float
 @export var velocityY: float
-@export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var acceleration: float = 3300.0
-@export var friction: float = 3000.0
-@export var airFriction: float = 1000.0
+@export var gravity: float
+@export var acceleration: float = 50.0
+@export var airAcceleration: float = 50.0
+@export var friction: float = 4000.0
+@export var airFriction: float = 5.0
 @export var knockbackVelocity: Vector2 = Vector2(100, 0)
 @export var knockbackDirection: int 
 @export var speed = 600.0
-@export var airSpeed = 300.0
+@export var airSpeed =300.0
 @export var direction: Vector2 = Vector2.RIGHT
 
 @export var collisionRotation: float = 0
@@ -18,6 +19,9 @@ extends Node
 
 var facingDirection: int = 1
 var defaultGravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready():
+	gravity = defaultGravity
 
 func reset_gravity():
 	gravity = defaultGravity
@@ -34,16 +38,15 @@ func set_knockback_direction(knockback_direction: int):
 func knock_back(): 
 	velocityX = knockbackVelocity.x * knockbackDirection
 	
-func move(delta, inputAxis: float = direction.x):
-	speed = speed
+func move(_delta, inputAxis: float = direction.x):
+	velocityX += acceleration * inputAxis
 	direction.x = inputAxis
-	velocityX = direction.x * speed
-	velocityX = move_toward(velocityX, direction.x * speed, acceleration * delta)
+	velocityX = clampf(velocityX, -speed, speed)
 
-func move_in_air(delta, inputAxis):
-	velocityX = velocityX * 0.9
+func move_in_air(_delta, inputAxis):
+	velocityX += airAcceleration * inputAxis
 	direction.x = inputAxis
-	velocityX = move_toward(velocityX, direction.x * airSpeed, acceleration * delta)
+	velocityX = clampf(velocityX, -airSpeed, airSpeed)
 
 func move_to_target(targetPosition: Vector2, delta, attackSpeed: float):
 	speed = attackSpeed
@@ -54,5 +57,9 @@ func stop(delta: float):
 	direction.x = 0.0
 	velocityX = move_toward(velocityX, 0, friction * delta)
 
-func air_resistance(delta: float):
-	velocityX = move_toward(velocityX, 0, airFriction * delta)
+#func air_resistance(delta: float):
+	#velocityX = move_toward(velocityX, 0, airFriction * delta)
+	
+func air_resistance(_delta: float):
+	velocityX -= airFriction
+	velocityX = clampf(velocityX, 0, airSpeed)

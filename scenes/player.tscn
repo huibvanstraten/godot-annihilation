@@ -1,35 +1,39 @@
-[gd_scene load_steps=123 format=3 uid="uid://t24ksn4twhuj"]
+[gd_scene load_steps=132 format=3 uid="uid://t24ksn4twhuj"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_vymue"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/player.gd" id="1_g2wjt"]
 [ext_resource type="Texture2D" uid="uid://d3qf53g11l147" path="res://assets/textures/objects/player/crouch.png" id="2_kcoc8"]
 [ext_resource type="Texture2D" uid="uid://dy1fvk8yqhwha" path="res://assets/textures/objects/Save chest.png" id="2_kp67r"]
 [ext_resource type="Texture2D" uid="uid://e3j36qwc8pcc" path="res://assets/textures/objects/player/fall.png" id="2_uu0ou"]
 [ext_resource type="Texture2D" uid="uid://b5yw8ep7uvg7i" path="res://assets/textures/objects/player/idle.png" id="3_feax6"]
 [ext_resource type="Texture2D" uid="uid://dqw04dbraapky" path="res://assets/textures/objects/player/jump.png" id="4_8tlao"]
 [ext_resource type="Texture2D" uid="uid://kvje1fyn4hjo" path="res://assets/textures/objects/player/player idle shoot.png" id="5_610if"]
+[ext_resource type="Texture2D" uid="uid://ckfi5tmslwlah" path="res://assets/textures/objects/player/Fall shoot.png" id="5_o8i6n"]
 [ext_resource type="Texture2D" uid="uid://bowpi5uc3sxu2" path="res://assets/textures/objects/player/run.png" id="5_ss1kv"]
 [ext_resource type="Texture2D" uid="uid://df5st8chhii7p" path="res://assets/textures/objects/player/player jump shoot.png" id="7_mv4lx"]
 [ext_resource type="Texture2D" uid="uid://1uxpqn722mi1" path="res://assets/textures/objects/player/right wall jump.png" id="7_pwcxn"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="9_xd8cx"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/idle_state.gd" id="10_mp7yw"]
 [ext_resource type="Texture2D" uid="uid://c6e2ycd2yeprj" path="res://assets/textures/objects/player/ledge climb.png" id="10_uaaul"]
 [ext_resource type="Texture2D" uid="uid://cx37u8xqw6iaf" path="res://assets/textures/objects/player/player run shoot.png" id="10_vexje"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/player_state_machine.gd" id="11_dvcvi"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/run_state.gd" id="11_ye45j"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/jump_state.gd" id="12_emycj"]
 [ext_resource type="Texture2D" uid="uid://dut8iy5l4qrni" path="res://assets/textures/objects/player/Sword strike.png" id="12_v046b"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/fall_state.gd" id="13_28f6q"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/attack_state.gd" id="14_hvq73"]
+[ext_resource type="Script" path="res://scripts/state/player_state/player_state_machine.gd" id="15_2caat"]
 [ext_resource type="Script" path="res://scripts/character_components/health_component.gd" id="16_3t3ee"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/hit_state.gd" id="16_q2no2"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/die_state.gd" id="18_4bmoh"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/wall_state.gd" id="19_in0yr"]
+[ext_resource type="Script" path="res://scripts/state/player_state/idle_state.gd" id="16_md4hu"]
+[ext_resource type="Script" path="res://scripts/state/player_state/run_state.gd" id="17_mehwv"]
+[ext_resource type="Script" path="res://scripts/state/player_state/jump_state.gd" id="18_q74cy"]
+[ext_resource type="Script" path="res://scripts/state/player_state/fall_state.gd" id="19_lydch"]
+[ext_resource type="Script" path="res://scripts/state/player_state/attack_state.gd" id="20_dac1b"]
 [ext_resource type="Script" path="res://scripts/character_components/physics_component.gd" id="20_e0dvi"]
+[ext_resource type="Script" path="res://scripts/state/player_state/hit_state.gd" id="21_go0ww"]
 [ext_resource type="Script" path="res://scripts/character_components/jump_component.gd" id="21_oqa14"]
 [ext_resource type="Script" path="res://scripts/character_components/shoot_component.gd" id="22_fllad"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/shoot_state.gd" id="22_s52wo"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/crouch_state.gd" id="24_jbtja"]
-[ext_resource type="Script" path="res://scripts/classes/state/player_state/ledge_state.gd" id="25_8fp61"]
+[ext_resource type="Script" path="res://scripts/state/player_state/die_state.gd" id="22_hkn6w"]
+[ext_resource type="Script" path="res://scripts/state/player_state/wall_state.gd" id="23_gdp7o"]
+[ext_resource type="Script" path="res://scripts/state/player_state/idle_shoot_state.gd" id="24_kekgo"]
+[ext_resource type="Script" path="res://scripts/state/player_state/crouch_state.gd" id="25_pu4cb"]
+[ext_resource type="Script" path="res://scripts/state/player_state/ledge_state.gd" id="26_7cc1l"]
+[ext_resource type="Script" path="res://scripts/state/player_state/run_shoot_state.gd" id="27_rs3oy"]
+[ext_resource type="Script" path="res://scripts/state/player_state/fall_shoot_state.gd" id="29_2kfx4"]
+[ext_resource type="Script" path="res://scripts/state/player_state/jump_shoot_state.gd" id="29_y1pxy"]
 [ext_resource type="Script" path="res://scripts/character_components/ledge_component.gd" id="31_lp0vd"]
 [ext_resource type="Script" path="res://scripts/character_components/flip_component.gd" id="32_owwlf"]
 
@@ -44,6 +48,22 @@ region = Rect2(0, 0, 143, 151)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghest"]
 atlas = ExtResource("2_uu0ou")
 region = Rect2(137, 0, 137, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlf5r"]
+atlas = ExtResource("5_o8i6n")
+region = Rect2(0, 0, 137, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v850w"]
+atlas = ExtResource("5_o8i6n")
+region = Rect2(137, 0, 137, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6bol"]
+atlas = ExtResource("5_o8i6n")
+region = Rect2(274, 0, 137, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlae2"]
+atlas = ExtResource("5_o8i6n")
+region = Rect2(411, 0, 137, 154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_raw3t"]
 atlas = ExtResource("2_uu0ou")
@@ -345,6 +365,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlf5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v850w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6bol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlae2")
+}],
+"loop": true,
+"name": &"fall_shoot",
 "speed": 5.0
 }, {
 "frames": [{
@@ -727,6 +764,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(10, 0)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_fo5of"]
 resource_name = "crouch"
@@ -995,6 +1044,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_4pwue"]
 resource_name = "idle_shoot"
 length = 0.15
+loop_mode = 1
 step = 0.03
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1090,6 +1140,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_ncd7m"]
 resource_name = "jump_shoot"
 length = 0.18
+loop_mode = 1
 step = 0.03
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1162,10 +1213,10 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2(6, 0), Vector2(6, -17), Vector2(6, -40), Vector2(9, -53), Vector2(21, -76)]
+"values": [Vector2(6, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1218,8 +1269,20 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-13, 10)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0268878),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2, 10)]
+"values": [Vector2(12, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_veump"]
@@ -1261,7 +1324,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2, 10)]
+"values": [Vector2(-10, 9)]
 }
 
 [sub_resource type="Animation" id="Animation_u1bwb"]
@@ -1348,26 +1411,68 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../CollisionShape2D:rotation")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.305433]
+"values": [Vector2(5, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_kbwk4"]
+resource_name = "fall_shoot"
+length = 0.09
+loop_mode = 1
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fall_shoot"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -5)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
+tracks/3/path = NodePath(".:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(5, -3)]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hrb52"]
@@ -1376,6 +1481,7 @@ _data = {
 "crouch": SubResource("Animation_fo5of"),
 "die": SubResource("Animation_rtufd"),
 "fall": SubResource("Animation_bpca7"),
+"fall_shoot": SubResource("Animation_kbwk4"),
 "hit": SubResource("Animation_jth04"),
 "idle": SubResource("Animation_jr0lx"),
 "idle_shoot": SubResource("Animation_4pwue"),
@@ -1391,14 +1497,17 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1lte"]
 size = Vector2(71.75, 110.625)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjp17"]
-radius = 18.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aofcr"]
+radius = 17.0
 height = 110.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("shootComponent", "gunMarker", "rayCast", "bodyCollisionShape", "stateMachine", "physicsComponent", "attackBodyComponent", "animationComponent", "flipComponent") groups=["game_events"]]
 position = Vector2(-10, -60)
 collision_layer = 2
-script = ExtResource("1_vymue")
+floor_constant_speed = true
+floor_max_angle = 1.0472
+floor_snap_length = 3.0
+script = ExtResource("1_g2wjt")
 shootComponent = NodePath("Components/Shoot")
 gunMarker = NodePath("FlipMarker/GunMarker")
 rayCast = NodePath("FlipMarker/LedgeDetector")
@@ -1454,13 +1563,13 @@ limit_bottom = 850
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
 position = Vector2(-13, -13)
-script = ExtResource("11_dvcvi")
+script = ExtResource("15_2caat")
 character = NodePath("..")
 initialState = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
 position = Vector2(-17, -18)
-script = ExtResource("10_mp7yw")
+script = ExtResource("16_md4hu")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1472,7 +1581,7 @@ canMove = false
 
 [node name="StateRun" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
 position = Vector2(-15, -17)
-script = ExtResource("11_ye45j")
+script = ExtResource("17_mehwv")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1487,7 +1596,7 @@ one_shot = true
 
 [node name="StateJump" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
 position = Vector2(-19, -19)
-script = ExtResource("12_emycj")
+script = ExtResource("18_q74cy")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1498,7 +1607,7 @@ animationName = "jump"
 
 [node name="StateFall" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 position = Vector2(-19, -20)
-script = ExtResource("13_28f6q")
+script = ExtResource("19_lydch")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1508,7 +1617,7 @@ animationName = "fall"
 
 [node name="StateAttack" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 position = Vector2(-18, 3)
-script = ExtResource("14_hvq73")
+script = ExtResource("20_dac1b")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1519,7 +1628,7 @@ canMove = false
 
 [node name="StateHit" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 position = Vector2(-17, -20)
-script = ExtResource("16_q2no2")
+script = ExtResource("21_go0ww")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1530,7 +1639,7 @@ canMove = false
 
 [node name="StateDie" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 position = Vector2(-22, -19)
-script = ExtResource("18_4bmoh")
+script = ExtResource("22_hkn6w")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1541,7 +1650,7 @@ canMove = false
 
 [node name="StateWall" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 position = Vector2(-16, -14)
-script = ExtResource("19_in0yr")
+script = ExtResource("23_gdp7o")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1550,25 +1659,9 @@ stateName = "wall"
 animationName = "wall"
 canMove = false
 
-[node name="StateShoot" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
-position = Vector2(-22, -21)
-script = ExtResource("22_s52wo")
-characterBody = NodePath("../..")
-nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
-nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
-collisionshape = NodePath("../../CollisionShape2D")
-shootComponent = NodePath("../../Components/Shoot")
-stateName = "shoot"
-animationName = "shoot"
-canMove = null
-
-[node name="CoyoteJumpTimer" type="Timer" parent="StateMachine/StateShoot"]
-wait_time = 0.1
-one_shot = true
-
 [node name="StateCrouch" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
 position = Vector2(-11, -19)
-script = ExtResource("24_jbtja")
+script = ExtResource("25_pu4cb")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1580,7 +1673,7 @@ canMove = false
 
 [node name="StateLedge" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
 position = Vector2(-20, -10)
-script = ExtResource("25_8fp61")
+script = ExtResource("26_7cc1l")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -1589,6 +1682,45 @@ shootComponent = NodePath("../../Components/Shoot")
 stateName = "ledge"
 animationName = "ledge"
 canMove = false
+
+[node name="StateIdleShoot" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
+position = Vector2(-22, -21)
+script = ExtResource("24_kekgo")
+characterBody = NodePath("../..")
+nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
+nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
+collisionshape = NodePath("../../CollisionShape2D")
+shootComponent = NodePath("../../Components/Shoot")
+stateName = "idle_shoot"
+animationName = "idle_shoot"
+canMove = false
+
+[node name="StateRunShoot" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
+script = ExtResource("27_rs3oy")
+characterBody = NodePath("../..")
+nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
+nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
+collisionshape = NodePath("../../CollisionShape2D")
+shootComponent = NodePath("../../Components/Shoot")
+stateName = "run_shoot"
+animationName = "run_shoot"
+
+[node name="CoyoteJumpTimer" type="Timer" parent="StateMachine/StateRunShoot"]
+wait_time = 0.1
+one_shot = true
+
+[node name="StateJumpShoot" type="Node2D" parent="StateMachine"]
+script = ExtResource("29_y1pxy")
+
+[node name="StateFallShoot" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape", "shootComponent")]
+script = ExtResource("29_2kfx4")
+characterBody = NodePath("../..")
+nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
+nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
+collisionshape = NodePath("../../CollisionShape2D")
+shootComponent = NodePath("../../Components/Shoot")
+stateName = "fall_shoot"
+animationName = "fall_shoot"
 
 [node name="Components" type="Node2D" parent="."]
 position = Vector2(-25, 15)
@@ -1606,7 +1738,6 @@ characterBody = NodePath("../..")
 [node name="Physics" type="Node2D" parent="Components"]
 position = Vector2(8, 21)
 script = ExtResource("20_e0dvi")
-acceleration = 2000.0
 airFriction = 300000.0
 knockbackVelocity = Vector2(500, 2.08165e-12)
 
@@ -1620,6 +1751,10 @@ position = Vector2(10, -1)
 script = ExtResource("22_fllad")
 gunMarker = NodePath("../../FlipMarker/GunMarker")
 
+[node name="ShootBufferTimer" type="Timer" parent="Components/Shoot"]
+wait_time = 0.5
+one_shot = true
+
 [node name="Flip" type="Node2D" parent="Components" node_paths=PackedStringArray("bodyCollisionShape", "flipMarker", "stateMachine", "animationComponent", "physicsComponent")]
 position = Vector2(10, -3)
 script = ExtResource("32_owwlf")
@@ -1631,10 +1766,9 @@ physicsComponent = NodePath("../Physics")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 5)
-shape = SubResource("CapsuleShape2D_vjp17")
+shape = SubResource("CapsuleShape2D_aofcr")
 
 [connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateAttack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateHit" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateDie" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateShoot" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateLedge" method="_on_animation_player_animation_finished"]

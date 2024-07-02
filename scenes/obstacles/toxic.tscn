@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dfjdoxld3jn5a"]
 
-[ext_resource type="Script" path="res://scripts/toxic.gd" id="1_dsxgi"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/toxic.gd" id="1_dsxgi"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="1_fp14p"]
 [ext_resource type="Texture2D" uid="uid://bl26kweeqo0ch" path="res://assets/textures/objects/obstacles/unnamed.png" id="1_w0l2u"]
 

@@ -26,7 +26,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	elif healthDepleted:
 		healthDepleted = false
 		return PlayerStateMachine.StateType.Die
-			 
+	
 	elif attackAnimationFinished:
 		attackAnimationFinished = false
 		return PlayerStateMachine.StateType.Idle

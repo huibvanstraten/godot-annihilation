@@ -1,0 +1,2 @@
+class_name CharacterTestLevel
+extends Level

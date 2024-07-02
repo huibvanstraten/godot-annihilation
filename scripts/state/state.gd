@@ -17,6 +17,11 @@ var entityHit: bool = false
 var healthDepleted: bool = false
 var playerInRange: bool = false
 
+var jumpBufferTime: float = 8
+var jumpBufferCounter: float = 0
+var coyoteTime: float = 8
+var coyoteCounter: float = 0
+
 func initialize():
 	EventManager.connect("health_depleted", _on_health_depleted)
 	EventManager.connect("entity_hit", _on_entity_hit)
@@ -47,3 +52,11 @@ func get_previous_state_type(entity: CharacterBody2D) -> String:
 	var stateMachine = entity.find_child("StateMachine") as StateMachine
 	return stateMachine.previousState.stateName
 
+func jumpBuffer():
+	if Input.is_action_just_pressed("jump"):
+		jumpBufferCounter = jumpBufferTime
+	if jumpBufferCounter > 0:
+		jumpBufferCounter -= 1
+
+#func coyoteTime():
+	#if 

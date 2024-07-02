@@ -1,4 +1,4 @@
-class_name FallState
+class_name FallShootState
 extends State
 
 @onready var physicsComponent: PhysicsComponent = $"../../Components/Physics"
@@ -9,9 +9,6 @@ extends State
 const NODE_NAME_AUDIO_FALL: String = "AudioFall"
 var nodeAudioFall = null
 
-func enter():
-	super()
-
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
 	
@@ -19,8 +16,13 @@ func stateMainProcess(_delta: float) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
 
 func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
-	var wall_cling: float = Input.is_action_just_pressed("wall cling")
+	var wall_cling: float = Input.is_action_pressed("wall cling")
 	var jump: float = Input.is_action_pressed("jump")
+	var shoot: bool = Input.is_action_pressed("shoot")
+	
+	jumpBuffer()
+	
+	shootComponent.shoot()
 	
 	if entityHit:
 		entityHit = false
@@ -30,13 +32,26 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		healthDepleted = false
 		return PlayerStateMachine.StateType.Die
 		
-	elif ledgeComponent.canClimbLedge(physicsComponent.direction.x > 0) and jump:
+	elif !shoot:
+		return PlayerStateMachine.StateType.Fall 
+		
+	elif ledgeComponent.canClimbLedge() and jump:
 		return PlayerStateMachine.StateType.Ledge
 	
 	elif wall_cling and characterBody.is_on_wall_only() and wallDetector.is_colliding():
 		return PlayerStateMachine.StateType.Wall
 		
+	elif jumpBufferCounter > 0 and characterBody.is_on_floor():
+		jumpBufferCounter = 0
+		if shoot:
+			return PlayerStateMachine.StateType.JumpShoot
+		else:
+			return PlayerStateMachine.StateType.Jump
+	
 	elif characterBody.velocity.y == 0 and characterBody.is_on_floor():
-		return PlayerStateMachine.StateType.Idle
+		if shoot:
+			return PlayerStateMachine.StateType.IdleShoot
+		else:
+			return PlayerStateMachine.StateType.Idle
 	
 	return PlayerStateMachine.StateType.Invalid
