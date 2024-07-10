@@ -5,9 +5,8 @@ extends State
 @onready var physicsComponent: PhysicsComponent = $"../../Components/Physics"
 @onready var jumpComponent: JumpComponent = $"../../Components/Jump"
 
-const NODE_NAME_AUDIO_ATTACK: String = "AudioShoot"
-
-var m_NodeAudioAttack = null
+var sfxPathShoot: String = "res://assets/audio/sfx/player/shoot.wav"
+var sfxPathRun: String = "res://assets/audio/sfx/player/run.wav"
 
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
@@ -22,7 +21,9 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var shoot: bool = Input.is_action_pressed("shoot")
 	var crouched: bool = Input.is_action_just_pressed("crouch")
 	
-	shootComponent.shoot()
+	var didShoot = shootComponent.shoot()
+	if didShoot: SfxManager.play(sfxPathShoot)
+	SfxManager.play(sfxPathRun)
 	
 	if entityHit:
 		entityHit = false

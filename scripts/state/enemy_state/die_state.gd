@@ -1,11 +1,13 @@
 class_name EnemyDieState
 extends EnemyState
 
-const NODE_NAME_AUDIO_DIE: String = "AudioDie"
-
-var m_NodeAudioDie = null
-
 var dieAnimationFinished: bool = false
+
+var sfxPath: String = "res://assets/audio/sfx/slime/dying.mp3"
+
+func enter():
+	super()
+	SfxManager.play(sfxPath)
 	
 func stateInput(_event: InputEvent) -> EnemyStateMachine.StateType:
 	return EnemyStateMachine.StateType.Invalid

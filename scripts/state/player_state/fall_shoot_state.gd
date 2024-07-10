@@ -6,8 +6,8 @@ extends State
 
 @onready var wallDetector: RayCast2D = $"../../FlipMarker/WallDetector"
 
-const NODE_NAME_AUDIO_FALL: String = "AudioFall"
-var nodeAudioFall = null
+var sfxPathShoot: String = "res://assets/audio/sfx/player/shoot.wav"
+var sfxPathLand: String = "res://assets/audio/sfx/player/landing.wav"
 
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
@@ -22,7 +22,8 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	
 	jumpBuffer()
 	
-	shootComponent.shoot()
+	var didShoot = shootComponent.shoot()
+	if didShoot: SfxManager.play(sfxPathShoot)
 	
 	if entityHit:
 		entityHit = false
@@ -42,6 +43,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		return PlayerStateMachine.StateType.Wall
 		
 	elif jumpBufferCounter > 0 and characterBody.is_on_floor():
+		SfxManager.play(sfxPathLand)
 		jumpBufferCounter = 0
 		if shoot:
 			return PlayerStateMachine.StateType.JumpShoot
@@ -49,6 +51,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 			return PlayerStateMachine.StateType.Jump
 	
 	elif characterBody.velocity.y == 0 and characterBody.is_on_floor():
+		SfxManager.play(sfxPathLand)
 		physicsComponent.reset_velocity()
 		if shoot:
 			return PlayerStateMachine.StateType.IdleShoot

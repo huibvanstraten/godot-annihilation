@@ -1,9 +1,7 @@
 class_name IdleShootState
 extends State
 
-const NODE_NAME_AUDIO_ATTACK: String = "AudioShoot"
-
-var m_NodeAudioAttack = null
+var sfxPathShoot: String = "res://assets/audio/sfx/player/shoot.wav"
 
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
@@ -18,8 +16,8 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var shoot: bool = Input.is_action_pressed("shoot")
 	var crouched: bool = Input.is_action_just_pressed("crouch")
 	
-	if shoot:
-		shootComponent.shoot()
+	var didShoot = shootComponent.shoot()
+	if didShoot: SfxManager.play(sfxPathShoot)
 	
 	if entityHit:
 		entityHit = false

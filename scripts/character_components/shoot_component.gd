@@ -6,8 +6,8 @@ extends Node
 @onready var shootBufferTimer: Timer = $ShootBufferTimer
 @onready var physicsComponent: PhysicsComponent =  $"../Physics"
 
-func shoot():
-	if shootBufferTimer.time_left > 0: pass
+func shoot() -> bool:
+	if shootBufferTimer.time_left > 0: return false
 	else:
 		var bullet = preload("res://scenes/bullet.tscn").instantiate()
 
@@ -16,3 +16,4 @@ func shoot():
 		bullet.direction = physicsComponent.facingDirection
 		get_tree().root.add_child(bullet)
 		shootBufferTimer.start()
+		return true

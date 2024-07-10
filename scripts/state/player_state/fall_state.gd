@@ -6,8 +6,11 @@ extends State
 
 @onready var wallDetector: RayCast2D = $"../../FlipMarker/WallDetector"
 
-const NODE_NAME_AUDIO_FALL: String = "AudioFall"
-var nodeAudioFall = null
+var sfxPath: String = "res://assets/audio/sfx/player/landing.wav"
+
+func exit():
+	super()
+	SfxManager.play(sfxPath)
 
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid

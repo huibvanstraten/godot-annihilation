@@ -71,6 +71,5 @@ func on_load_game(saved_data:SavedData):
 	if saved_data is SavedPlayerData:
 			pass
 
-func freeze(freeze: bool):
-	print("freezing")
-	playerFreeze = freeze
+func freeze(shouldFreeze: bool):
+	playerFreeze = shouldFreeze

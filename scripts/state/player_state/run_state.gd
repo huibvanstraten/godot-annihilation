@@ -4,17 +4,13 @@ extends State
 @onready var physicsComponent: PhysicsComponent = $"../../Components/Physics"
 @onready var coyoteJumpTimer: Timer = $CoyoteJumpTimer
 
-const NODE_NAME_AUDIO_RUN: String = "AudioRun"
-
-var m_NodeAudioRun = null
+var sfxPath: String = "res://assets/audio/sfx/player/run.wav"
 
 func initialize():
 	super()
-	m_NodeAudioRun = null # add later
 	
 func enter():
 	super()
-	#m_NodeAudioRun.Play()
 	
 func exit():
 	#m_NodeAudioRun.Stop()
@@ -32,6 +28,8 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var attacked : bool = Input.is_action_just_pressed("kick")
 	var shoot: bool = Input.is_action_just_pressed("shoot")
 	var crouched: bool = Input.is_action_just_pressed("crouch")
+	
+	SfxManager.play(sfxPath)
 	
 	if characterBody.justLeftLedge:
 		coyoteJumpTimer.start()

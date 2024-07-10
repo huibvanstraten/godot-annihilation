@@ -3,6 +3,12 @@ extends State
 
 var hitAnimationFinished = false
 
+var sfxPath: String = "res://assets/audio/sfx/player/hit.mp3"
+
+func enter():
+	super()
+	SfxManager.play(sfxPath)
+
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
 	

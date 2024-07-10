@@ -44,6 +44,7 @@ func _process(delta):
 
 func _start_breaking(_body: Node2D):
 	set_process(true)
+	SfxManager.play("res://assets/audio/sfx/surroundings/heavy-stones-falling.wav")
 	breaktimer.start(0.5)
 
 func _on_timer_timeout():

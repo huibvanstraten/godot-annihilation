@@ -8,9 +8,6 @@ extends State
 @onready var wallDetector: RayCast2D = $"../../FlipMarker/WallDetector"
 
 var sfxPath: String = "res://assets/audio/sfx/player/jump.wav"
-
-func initialize():
-	super()
 	
 func enter():
 	super()

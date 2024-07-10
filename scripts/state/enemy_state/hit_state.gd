@@ -3,6 +3,12 @@ extends EnemyState
 
 var hit_animation_finished = false
 
+var sfxPath: String = "res://assets/audio/sfx/slime/dying.mp3"
+
+func enter():
+	super()
+	SfxManager.play(sfxPath)
+
 func stateInput(_event: InputEvent) -> EnemyStateMachine.StateType:
 	return EnemyStateMachine.StateType.Invalid
 	

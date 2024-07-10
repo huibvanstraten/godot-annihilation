@@ -6,8 +6,11 @@ extends State
 
 var ledgeAnimationFinished: bool = false
 
+var sfxPath: String = "res://assets/audio/sfx/player/jump.wav"
+
 func enter():
 	super()
+	SfxManager.play(sfxPath)
 	physicsComponent.velocityY = 0
 	physicsComponent.gravity = 0
 	

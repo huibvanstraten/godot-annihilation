@@ -10,7 +10,7 @@ levelId = 0
 levelName = "character test"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/character_test_level"
+levelPath = "levels/character_test_level/character_test_level"
 
 [sub_resource type="Resource" id="Resource_a41xn"]
 script = ExtResource("2_hgjbi")
@@ -18,7 +18,7 @@ levelId = 1
 levelName = "test level"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/test_level"
+levelPath = "levels/test_level/test_level"
 
 [sub_resource type="Resource" id="Resource_yaavu"]
 script = ExtResource("2_hgjbi")
@@ -26,7 +26,7 @@ levelId = 2
 levelName = "MovingLevel"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/moving_level"
+levelPath = "levels/moving_level/moving_level"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h73sd")

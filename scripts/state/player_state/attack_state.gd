@@ -7,9 +7,11 @@ var m_NodeAudioAttack = null
 
 var attackAnimationFinished: bool = false
 
+var sfxPath: String = "res://assets/audio/sfx/player/slash.wav"
+
 func enter():
 	super()
-	
+	SfxManager.play(sfxPath)
 	
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid

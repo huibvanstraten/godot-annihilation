@@ -6,6 +6,8 @@ var dialogue: Dialogue:
 		%Icon.texture = value.texture
 		%Name.text = value.name
 		%Dialogue.text = value.dialogue
+		
+		SfxManager.play("res://assets/audio/sfx/slime/roar.wav")
 
 func hide_dialogue():
 	%UI.hide()

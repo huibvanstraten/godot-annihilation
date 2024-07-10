@@ -1,11 +1,13 @@
 class_name DieState
 extends State
 
-const NODE_NAME_AUDIO_DIE: String = "AudioDie"
-
-var m_NodeAudioDie = null
-
 var dieAnimationFinished: bool = false
+
+var sfxPath: String = "res://assets/audio/sfx/player/hit.mp3"
+
+func enter():
+	super()
+	SfxManager.play(sfxPath)
 
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid
