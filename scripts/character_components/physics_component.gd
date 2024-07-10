@@ -15,7 +15,6 @@ extends Node
 @export var direction: Vector2 = Vector2.RIGHT
 
 @export var collisionRotation: float = 0
-@export var collisionSizeY: float = 1
 
 var facingDirection: int = 1
 var defaultGravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")

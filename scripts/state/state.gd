@@ -10,6 +10,7 @@ extends Node
 
 @export var stateName: String
 @export var animationName: String
+@export var sfxName: String
 
 @export var canMove: bool = true
 

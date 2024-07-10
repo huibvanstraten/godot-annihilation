@@ -20,8 +20,14 @@ func enter():
 	#m_NodeAudioJump.Play()
 	if jumpComponent.wallJump == true:
 		canMove = false
-	jumpComponent.jump()
-
+	
+	var previousState = get_previous_state_type(characterBody)
+	if previousState == "jump":
+		pass
+	else:
+		jumpComponent.jump()
+		
+	
 func exit():
 	super()
 	canMove = true
@@ -34,10 +40,11 @@ func stateMainProcess(_delta: float) -> PlayerStateMachine.StateType:
 
 func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var wall_cling: float = Input.is_action_pressed("wall cling")
-	var shoot: bool = Input.is_action_just_pressed("shoot")
-	var jump: bool = Input.is_action_just_pressed("jump")
+	var shoot: bool = Input.is_action_pressed("shoot")
+	var jump: bool = Input.is_action_pressed("jump")
 	
 	jumpComponent.stop_jump(false)
+	shootComponent.shoot()
 
 	if entityHit:
 		entityHit = false
@@ -47,8 +54,11 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		healthDepleted = false
 		return PlayerStateMachine.StateType.Die
 	
-	elif shoot:
-		return PlayerStateMachine.StateType.JumpShoot 
+	elif !shoot:
+		return PlayerStateMachine.StateType.Jump 
+	
+	elif ledgeComponent.canClimbLedge() and jump:
+		return PlayerStateMachine.StateType.Ledge
 		
 	elif characterBody.is_on_ceiling():
 		jumpComponent.stop_jump(true)
@@ -59,9 +69,15 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	
 	elif characterBody.velocity.y >= 0:
 		if characterBody.is_on_floor():
-			return PlayerStateMachine.StateType.Idle
+			if shoot:
+				return PlayerStateMachine.StateType.IdleShoot
+			else:
+				return PlayerStateMachine.StateType.Idle
 		else:
-			return PlayerStateMachine.StateType.Fall
+			if shoot:
+				return PlayerStateMachine.StateType.FallShoot
+			else:
+				return PlayerStateMachine.StateType.Fall
 		
 	elif wall_cling and characterBody.is_on_wall_only() and wallDetector.is_colliding():
 		return PlayerStateMachine.StateType.Wall

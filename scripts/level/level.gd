@@ -1,19 +1,27 @@
 class_name Level
 extends Node
 
-@export var level_id: int
-@export var start_position: Marker2D = null
+@export var levelId: int
+@export var startPosition: Marker2D = null
+@export var pixelformat: bool
 
-var level_data: LevelData
+var levelData: LevelData
 
 func _ready():
-	level_data = LevelManager.get_level_data_by_id(level_id)
+	levelData = LevelManager.get_level_data_by_id(levelId)
 	EventManager.connect("player_died", _on_player_died)
-	PlayerManager.spawn_player(start_position.global_position)
-
-func _on_player_died():
-	PlayerManager.spawn_player(start_position.global_position)
+	PlayerManager.spawn_player(startPosition.global_position, pixelformat)
+	MusicManager._get_all_songs()
 
 func _process(_delta):
+	if Input.is_action_just_pressed("play_song"):
+		MusicManager.play_song_from_list()
+	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+
+func start_level():
+	get_tree().reload_current_scene()
+
+func _on_player_died():
+	PlayerManager.spawn_player(startPosition.global_position, pixelformat)

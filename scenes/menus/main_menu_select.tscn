@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://80ujh2ifjd7l"]
+[gd_scene load_steps=3 format=3 uid="uid://80ujh2ifjd7l"]
 
 [ext_resource type="Script" path="res://scripts/main_menu_select.gd" id="1_ool7d"]
+[ext_resource type="Script" path="res://scripts/ui/button.gd" id="2_inoj8"]
 
 [node name="Main Menu Select" type="Control"]
 layout_mode = 3
@@ -19,26 +20,43 @@ offset_top = -45.0
 offset_right = 393.0
 offset_bottom = 93.0
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="CharacterTest" type="Button" parent="VBoxContainer"]
 modulate = Color(0.585967, 0.0613417, 0.554907, 1)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-text = "Start"
+action_mode = 0
+text = "Character Test"
+script = ExtResource("2_inoj8")
+
+[node name="TestLevel" type="Button" parent="VBoxContainer"]
+modulate = Color(0.585967, 0.0613417, 0.554907, 1)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "General Test"
+
+[node name="MovingLevel" type="Button" parent="VBoxContainer"]
+modulate = Color(0.585967, 0.0613417, 0.554907, 1)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "Moving level"
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
 modulate = Color(0.585967, 0.0613417, 0.554907, 1)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
+button_mask = 0
 text = "Continue
 "
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-modulate = Color(0.584314, 0.0627451, 0.556863, 1)
+modulate = Color(0.49935, 0.000792756, 0.618317, 1)
 texture_filter = 1
 layout_mode = 2
 button_mask = 0
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterTest" to="." method="_on_character_test_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestLevel" to="." method="_on_test_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/MovingLevel" to="." method="_on_moving_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -13,27 +13,23 @@ extends Area2D
 
 @export var attackBodyPosition: float = 0
 
-
 func _ready():
 	self.connect("body_entered", _on_body_entered)
 
 func _on_body_entered(body):
-	print(body)
-	for child in body.find_child("Components").get_children():
-		if child is HealthComponent:
-			child.hit(damage)
-			
-		if child is PhysicsComponent:
-			var parentGlobalPosition = get_global_position_parent_body()
-			var direction_to_body = sign(body.global_position.x - parentGlobalPosition)
-			var knockback_direction = direction_to_body
-			child.set_knockback_direction(knockback_direction)
-	
-	if removeBodyAtTouch:
-		get_parent().get_parent().queue_free()
-	
 	if removeAttackBodyAtTouch:
 		EventManager.emit_signal("remove_attack_body")
+	
+	if body is CharacterBody2D:
+		for child in body.find_child("Components").get_children():
+			if child is HealthComponent:
+				child.hit(damage)
+				
+			if child is PhysicsComponent:
+				var parentGlobalPosition = get_global_position_parent_body()
+				var direction_to_body = sign(body.global_position.x - parentGlobalPosition)
+				var knockback_direction = direction_to_body
+				child.set_knockback_direction(knockback_direction)
 
 func get_global_position_parent_body() -> float:
 	if pathFollow == null:

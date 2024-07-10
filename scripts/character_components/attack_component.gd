@@ -6,8 +6,8 @@ extends Node
 @export var jumpSpeed: float = 500.0
 @export var jumpheight: float = 50.0
 
-@onready var detectionArea: Area2D = $"../../FlipMarker/DetectionArea"
-@onready var physicsComponent: PhysicsComponent = $"../Physics"
+@export var detectionArea: Area2D = null
+@export var physicsComponent: PhysicsComponent = null
 
 var playerInRange: bool = false
 var player: CharacterBody2D = null

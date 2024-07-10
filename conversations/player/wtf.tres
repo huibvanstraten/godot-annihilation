@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://rgv2705k7b4l"]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="1_eeff1"]
+[ext_resource type="Texture2D" uid="uid://c8xmckgpq3826" path="res://assets/textures/objects/player/player suprised.png" id="2_c6y2q"]
+
+[resource]
+script = ExtResource("1_eeff1")
+texture = ExtResource("2_c6y2q")
+name = "Player"
+dialogue = "WTF?!"
+hasOptions = false
+path_option = ""
+options = Array[ExtResource("1_eeff1")]([])

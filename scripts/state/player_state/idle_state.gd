@@ -11,7 +11,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var movementHorizontal: float = Input.get_axis("move_left", "move_right")
 	var jumped: bool = Input.is_action_just_pressed("jump")
 	var attacked : bool = Input.is_action_just_pressed("kick")
-	var shoot: bool = Input.is_action_just_pressed("shoot")
+	var shoot: bool = Input.is_action_pressed("shoot")
 	var crouched: bool = Input.is_action_just_pressed("crouch")
 	
 	if entityHit:

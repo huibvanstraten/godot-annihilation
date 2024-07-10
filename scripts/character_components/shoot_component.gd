@@ -8,9 +8,11 @@ extends Node
 
 func shoot():
 	if shootBufferTimer.time_left > 0: pass
-	
-	var bullet = preload("res://scenes/bullet.tscn").instantiate()
-	bullet.spawnPosition = gunMarker.position
-	bullet.direction = physicsComponent.facingDirection
-	get_parent().add_child(bullet)
-	shootBufferTimer.start()
+	else:
+		var bullet = preload("res://scenes/bullet.tscn").instantiate()
+
+		bullet.global_position = gunMarker.global_position
+		bullet.spawnPosition = gunMarker.global_position
+		bullet.direction = physicsComponent.facingDirection
+		get_tree().root.add_child(bullet)
+		shootBufferTimer.start()

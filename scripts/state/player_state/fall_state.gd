@@ -18,7 +18,7 @@ func stateMainProcess(_delta: float) -> PlayerStateMachine.StateType:
 func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var wall_cling: float = Input.is_action_pressed("wall cling")
 	var jump: float = Input.is_action_pressed("jump")
-	var shoot: bool = Input.is_action_just_pressed("shoot")
+	var shoot: bool = Input.is_action_pressed("shoot")
 	
 	jumpBuffer()
 	
@@ -44,6 +44,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		return PlayerStateMachine.StateType.Jump
 	
 	elif characterBody.velocity.y == 0 and characterBody.is_on_floor():
+		physicsComponent.reset_velocity()
 		return PlayerStateMachine.StateType.Idle
 	
 	return PlayerStateMachine.StateType.Invalid

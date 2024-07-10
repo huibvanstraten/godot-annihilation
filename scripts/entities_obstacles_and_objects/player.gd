@@ -11,12 +11,15 @@ var justLeftLedge: bool = false
 
 var defaultRayCastPositionX: float
 
+var playerFreeze: bool = false
+
+func _ready():
+	EventManager.connect("freeze_player", freeze)
+
 func _physics_process(delta):
 	var inputAxis = Input.get_axis("move_left", "move_right")
 	var currentState = stateMachine.currentState
-	var previousState = stateMachine.previousState
 	bodyCollisionShape.rotation_degrees = physicsComponent.collisionRotation
-	bodyCollisionShape.scale.y = physicsComponent.collisionSizeY
 	
 	if jumpComponent.wallJump and currentState is FallState:
 		jumpComponent.wallJump = false
@@ -37,7 +40,7 @@ func _physics_process(delta):
 			physicsComponent.move_in_air(delta, sign(inputAxis))
 			flipComponent.flip()
 		elif jumpComponent.wallJump:
-			print("!")
+			pass
 		elif inputAxis == 0 and currentState != HitState:
 			physicsComponent.air_resistance(delta)
 	
@@ -48,8 +51,8 @@ func _physics_process(delta):
 		elif inputAxis == 0 and currentState != HitState:
 			physicsComponent.stop(delta)
 	
-
-	move_and_slide_with_coyote_jump()
+	if not playerFreeze:
+		move_and_slide_with_coyote_jump()
 
 func move_and_slide_with_coyote_jump():
 	velocity.x = physicsComponent.velocityX
@@ -57,7 +60,7 @@ func move_and_slide_with_coyote_jump():
 	var wasOnFloor = is_on_floor()
 	move_and_slide()
 	justLeftLedge = wasOnFloor and not is_on_floor() and velocity.y >= 0
-
+	
 func on_save_game(saved_data: Array[SavedData]):
 	var my_data = SavedData.new()
 	my_data.level_scene_path = scene_file_path
@@ -67,3 +70,7 @@ func on_save_game(saved_data: Array[SavedData]):
 func on_load_game(saved_data:SavedData):
 	if saved_data is SavedPlayerData:
 			pass
+
+func freeze(freeze: bool):
+	print("freezing")
+	playerFreeze = freeze

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://sioxpgrxqsos"]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="1_h0gik"]
+[ext_resource type="Texture2D" uid="uid://cu36awxgkps1r" path="res://assets/textures/objects/player/conversation normal.png" id="2_knjcs"]
+
+[resource]
+script = ExtResource("1_h0gik")
+texture = ExtResource("2_knjcs")
+name = "You"
+dialogue = "\"Rude...\""

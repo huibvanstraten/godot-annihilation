@@ -7,18 +7,11 @@ var start_menu = null
 func _ready():
 	start_menu = start_menu_select.instantiate()
 	add_child(start_menu)
-	start_menu.connect("new_game", _new_game)
-	start_menu.connect("continue_game", _continue_game)
+	EventManager.connect("level", load_level)
 
-func _new_game(): 
-	print("choose new game")
+func load_level(levelId: int):
+	LevelManager.load_level(levelId)
 	_deactivate()
-	LevelManager.load_level(1)
-	
-	
-func _continue_game():
-	pass
-	#SaverLoader.load_game()
 
 func _deactivate():
 	hide()

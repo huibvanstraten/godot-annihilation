@@ -1,0 +1,252 @@
+[gd_scene load_steps=16 format=3 uid="uid://do7lrq07orvtb"]
+
+[ext_resource type="Texture2D" uid="uid://ksre88c5pig3" path="res://assets/textures/objects/obstacles/Platform.png" id="1_1cscw"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/platform.gd" id="1_7g8p6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sapyf"]
+size = Vector2(148, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxerg"]
+atlas = ExtResource("1_1cscw")
+region = Rect2(0, 0, 240, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlppw"]
+atlas = ExtResource("1_1cscw")
+region = Rect2(240, 0, 240, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qcjv"]
+atlas = ExtResource("1_1cscw")
+region = Rect2(480, 0, 240, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvp6e"]
+atlas = ExtResource("1_1cscw")
+region = Rect2(720, 0, 240, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0yh6"]
+atlas = ExtResource("1_1cscw")
+region = Rect2(960, 0, 240, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v2x4"]
+atlas = ExtResource("1_1cscw")
+region = Rect2(0, 0, 240, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxepr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxerg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlppw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qcjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvp6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0yh6")
+}],
+"loop": true,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v2x4")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_pe5k4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../PathFollow2D:progress_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_woady"]
+resource_name = "break"
+length = 0.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"break"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_2wwcx"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../PathFollow2D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bti81"]
+_data = {
+"RESET": SubResource("Animation_pe5k4"),
+"break": SubResource("Animation_woady"),
+"move": SubResource("Animation_2wwcx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8qmu"]
+size = Vector2(162, 50.5)
+
+[node name="Platform" type="Path2D" node_paths=PackedStringArray("path", "sprite", "animation", "breakCollision")]
+script = ExtResource("1_7g8p6")
+type = 3
+path = NodePath("PathFollow2D")
+sprite = NodePath("PlatformBody/AnimatedSprite2D")
+animation = NodePath("PlatformBody/AnimatedSprite2D/AnimationPlayer")
+breakCollision = NodePath("PlatformBody/DetectionBody")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(338, 0)
+rotation = -0.00278551
+progress = 338.006
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+position = Vector2(34, 45)
+remote_path = NodePath("../../PlatformBody")
+
+[node name="PlatformBody" type="AnimatableBody2D" parent="."]
+position = Vector2(372.125, 44.9051)
+rotation = -0.00278551
+collision_layer = 32
+collision_mask = 6
+
+[node name="DetectionBody" type="Area2D" parent="PlatformBody"]
+position = Vector2(-372.001, -44.9415)
+rotation = 0.00278551
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody/DetectionBody"]
+position = Vector2(338.476, -19.1093)
+shape = SubResource("RectangleShape2D_sapyf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlatformBody"]
+position = Vector2(-32.9972, -45.9972)
+sprite_frames = SubResource("SpriteFrames_uxepr")
+animation = &"move"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlatformBody/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_bti81")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody"]
+position = Vector2(-34.0251, -36)
+shape = SubResource("RectangleShape2D_u8qmu")

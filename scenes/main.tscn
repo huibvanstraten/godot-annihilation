@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ajteckncvy7"]
+[gd_scene load_steps=7 format=3 uid="uid://b0ajteckncvy7"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_h73sd"]
 [ext_resource type="Script" path="res://scripts/level/level_data.gd" id="2_hgjbi"]
@@ -6,15 +6,31 @@
 
 [sub_resource type="Resource" id="Resource_v0rdf"]
 script = ExtResource("2_hgjbi")
-level_id = 1
-level_name = "Test Level 1"
-level_completed = false
-level_unlocked = true
-level_path = "levels/test_level"
+levelId = 0
+levelName = "character test"
+levelCompleted = false
+levelUnlocked = true
+levelPath = "levels/character_test_level"
+
+[sub_resource type="Resource" id="Resource_a41xn"]
+script = ExtResource("2_hgjbi")
+levelId = 1
+levelName = "test level"
+levelCompleted = false
+levelUnlocked = true
+levelPath = "levels/test_level"
+
+[sub_resource type="Resource" id="Resource_yaavu"]
+script = ExtResource("2_hgjbi")
+levelId = 2
+levelName = "MovingLevel"
+levelCompleted = false
+levelUnlocked = true
+levelPath = "levels/moving_level"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h73sd")
-available_levels = Array[ExtResource("2_hgjbi")]([SubResource("Resource_v0rdf")])
+available_levels = Array[ExtResource("2_hgjbi")]([SubResource("Resource_v0rdf"), SubResource("Resource_a41xn"), SubResource("Resource_yaavu")])
 
 [node name="LevelContainer" type="Node2D" parent="."]
 

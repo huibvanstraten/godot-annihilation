@@ -21,6 +21,10 @@ var stateTypeDict = {
 	"Invalid": StateType.Invalid
 }
 
+func _ready():
+	super()
+	EventManager.connect("freeze_player", _freeze_state_machine)
+
 func get_enum_value(enumName: String):
 	if stateTypeDict.has(enumName):
 		return stateTypeDict[enumName]
@@ -39,3 +43,7 @@ func _physics_process(delta):
 
 func can_move() -> bool:
 	return currentState.canMove
+
+func _freeze_state_machine(freeze: bool):
+	changeState(get_child(StateType.Idle))
+	set_physics_process(!freeze)

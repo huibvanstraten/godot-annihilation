@@ -49,6 +49,7 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 			return PlayerStateMachine.StateType.Jump
 	
 	elif characterBody.velocity.y == 0 and characterBody.is_on_floor():
+		physicsComponent.reset_velocity()
 		if shoot:
 			return PlayerStateMachine.StateType.IdleShoot
 		else:

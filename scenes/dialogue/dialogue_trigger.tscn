@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://71jivt1m263y"]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_trigger.gd" id="1_sx1oe"]
+[ext_resource type="PackedScene" uid="uid://cou0b0nt3upba" path="res://scenes/dialogue/interaction_trigger_area.tscn" id="2_3kahv"]
+
+[node name="DialogueTrigger" type="Node2D"]
+script = ExtResource("1_sx1oe")
+automatedTrigger = true
+oneTime = true
+
+[node name="InteractionTriggerArea" parent="." instance=ExtResource("2_3kahv")]

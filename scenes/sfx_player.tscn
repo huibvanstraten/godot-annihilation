@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://psodbit8gnir"]
-
-[ext_resource type="Script" path="res://scripts/managers/sfx_manager.gd" id="1_uvrml"]
-
-[node name="SFX Player" type="Node2D"]
-script = ExtResource("1_uvrml")

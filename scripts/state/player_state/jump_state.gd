@@ -7,20 +7,23 @@ extends State
 
 @onready var wallDetector: RayCast2D = $"../../FlipMarker/WallDetector"
 
-const NODE_NAME_AUDIO_JUMP: String = "AudioJump"
-
-var m_NodeAudioJump = null
+var sfxPath: String = "res://assets/audio/sfx/player/jump.wav"
 
 func initialize():
 	super()
-	m_NodeAudioJump = null # add later
 	
 func enter():
 	super()
-	#m_NodeAudioJump.Play()
+	SfxManager.play(sfxPath)
+	
 	if jumpComponent.wallJump == true:
 		canMove = false
-	jumpComponent.jump()
+	
+	var previousState = get_previous_state_type(characterBody)
+	if previousState == "jump_shoot":
+		pass
+	else:
+		jumpComponent.jump()
 
 func exit():
 	super()
@@ -35,8 +38,8 @@ func stateMainProcess(_delta: float) -> PlayerStateMachine.StateType:
 
 func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 	var wall_cling: float = Input.is_action_pressed("wall cling")
-	var playerShoot: bool = Input.is_action_just_pressed("shoot")
-	var jump: bool = Input.is_action_just_pressed("jump")
+	var shoot: bool = Input.is_action_just_pressed("shoot")
+	var jump: bool = Input.is_action_pressed("jump")
 	
 	jumpComponent.stop_jump(false)
 
@@ -48,12 +51,15 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		healthDepleted = false
 		return PlayerStateMachine.StateType.Die
 	
-	elif playerShoot:
+	elif shoot:
 		return PlayerStateMachine.StateType.JumpShoot 
 		
 	elif characterBody.is_on_ceiling():
 		jumpComponent.stop_jump(true)
 		return PlayerStateMachine.StateType.Fall
+		
+	elif ledgeComponent.canClimbLedge() and jump:
+		return PlayerStateMachine.StateType.Ledge
 	
 	elif characterBody.velocity.y >= 0:
 		if characterBody.is_on_floor():
