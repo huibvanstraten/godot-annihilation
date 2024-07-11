@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwlxmki4oym54"]
+[gd_scene load_steps=20 format=3 uid="uid://bwlxmki4oym54"]
 
 [ext_resource type="Script" path="res://scripts/level/levels/test_level.gd" id="1_wfxty"]
 [ext_resource type="PackedScene" uid="uid://btb4ysf6gjm7" path="res://scenes/levels/attributes/tile_map.tscn" id="3_8k5jh"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://4kwqay4240lt" path="res://scenes/levels/attributes/obstacles/saw.tscn" id="7_eac7d"]
 [ext_resource type="PackedScene" uid="uid://bfnqmywhscq27" path="res://scenes/levels/ui_layer.tscn" id="8_vwy11"]
 [ext_resource type="PackedScene" uid="uid://71jivt1m263y" path="res://scenes/dialogue/dialogue_trigger.tscn" id="11_5unwi"]
+[ext_resource type="Script" path="res://scripts/ui/ui_layer.gd" id="11_ygvlp"]
 [ext_resource type="Resource" uid="uid://rgv2705k7b4l" path="res://conversations/player/wtf.tres" id="12_d65w3"]
+[ext_resource type="PackedScene" uid="uid://ta4ht2w6b42r" path="res://scenes/item.tscn" id="12_ol2v1"]
 [ext_resource type="PackedScene" uid="uid://6fqwjnig2lsp" path="res://scenes/npc.tscn" id="12_xfy7d"]
 
 [sub_resource type="Curve2D" id="Curve2D_0504p"]
@@ -253,6 +255,8 @@ position = Vector2(-328, 77)
 rotation = -1.58309
 
 [node name="UILayer" parent="." instance=ExtResource("8_vwy11")]
+process_mode = 3
+script = ExtResource("11_ygvlp")
 
 [node name="Npc" parent="." instance=ExtResource("12_xfy7d")]
 position = Vector2(-119, 509)
@@ -260,3 +264,6 @@ position = Vector2(-119, 509)
 [node name="DialogueTrigger" parent="." instance=ExtResource("11_5unwi")]
 position = Vector2(187, 512)
 dialogue = ExtResource("12_d65w3")
+
+[node name="Item" parent="." instance=ExtResource("12_ol2v1")]
+position = Vector2(515, 702)
