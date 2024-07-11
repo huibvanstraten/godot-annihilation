@@ -9,8 +9,12 @@ var levelData: LevelData
 
 func _ready():
 	levelData = LevelManager.get_level_data_by_id(levelId)
+	
 	EventManager.connect("player_died", _on_player_died)
+	EventManager.connect("game_paused", _on_game_paused)
+	
 	PlayerManager.spawn_player(startPosition.global_position, pixelformat)
+	
 	MusicManager._get_all_songs()
 
 func _process(_delta):
@@ -25,3 +29,6 @@ func start_level():
 
 func _on_player_died():
 	PlayerManager.spawn_player(startPosition.global_position, pixelformat)
+
+func _on_game_paused(isPaused: bool):
+	get_tree().paused = isPaused

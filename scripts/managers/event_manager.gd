@@ -3,6 +3,7 @@ extends Node
 signal level(levelId: int)
 
 signal freeze_player(freeze: bool)
+signal game_paused(isPaused: bool)
 signal player_died
 signal health_depleted(entity: CharacterBody2D)
 signal entity_hit(entity: CharacterBody2D)

@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://s0r7x1utwj2w"]
+
+[ext_resource type="Script" path="res://scripts/inventory_gui.gd" id="1_fnain"]
+[ext_resource type="Texture2D" uid="uid://bgdssso7aiewq" path="res://icon.svg" id="1_jq3wy"]
+[ext_resource type="PackedScene" uid="uid://cp05ndhixbsbm" path="res://scenes/menus/slot.tscn" id="3_hrygw"]
+
+[node name="InventoryGui" type="Control"]
+custom_minimum_size = Vector2(63, 41)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -20.0
+offset_right = 32.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fnain")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 41.0
+texture = ExtResource("1_jq3wy")
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -18.5
+offset_right = 28.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_hrygw")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Slot3")
+focus_next = NodePath("../Slot3")
+focus_mode = 2
+
+[node name="Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_hrygw")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot")
+focus_neighbor_right = NodePath("../Slot4")
+focus_next = NodePath("../Slot4")
+focus_previous = NodePath("../Slot")
+focus_mode = 2
+
+[node name="Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_hrygw")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot3")
+focus_neighbor_right = NodePath("../Slot5")
+focus_next = NodePath("../Slot5")
+focus_previous = NodePath("../Slot3")
+focus_mode = 2
+
+[node name="Slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_hrygw")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot4")
+focus_neighbor_right = NodePath("../Slot6")
+focus_next = NodePath("../Slot6")
+focus_previous = NodePath("../Slot4")
+focus_mode = 2
+
+[node name="Slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_hrygw")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot5")
+focus_neighbor_right = NodePath("../Slot2")
+focus_next = NodePath("../Slot2")
+focus_previous = NodePath("../Slot5")
+focus_mode = 2
+
+[node name="Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_hrygw")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot6")
+focus_neighbor_right = NodePath("../Slot")
+focus_previous = NodePath("../Slot6")
+focus_mode = 2

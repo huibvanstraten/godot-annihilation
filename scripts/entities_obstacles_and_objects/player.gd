@@ -7,6 +7,8 @@ extends Entity
 @export var gunMarker: Marker2D = null
 @export var rayCast: RayCast2D = null
 
+@export var inventory: Inventory
+
 var justLeftLedge: bool = false
 
 var defaultRayCastPositionX: float
@@ -73,3 +75,6 @@ func on_load_game(saved_data:SavedData):
 
 func freeze(shouldFreeze: bool):
 	playerFreeze = shouldFreeze
+	
+func get_inventory() -> Inventory:
+	return inventory

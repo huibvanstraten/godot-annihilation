@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://b86haysw16j3h"]
+
+[ext_resource type="Resource" uid="uid://cuw2jyqh7lxe1" path="res://scripts/inventory/crow.tres" id="1_mfgmc"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="1_xucfq"]
+
+[resource]
+script = ExtResource("1_xucfq")
+inventoryName = "Sidekicks"
+items = Array[Resource("res://scripts/inventory/inventory_item.gd")]([ExtResource("1_mfgmc"), ExtResource("1_mfgmc"), ExtResource("1_mfgmc"), ExtResource("1_mfgmc"), ExtResource("1_mfgmc"), null])
