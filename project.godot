@@ -145,6 +145,7 @@ pause={
 2d_physics/layer_6="world_object"
 2d_physics/layer_7="npc"
 2d_physics/layer_8="item"
+2d_physics/layer_9="buddy"
 
 [physics]
 

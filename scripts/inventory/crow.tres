@@ -7,3 +7,5 @@
 script = ExtResource("1_w27jp")
 name = "Crow"
 texture = ExtResource("2_n01sn")
+path = "res://scenes/entities/buddy.tscn"
+active = false

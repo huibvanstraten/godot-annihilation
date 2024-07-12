@@ -10,3 +10,4 @@ signal entity_hit(entity: CharacterBody2D)
 signal play_next_song(songName: String)
 signal remove_attack_body
 signal interact(canInteract: bool)
+signal activate_item(item: InventoryItem)

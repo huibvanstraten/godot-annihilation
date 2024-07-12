@@ -483,66 +483,64 @@ flipComponent = NodePath("Components/Flip")
 position = Vector2(8, -21.375)
 shape = SubResource("RectangleShape2D_150cu")
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("2_swugj")
-character = NodePath("..")
-initialState = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("4_0fl3w")
+stateName = "idle"
+animationName = "idle"
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
-stateName = "idle"
-animationName = "idle"
 
 [node name="Timer" type="Timer" parent="StateMachine/StateIdle"]
 wait_time = 2.0
 
 [node name="StateDie" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("2_cxk5o")
-attackComponent = NodePath("../../Components/Attack")
-characterBody = NodePath("../..")
-nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
-nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
-collisionshape = NodePath("../../Body")
 stateName = "die"
 animationName = "die"
 canMove = false
-
-[node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
-script = ExtResource("5_4nqe5")
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
+
+[node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+script = ExtResource("5_4nqe5")
 stateName = "walk"
 animationName = "walk"
+attackComponent = NodePath("../../Components/Attack")
+characterBody = NodePath("../..")
+nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
+nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
+collisionshape = NodePath("../../Body")
 
 [node name="Timer" type="Timer" parent="StateMachine/StateWalk"]
 wait_time = 3.0
 
 [node name="StateHit" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("6_mf0yb")
+stateName = "hit"
+animationName = "hit"
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
-stateName = "hit"
-animationName = "hit"
 
 [node name="StateAttack" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("7_kilnd")
+stateName = "attack"
+animationName = "attack"
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
-stateName = "attack"
-animationName = "attack"
 
 [node name="Components" type="Node2D" parent="."]
 

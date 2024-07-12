@@ -12,12 +12,15 @@ extends Node
 @export var animationName: String
 @export var sfxName: String
 
+# TODO: move this (jump
 @export var canMove: bool = true
 
 var entityHit: bool = false
 var healthDepleted: bool = false
+# TODO: move this (jump
 var playerInRange: bool = false
 
+# TODO: move this (jump
 var jumpBufferTime: float = 8
 var jumpBufferCounter: float = 0
 var coyoteTime: float = 8
@@ -53,11 +56,9 @@ func get_previous_state_type(entity: CharacterBody2D) -> String:
 	var stateMachine = entity.find_child("StateMachine") as StateMachine
 	return stateMachine.previousState.stateName
 
+# TODO: move this (jump
 func jumpBuffer():
 	if Input.is_action_just_pressed("jump"):
 		jumpBufferCounter = jumpBufferTime
 	if jumpBufferCounter > 0:
 		jumpBufferCounter -= 1
-
-#func coyoteTime():
-	#if 

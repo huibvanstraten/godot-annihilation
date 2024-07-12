@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://tqtomsf6ut23"]
+[gd_scene load_steps=110 format=3 uid="uid://tqtomsf6ut23"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/player.gd" id="1_fvw4e"]
 [ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/inv.tres" id="2_tupp8"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" path="res://scripts/character_components/physics_component.gd" id="33_vgs0b"]
 [ext_resource type="Script" path="res://scripts/character_components/health_component.gd" id="34_x44i6"]
 [ext_resource type="Script" path="res://scripts/character_components/shoot_component.gd" id="35_ae7hf"]
+[ext_resource type="Script" path="res://scripts/character_components/buddy_component.gd" id="35_lrnfw"]
 [ext_resource type="Script" path="res://scripts/character_components/flip_component.gd" id="36_nenhc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8jsn"]
@@ -1386,6 +1387,9 @@ attackBodyShape = NodePath("AttackBodyShape")
 position = Vector2(17, 30)
 shape = SubResource("RectangleShape2D_d1lte")
 
+[node name="buddySpawnMarker" type="Marker2D" parent="FlipMarker"]
+position = Vector2(0, 7)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(20, -10)
 limit_bottom = 850
@@ -1599,6 +1603,10 @@ flipMarker = NodePath("../../FlipMarker")
 stateMachine = NodePath("../../StateMachine")
 animationComponent = NodePath("../../FlipMarker/AnimatedSprite2D")
 physicsComponent = NodePath("../Physics")
+
+[node name="Buddy" type="Node2D" parent="Components" node_paths=PackedStringArray("buddySpawnMarker")]
+script = ExtResource("35_lrnfw")
+buddySpawnMarker = NodePath("../../FlipMarker/buddySpawnMarker")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 29)

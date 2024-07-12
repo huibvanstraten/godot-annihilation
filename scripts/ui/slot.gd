@@ -1,19 +1,19 @@
 extends Panel
 
 @onready var backgroundSprite: Sprite2D = $background
-@onready var itemSprite: Sprite2D = $CenterContainer/Panel/item
+@onready var collectableSprite: Sprite2D = $CenterContainer/Panel/item
 
-func update(item: InventoryItem) -> int:
+func update(collectable: InventoryItem) -> int:
 	var count = 0
 	
-	if !item:
+	if !collectable:
 		backgroundSprite.frame = 0
-		itemSprite.visible = false
+		collectableSprite.visible = false
 	else:
 		count += 1
 		backgroundSprite.frame = 1
-		itemSprite.visible = true
-		itemSprite.texture = item.texture
+		collectableSprite.visible = true
+		collectableSprite.texture = collectable.texture
 	
 	return count
 
