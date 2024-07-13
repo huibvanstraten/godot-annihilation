@@ -2,10 +2,13 @@ class_name Player
 extends Entity
 
 @export var shootComponent: ShootComponent = null
+@onready var buddyComponent: BuddyComponent = $Components/Buddy
 @onready var jumpComponent: JumpComponent = $Components/Jump
 
 @export var gunMarker: Marker2D = null
 @export var rayCast: RayCast2D = null
+
+@export var inventory: Inventory
 
 var justLeftLedge: bool = false
 
@@ -15,6 +18,7 @@ var playerFreeze: bool = false
 
 func _ready():
 	EventManager.connect("freeze_player", freeze)
+	EventManager.connect("activate_collectable", _activate_collectable)
 
 func _physics_process(delta):
 	var inputAxis = Input.get_axis("move_left", "move_right")
@@ -73,3 +77,12 @@ func on_load_game(saved_data:SavedData):
 
 func freeze(shouldFreeze: bool):
 	playerFreeze = shouldFreeze
+	
+func get_inventory() -> Inventory:
+	return inventory
+	
+func _activate_collectable(collectable: CollectableResource):
+	if collectable.type == CollectableResource.CollectableType.Buddy:
+		buddyComponent.activate(collectable.path)
+	elif collectable.type == CollectableResource.CollectableType.Item:
+		print("using item!")

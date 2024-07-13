@@ -5,8 +5,8 @@ extends Node
 @export var wanderSpeed: float = 100.0
 
 @onready var groundContactChecker: RayCast2D = $"../../FlipMarker/GroundContactChecker"
-@onready var physicsComponent: PhysicsComponent = $"../Physics"
-@onready var flipComponent: FlipComponent = $"../Flip"
+@export var physicsComponent: PhysicsComponent = null
+@export var flipComponent: FlipComponent = null
 @export var characterBody: CharacterBody2D = null
 
 func wander(delta: float):
