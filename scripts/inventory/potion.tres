@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CollectableResource" load_steps=3 format=3 uid="uid://cti3riy5urdyg"]
+
+[ext_resource type="Script" path="res://scripts/inventory/collectable_resource.gd" id="1_m7y1k"]
+[ext_resource type="Texture2D" uid="uid://daxpk6yrbahab" path="res://assets/textures/objects/crow/items/potion.png" id="2_f1mbk"]
+
+[resource]
+script = ExtResource("1_m7y1k")
+name = "Potion"
+texture = ExtResource("2_f1mbk")
+path = "res://scenes/items/potion.tscn"
+active = false
+type = 0

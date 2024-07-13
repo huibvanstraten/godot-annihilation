@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://6fqwjnig2lsp"]
 
 [ext_resource type="Texture2D" uid="uid://b5yw8ep7uvg7i" path="res://assets/textures/objects/player/idle.png" id="1_0tvdf"]
-[ext_resource type="Script" path="res://scripts/npc.gd" id="1_di7ym"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/npc.gd" id="1_di7ym"]
 [ext_resource type="PackedScene" uid="uid://71jivt1m263y" path="res://scenes/dialogue/dialogue_trigger.tscn" id="2_aursf"]
 [ext_resource type="Resource" uid="uid://b8e27js58qgvx" path="res://conversations/player/who the hell are you.tres" id="3_ts1np"]
 
@@ -185,3 +185,5 @@ position = Vector2(46, -7)
 dialogue = ExtResource("3_ts1np")
 automatedTrigger = false
 oneTime = false
+
+[node name="Components" type="Node2D" parent="."]

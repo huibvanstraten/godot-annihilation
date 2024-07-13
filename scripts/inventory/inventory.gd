@@ -1,15 +1,15 @@
 class_name Inventory
 extends Resource
 
-signal inventory_updated
+signal inventory_updated(entity: Node2D)
 
 @export var inventoryName: String
-@export var items: Array[InventoryItem]
+@export var collectables: Array[CollectableResource]
 
-func insert(item: InventoryItem):
-	for i in range(items.size()):
-		if !items[i]:
-			items[i] = item
+func insert(collectable: CollectableResource):
+	for i in range(collectables.size()):
+		if !collectables[i]:
+			collectables[i] = collectable
 			break
 		
 	emit_signal("inventory_updated")

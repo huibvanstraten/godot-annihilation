@@ -1,0 +1,140 @@
+[gd_scene load_steps=15 format=3 uid="uid://cdhg6bl58vtoo"]
+
+[ext_resource type="Script" path="res://scripts/inventory/potion.gd" id="1_r4a8e"]
+[ext_resource type="Resource" uid="uid://cti3riy5urdyg" path="res://scripts/inventory/potion.tres" id="2_7xqyt"]
+[ext_resource type="Texture2D" uid="uid://bloyogtls4kgj" path="res://assets/textures/objects/crow/items/potion_brew.png" id="2_a4syy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kh8j3"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83y6s"]
+atlas = ExtResource("2_a4syy")
+region = Rect2(0, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hvqb"]
+atlas = ExtResource("2_a4syy")
+region = Rect2(19, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsukp"]
+atlas = ExtResource("2_a4syy")
+region = Rect2(38, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvk8r"]
+atlas = ExtResource("2_a4syy")
+region = Rect2(57, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0l78"]
+atlas = ExtResource("2_a4syy")
+region = Rect2(76, 0, 19, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htgl7"]
+atlas = ExtResource("2_a4syy")
+region = Rect2(95, 0, 19, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jevvy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83y6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hvqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsukp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvk8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0l78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htgl7")
+}],
+"loop": true,
+"name": &"brewing",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ynuoj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"brewing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wo4x3"]
+resource_name = "brewing"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"brewing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sk2gk"]
+_data = {
+"RESET": SubResource("Animation_ynuoj"),
+"brewing": SubResource("Animation_wo4x3")
+}
+
+[node name="Potion" type="Area2D"]
+collision_layer = 128
+collision_mask = 258
+script = ExtResource("1_r4a8e")
+animationName = "brewing"
+collectable = ExtResource("2_7xqyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_kh8j3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jevvy")
+animation = &"brewing"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_sk2gk")
+}

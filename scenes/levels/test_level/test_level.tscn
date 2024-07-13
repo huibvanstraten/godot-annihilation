@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwlxmki4oym54"]
+[gd_scene load_steps=21 format=3 uid="uid://bwlxmki4oym54"]
 
 [ext_resource type="Script" path="res://scripts/level/levels/test_level.gd" id="1_wfxty"]
 [ext_resource type="PackedScene" uid="uid://btb4ysf6gjm7" path="res://scenes/levels/attributes/tile_map.tscn" id="3_8k5jh"]
@@ -7,14 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://blgacv567qnwn" path="res://assets/textures/tilesets/Tile set.png" id="4_u1cvs"]
 [ext_resource type="PackedScene" uid="uid://do7lrq07orvtb" path="res://scenes/levels/attributes/platform.tscn" id="5_8att6"]
 [ext_resource type="PackedScene" uid="uid://b7p2ywbtekcub" path="res://scenes/levels/character_test_level/attributes/background_city.tscn" id="5_oap6s"]
-[ext_resource type="PackedScene" uid="uid://covtgmcgbqaue" path="res://scenes/entities/slime.tscn" id="6_5wnrf"]
 [ext_resource type="PackedScene" uid="uid://4kwqay4240lt" path="res://scenes/levels/attributes/obstacles/saw.tscn" id="7_eac7d"]
 [ext_resource type="PackedScene" uid="uid://bfnqmywhscq27" path="res://scenes/levels/ui_layer.tscn" id="8_vwy11"]
 [ext_resource type="PackedScene" uid="uid://71jivt1m263y" path="res://scenes/dialogue/dialogue_trigger.tscn" id="11_5unwi"]
 [ext_resource type="Script" path="res://scripts/ui/ui_layer.gd" id="11_ygvlp"]
 [ext_resource type="Resource" uid="uid://rgv2705k7b4l" path="res://conversations/player/wtf.tres" id="12_d65w3"]
-[ext_resource type="PackedScene" uid="uid://ta4ht2w6b42r" path="res://scenes/item.tscn" id="12_ol2v1"]
+[ext_resource type="PackedScene" uid="uid://ta4ht2w6b42r" path="res://scenes/items/crow.tscn" id="12_ol2v1"]
 [ext_resource type="PackedScene" uid="uid://6fqwjnig2lsp" path="res://scenes/npc.tscn" id="12_xfy7d"]
+[ext_resource type="PackedScene" uid="uid://cdhg6bl58vtoo" path="res://scenes/items/potion.tscn" id="15_dc58p"]
+[ext_resource type="PackedScene" uid="uid://covtgmcgbqaue" path="res://scenes/entities/slime.tscn" id="17_r48vi"]
 
 [sub_resource type="Curve2D" id="Curve2D_0504p"]
 _data = {
@@ -235,9 +236,6 @@ position = Vector2(386, 555)
 [node name="Deathzone" parent="." instance=ExtResource("4_7tly0")]
 position = Vector2(1664, 992)
 
-[node name="Slime" parent="." instance=ExtResource("6_5wnrf")]
-position = Vector2(2595, 717)
-
 [node name="Toxic2" parent="." instance=ExtResource("4_21n7d")]
 position = Vector2(582, 566)
 
@@ -265,5 +263,12 @@ position = Vector2(-119, 509)
 position = Vector2(187, 512)
 dialogue = ExtResource("12_d65w3")
 
-[node name="Item" parent="." instance=ExtResource("12_ol2v1")]
-position = Vector2(515, 702)
+[node name="Potion" parent="." instance=ExtResource("15_dc58p")]
+position = Vector2(82, 355)
+
+[node name="Crow" parent="." instance=ExtResource("12_ol2v1")]
+position = Vector2(268, 188)
+collision_mask = 258
+
+[node name="Slime" parent="." instance=ExtResource("17_r48vi")]
+position = Vector2(2338, 713)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=109 format=3 uid="uid://tqtomsf6ut23"]
+[gd_scene load_steps=110 format=3 uid="uid://tqtomsf6ut23"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/player.gd" id="1_fvw4e"]
-[ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/inv.tres" id="2_tupp8"]
+[ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/player_inventory.tres" id="2_i2jll"]
 [ext_resource type="Texture2D" uid="uid://datippubvs0qt" path="res://assets/textures/objects/player/crouch 64.png" id="2_x0tw5"]
 [ext_resource type="Texture2D" uid="uid://dy1fvk8yqhwha" path="res://assets/textures/objects/Save chest.png" id="3_wh5t3"]
 [ext_resource type="Texture2D" uid="uid://b56okiniidxwp" path="res://assets/textures/objects/player/fall 64.png" id="4_kwtta"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" path="res://scripts/character_components/physics_component.gd" id="33_vgs0b"]
 [ext_resource type="Script" path="res://scripts/character_components/health_component.gd" id="34_x44i6"]
 [ext_resource type="Script" path="res://scripts/character_components/shoot_component.gd" id="35_ae7hf"]
+[ext_resource type="Script" path="res://scripts/character_components/buddy_component.gd" id="35_lrnfw"]
 [ext_resource type="Script" path="res://scripts/character_components/flip_component.gd" id="36_nenhc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8jsn"]
@@ -1337,7 +1338,7 @@ script = ExtResource("1_fvw4e")
 shootComponent = NodePath("Components/Shoot")
 gunMarker = NodePath("FlipMarker/GunMarker")
 rayCast = NodePath("FlipMarker/LedgeDetector")
-inventory = ExtResource("2_tupp8")
+inventory = ExtResource("2_i2jll")
 bodyCollisionShape = NodePath("CollisionShape2D")
 stateMachine = NodePath("StateMachine")
 physicsComponent = NodePath("Components/Physics")
@@ -1600,9 +1601,16 @@ stateMachine = NodePath("../../StateMachine")
 animationComponent = NodePath("../../FlipMarker/AnimatedSprite2D")
 physicsComponent = NodePath("../Physics")
 
+[node name="Buddy" type="Node2D" parent="Components" node_paths=PackedStringArray("buddySpawnMarker")]
+script = ExtResource("35_lrnfw")
+buddySpawnMarker = NodePath("../../CollisionShape2D/buddySpawnMarker")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 29)
 shape = SubResource("CapsuleShape2D_aofcr")
+
+[node name="buddySpawnMarker" type="Marker2D" parent="CollisionShape2D"]
+position = Vector2(0, -22)
 
 [connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateAttack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="FlipMarker/AnimatedSprite2D/AnimationPlayer" to="StateMachine/StateHit" method="_on_animation_player_animation_finished"]
