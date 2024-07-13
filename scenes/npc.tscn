@@ -185,3 +185,5 @@ position = Vector2(46, -7)
 dialogue = ExtResource("3_ts1np")
 automatedTrigger = false
 oneTime = false
+
+[node name="Components" type="Node2D" parent="."]

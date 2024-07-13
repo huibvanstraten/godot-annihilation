@@ -6,11 +6,10 @@ extends State
 
 func enter():
 	super()
-	collisionShape.shape.height = 76.75
 
 func exit():
 	super()
-	collisionShape.shape.height = 110.0
+	collisionShape.shape.height = 62.0
 
 func stateInput(_event: InputEvent) -> PlayerStateMachine.StateType:
 	return PlayerStateMachine.StateType.Invalid

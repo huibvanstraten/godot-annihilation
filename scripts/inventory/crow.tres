@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cuw2jyqh7lxe1"]
+[gd_resource type="Resource" script_class="Collectable" load_steps=3 format=3 uid="uid://cuw2jyqh7lxe1"]
 
-[ext_resource type="Script" path="res://scripts/inventory/inventory_item.gd" id="1_w27jp"]
+[ext_resource type="Script" path="res://scripts/inventory/collectable_resource.gd" id="1_w27jp"]
 [ext_resource type="Texture2D" uid="uid://cn7d65vieig2w" path="res://assets/textures/ui/crow_item.png" id="2_n01sn"]
 
 [resource]
@@ -9,3 +9,4 @@ name = "Crow"
 texture = ExtResource("2_n01sn")
 path = "res://scenes/entities/buddy.tscn"
 active = false
+type = 1

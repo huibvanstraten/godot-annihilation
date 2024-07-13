@@ -13,12 +13,10 @@ var isFlying: bool = false:
 	set(value):
 		buddy.isFlying = value
 
+var isReturning: bool = false
+
 var timePassed: float
-
 var speed: float = 0
-
-func _ready(): 
-	buddy.startPosition = buddy.position
 
 func fly(delta):
 	timePassed += delta
@@ -28,7 +26,7 @@ func fly(delta):
 	#buddy.position.y += amplitude * sin(frequency * timePassed)
 	
 	if buddy.position.distance_to(buddy.targetPosition) < 10:
-		if buddy.targetPosition == buddy.startPosition:
+		if isReturning:
 			emit_signal("reached_destination", true)
 		else:
 			emit_signal("reached_destination", false)
@@ -40,7 +38,10 @@ func set_random_target_position():
 	buddy.targetPosition = buddy.position + Vector2(targetPositionX, targetPositionY )
 
 func returnToPlayer():
-	buddy.targetPosition = buddy.startPosition
+	buddy.targetPosition = buddy.spawnMarker.global_position
+
+func land():
+	buddy.position = buddy.spawnMarker.global_position
 	
 func set_target_position(target: Vector2):
 	buddy.targetPosition = target

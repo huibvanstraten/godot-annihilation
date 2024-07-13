@@ -15,7 +15,9 @@ func initialize():
 
 func enter():
 	super()
+	flyComponent.land()
 	flyComponent.isFlying = false 
+	flyComponent.isReturning = false
 	flyTimer.connect("timeout", _on_timer_timeout)
 	flyTimer.wait_time = choose([3.0, 5.0, 6.5])
 	flyTimer.start()

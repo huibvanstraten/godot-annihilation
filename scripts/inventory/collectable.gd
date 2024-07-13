@@ -1,7 +1,7 @@
 class_name Collectable
 extends Area2D
 
-@export var collectable: InventoryItem
+@export var collectable: CollectableResource
 
 func _ready():
 	self.connect("body_entered", _on_body_entered)
@@ -18,5 +18,7 @@ func _on_body_entered(body):
 		collect(inventory)
 
 func _on_area_entered(area):
-	var inventory = (area as Buddy).get_inventory()
-	collect(inventory)
+	if area is Buddy:
+		print("inventory!")
+		var inventory = (area as Buddy).get_inventory()
+		collect(inventory)

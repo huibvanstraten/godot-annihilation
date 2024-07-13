@@ -34,5 +34,4 @@ func StatePhysicsProcess(_delta : float) -> BuddyStateMachine.StateType:
 
 func _on_reached_destination(hasReturned: bool):
 	if hasReturned:
-		print("checkReturn")
 		changeToIdleState = true

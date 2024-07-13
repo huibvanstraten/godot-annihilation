@@ -1,7 +1,8 @@
+class_name InventoryGui
 extends Control
 
 @onready var gridContainer: GridContainer = $NinePatchRect/GridContainer
-@onready var inventory: Inventory = preload("res://scripts/inventory/inv.tres")
+@onready var inventory: Inventory = preload("res://scripts/inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 
@@ -21,7 +22,7 @@ func _input(event):
 	elif event.is_action_pressed("move_right"):
 		_move_focus(Vector2(1, 0))
 	elif event.is_action_pressed("interact"):
-		activate_item()
+		activate_collectable()
 
 func _move_focus(direction: Vector2):
 	var newIndex = currentIndex
@@ -40,18 +41,19 @@ func set_focus(currentSlot: Panel):
 	currentSlot.set_sprite_frame(true)
 	currentSlot.grab_focus()
 
-func activate_item():
-	var item: InventoryItem = inventory.items[currentIndex]
-	if not item.active:
-		item.active = true
-		EventManager.emit_signal("activate_item", item)
+func activate_collectable():
+	var collectable: CollectableResource = inventory.collectables[currentIndex]
+	if not collectable.active:
+		collectable.active = true
+		EventManager.emit_signal("activate_collectable", collectable)
+	inventory.collectables.remove_at(currentIndex)
 
 func update_inventory(entity: Node2D = null):
 	if not entity is Buddy:
-		slotAmount = min(inventory.items.size(), slots.size())
+		slotAmount = min(inventory.collectables.size(), slots.size())
 		var count = 0
 		for i in range(slotAmount):
-			count += slots[i].update(inventory.items[i])
+			count += slots[i].update(inventory.collectables[i])
 		filledSlots = count
 		
 		set_focus(gridContainer.get_child(0))

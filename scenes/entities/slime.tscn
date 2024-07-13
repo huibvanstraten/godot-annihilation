@@ -483,8 +483,10 @@ flipComponent = NodePath("Components/Flip")
 position = Vector2(8, -21.375)
 shape = SubResource("RectangleShape2D_150cu")
 
-[node name="StateMachine" type="Node2D" parent="."]
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
 script = ExtResource("2_swugj")
+character = NodePath("..")
+initialState = NodePath("StateWalk")
 
 [node name="StateIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("4_0fl3w")
@@ -512,13 +514,13 @@ collisionshape = NodePath("../../Body")
 
 [node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("5_4nqe5")
-stateName = "walk"
-animationName = "walk"
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
+stateName = "walk"
+animationName = "walk"
 
 [node name="Timer" type="Timer" parent="StateMachine/StateWalk"]
 wait_time = 3.0
@@ -551,8 +553,10 @@ defaultHealth = 200.0
 [node name="Physics" type="Node2D" parent="Components"]
 script = ExtResource("9_it2n0")
 
-[node name="Wander" type="Node2D" parent="Components" node_paths=PackedStringArray("characterBody")]
+[node name="Wander" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "flipComponent", "characterBody")]
 script = ExtResource("10_7x5c5")
+physicsComponent = NodePath("../Physics")
+flipComponent = NodePath("../Flip")
 characterBody = NodePath("../..")
 
 [node name="Attack" type="Node2D" parent="Components" node_paths=PackedStringArray("detectionArea", "physicsComponent")]

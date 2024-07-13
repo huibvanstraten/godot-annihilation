@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/player.gd" id="1_u1gql"]
 [ext_resource type="Texture2D" uid="uid://d3qf53g11l147" path="res://assets/textures/objects/player/crouch.png" id="2_dmemt"]
-[ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/inv.tres" id="2_xdwq1"]
+[ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/player_inventory.tres" id="2_xdwq1"]
 [ext_resource type="Texture2D" uid="uid://dy1fvk8yqhwha" path="res://assets/textures/objects/Save chest.png" id="3_8lp6r"]
 [ext_resource type="Texture2D" uid="uid://e3j36qwc8pcc" path="res://assets/textures/objects/player/fall.png" id="4_gswxh"]
 [ext_resource type="Texture2D" uid="uid://ckfi5tmslwlah" path="res://assets/textures/objects/player/Fall shoot.png" id="5_jijgh"]

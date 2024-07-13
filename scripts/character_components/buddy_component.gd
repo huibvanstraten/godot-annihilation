@@ -20,6 +20,7 @@ func activate(path: String):
 	buddy = load(path).instantiate()
 	buddy.global_position = buddySpawnMarker.global_position
 	buddy.scale.x = 1
+	buddy.spawnMarker = buddySpawnMarker
 	get_tree().root.add_child(buddy)
 	
 	set_physics_process(true)

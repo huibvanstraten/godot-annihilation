@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ta4ht2w6b42r" path="res://scenes/items/crow.tscn" id="12_ol2v1"]
 [ext_resource type="PackedScene" uid="uid://6fqwjnig2lsp" path="res://scenes/npc.tscn" id="12_xfy7d"]
 [ext_resource type="PackedScene" uid="uid://cdhg6bl58vtoo" path="res://scenes/items/potion.tscn" id="15_dc58p"]
-[ext_resource type="Resource" uid="uid://cuw2jyqh7lxe1" path="res://scripts/inventory/crow.tres" id="17_4v2vw"]
+[ext_resource type="PackedScene" uid="uid://covtgmcgbqaue" path="res://scenes/entities/slime.tscn" id="17_r48vi"]
 
 [sub_resource type="Curve2D" id="Curve2D_0504p"]
 _data = {
@@ -268,4 +268,7 @@ position = Vector2(82, 355)
 
 [node name="Crow" parent="." instance=ExtResource("12_ol2v1")]
 position = Vector2(268, 188)
-collectable = ExtResource("17_4v2vw")
+collision_mask = 258
+
+[node name="Slime" parent="." instance=ExtResource("17_r48vi")]
+position = Vector2(2338, 713)

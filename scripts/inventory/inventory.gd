@@ -4,12 +4,12 @@ extends Resource
 signal inventory_updated(entity: Node2D)
 
 @export var inventoryName: String
-@export var items: Array[InventoryItem]
+@export var collectables: Array[CollectableResource]
 
-func insert(collectable: InventoryItem):
-	for i in range(items.size()):
-		if !items[i]:
-			items[i] = collectable
+func insert(collectable: CollectableResource):
+	for i in range(collectables.size()):
+		if !collectables[i]:
+			collectables[i] = collectable
 			break
 		
 	emit_signal("inventory_updated")

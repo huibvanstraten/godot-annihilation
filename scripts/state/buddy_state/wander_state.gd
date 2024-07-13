@@ -27,6 +27,7 @@ func stateMainProcess(delta: float) -> BuddyStateMachine.StateType:
 	
 	if changeToReturnState:
 		changeToReturnState = false
+		flyComponent.isReturning = true
 		return BuddyStateMachine.StateType.Return
 	elif changeToFetchState:
 		changeToFetchState = false

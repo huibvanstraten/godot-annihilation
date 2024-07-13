@@ -3,7 +3,7 @@ extends Panel
 @onready var backgroundSprite: Sprite2D = $background
 @onready var collectableSprite: Sprite2D = $CenterContainer/Panel/item
 
-func update(collectable: InventoryItem) -> int:
+func update(collectable: CollectableResource) -> int:
 	var count = 0
 	
 	if !collectable:

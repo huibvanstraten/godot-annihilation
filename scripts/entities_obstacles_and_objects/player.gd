@@ -18,7 +18,7 @@ var playerFreeze: bool = false
 
 func _ready():
 	EventManager.connect("freeze_player", freeze)
-	EventManager.connect("activate_item", _activate_item)
+	EventManager.connect("activate_collectable", _activate_collectable)
 
 func _physics_process(delta):
 	var inputAxis = Input.get_axis("move_left", "move_right")
@@ -81,5 +81,8 @@ func freeze(shouldFreeze: bool):
 func get_inventory() -> Inventory:
 	return inventory
 	
-func _activate_item(item: InventoryItem):
-	buddyComponent.activate(item.path)
+func _activate_collectable(collectable: CollectableResource):
+	if collectable.type == CollectableResource.CollectableType.Buddy:
+		buddyComponent.activate(collectable.path)
+	elif collectable.type == CollectableResource.CollectableType.Item:
+		print("using item!")
