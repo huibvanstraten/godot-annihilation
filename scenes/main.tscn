@@ -1,8 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ajteckncvy7"]
+[gd_scene load_steps=11 format=3 uid="uid://b0ajteckncvy7"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_h73sd"]
 [ext_resource type="Script" path="res://scripts/level/level_data.gd" id="2_hgjbi"]
+[ext_resource type="Script" path="res://scripts/level/levels/area_data.gd" id="3_fibcd"]
 [ext_resource type="PackedScene" uid="uid://vtjrrl027420" path="res://scenes/menus/main_menu.tscn" id="3_icji6"]
+
+[sub_resource type="Resource" id="Resource_7xq3q"]
+script = ExtResource("3_fibcd")
+areaId = 1
+areaPath = "res://scenes/levels/test_level/test_level_area_1.tscn"
 
 [sub_resource type="Resource" id="Resource_v0rdf"]
 script = ExtResource("2_hgjbi")
@@ -11,6 +17,17 @@ levelName = "character test"
 levelCompleted = false
 levelUnlocked = true
 levelPath = "levels/character_test_level/character_test_level"
+areas = Array[ExtResource("3_fibcd")]([SubResource("Resource_7xq3q")])
+
+[sub_resource type="Resource" id="Resource_ti8ia"]
+script = ExtResource("3_fibcd")
+areaId = 1
+areaPath = "res://scenes/levels/test_level/test_level_area_1.tscn"
+
+[sub_resource type="Resource" id="Resource_8msbx"]
+script = ExtResource("3_fibcd")
+areaId = 2
+areaPath = "res://scenes/levels/test_level/test_level_area_2.tscn"
 
 [sub_resource type="Resource" id="Resource_a41xn"]
 script = ExtResource("2_hgjbi")
@@ -19,6 +36,7 @@ levelName = "test level"
 levelCompleted = false
 levelUnlocked = true
 levelPath = "levels/test_level/test_level"
+areas = Array[ExtResource("3_fibcd")]([SubResource("Resource_ti8ia"), SubResource("Resource_8msbx")])
 
 [sub_resource type="Resource" id="Resource_yaavu"]
 script = ExtResource("2_hgjbi")
@@ -27,6 +45,7 @@ levelName = "MovingLevel"
 levelCompleted = false
 levelUnlocked = true
 levelPath = "levels/moving_level/moving_level"
+areas = Array[ExtResource("3_fibcd")]([])
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h73sd")

@@ -2,20 +2,30 @@ class_name Level
 extends Node
 
 @export var levelId: int
-@export var startPosition: Marker2D = null
 @export var pixelformat: bool
 
 var levelData: LevelData
 
+var currentArea: Node2D = null
+
 func _ready():
 	levelData = LevelManager.get_level_data_by_id(levelId)
+	loadArea(levelData.areas[0].areaPath)
 	
 	EventManager.connect("player_died", _on_player_died)
 	EventManager.connect("game_paused", _on_game_paused)
-	
-	PlayerManager.spawn_player(startPosition.global_position, pixelformat)
-	
+	EventManager.transition_to_area.connect(loadArea)
+		
 	MusicManager._get_all_songs()
+
+func loadArea(areaPath: String):
+	if currentArea:
+		currentArea.call_deferred("queue_free")
+
+	var areaNode = load(areaPath)
+	var areaInstance = areaNode.instantiate()
+	currentArea = areaInstance
+	call_deferred("add_child", areaInstance)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("play_song"):
@@ -24,11 +34,8 @@ func _process(_delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-func start_level():
-	get_tree().reload_current_scene()
-
 func _on_player_died():
-	PlayerManager.spawn_player(startPosition.global_position, pixelformat)
+	call_deferred("loadArea", levelData.areas[0].areaPath)
 
 func _on_game_paused(isPaused: bool):
 	get_tree().paused = isPaused

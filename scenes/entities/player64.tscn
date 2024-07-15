@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://tqtomsf6ut23"]
+[gd_scene load_steps=111 format=3 uid="uid://tqtomsf6ut23"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/player.gd" id="1_fvw4e"]
 [ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/player_inventory.tres" id="2_i2jll"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d0li0rdknpguv" path="res://assets/textures/objects/player/Run 64.png" id="9_5bign"]
 [ext_resource type="Texture2D" uid="uid://cif2366dxhrqy" path="res://assets/textures/objects/player/slash 64.png" id="10_dm776"]
 [ext_resource type="Texture2D" uid="uid://xn8d6504u1g2" path="res://assets/textures/objects/player/climb 64.png" id="11_27bbt"]
+[ext_resource type="Script" path="res://scripts/player_camera.gd" id="14_ua2f3"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="15_54k7k"]
 [ext_resource type="Script" path="res://scripts/state/player_state/player_state_machine.gd" id="16_mxkqy"]
 [ext_resource type="Script" path="res://scripts/state/player_state/idle_state.gd" id="17_yg7cb"]
@@ -1389,7 +1390,11 @@ shape = SubResource("RectangleShape2D_d1lte")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(20, -10)
+limit_left = 0
+limit_top = 0
 limit_bottom = 1660
+editor_draw_limits = true
+script = ExtResource("14_ua2f3")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
 position = Vector2(-13, -13)

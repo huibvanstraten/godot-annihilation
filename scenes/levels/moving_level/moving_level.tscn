@@ -7,10 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://clihxgfs2vmh6" path="res://scenes/levels/attributes/obstacles/plant.tscn" id="5_wgmpe"]
 [ext_resource type="PackedScene" uid="uid://cp8sfgrl32him" path="res://scenes/levels/attributes/deathzone.tscn" id="6_ojtcv"]
 
-[node name="MovingLevel" type="Node2D" node_paths=PackedStringArray("startPosition")]
+[node name="MovingLevel" type="Node2D"]
 script = ExtResource("1_lprni")
 levelId = 2
-startPosition = NodePath("StartPosition")
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(336, 656)

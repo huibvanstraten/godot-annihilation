@@ -20,8 +20,11 @@ func spawn_player(spawn_position, pixelformat):
 		health.reset_health()
 		var physics = player.find_child("Physics") as PhysicsComponent
 		physics.reset_velocity()
+		var camera = player.find_child("Camera2D") as Camera2D
+		camera.set_camera_boundaries()
 	
 	if last_spawn_point == null:
 		player.position = spawn_position
 	else:
 		player.position = last_spawn_point
+

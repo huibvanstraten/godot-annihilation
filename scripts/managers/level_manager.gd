@@ -38,4 +38,15 @@ func get_level_data_by_id(levelId: int) -> LevelData:
 	return levelToReturn
 		
 func get_current_level():
-	return get_tree().current_scene
+	return loadedLevel
+
+func get_level_boundaries() -> Array[StaticBody2D]:
+	var level = get_current_level()
+	print("checcccck")
+	print(level)
+	print(level.currentArea)
+	var area = level.currentArea as Area
+	var boundaries: Array[StaticBody2D] 
+	for i in area.areaBoundaries.get_children():
+		boundaries.append(i as StaticBody2D)
+	return boundaries

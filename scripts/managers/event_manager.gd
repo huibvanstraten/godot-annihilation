@@ -11,3 +11,4 @@ signal play_next_song(songName: String)
 signal remove_attack_body
 signal interact(canInteract: bool)
 signal activate_collectable(collectable: CollectableResource)
+signal transition_to_area(body: Node2D)

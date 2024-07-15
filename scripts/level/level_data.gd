@@ -6,3 +6,4 @@ extends Resource
 @export var levelCompleted: bool
 @export var levelUnlocked: bool
 @export var levelPath: String
+@export var areas: Array[AreaData]
