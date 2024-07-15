@@ -46,10 +46,12 @@ func activate_collectable():
 	if not collectable.active:
 		collectable.active = true
 		EventManager.emit_signal("activate_collectable", collectable)
-	inventory.collectables.remove_at(currentIndex)
+	inventory.remove(currentIndex)
+
 
 func update_inventory(entity: Node2D = null):
 	if not entity is Buddy:
+		print("updating")
 		slotAmount = min(inventory.collectables.size(), slots.size())
 		var count = 0
 		for i in range(slotAmount):

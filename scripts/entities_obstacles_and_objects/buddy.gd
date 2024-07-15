@@ -10,7 +10,6 @@ var spawnMarker: Marker2D = null
 
 var isFlying: bool = false
 
-#var startPosition: Vector2
 var targetPosition: Vector2
 
 func get_inventory() -> Inventory:
@@ -20,6 +19,6 @@ func _on_body_entered(body):
 	if body is Player and not inventory.collectables.is_empty():
 		var playerInventory = (body as Player).get_inventory()
 		for i in inventory.collectables:
+			print("inventorty" + str(i))
 			playerInventory.insert(i)
-		
-		inventory.collectables.clear()
+		inventory.remove(0)

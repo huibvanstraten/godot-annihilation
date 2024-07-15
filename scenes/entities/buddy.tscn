@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://s5xgslbrlrqe"]
+[gd_scene load_steps=23 format=3 uid="uid://bqrx1crqntpe0"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/buddy.gd" id="1_xbak1"]
 [ext_resource type="Texture2D" uid="uid://b1xnj38wsj310" path="res://assets/textures/objects/crow/crow.png" id="2_1vorx"]
@@ -202,8 +202,6 @@ nodeAnimation = NodePath("../../AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../body")
 stateName = "idle"
 animationName = "idle"
-sfxName = null
-canMove = null
 
 [node name="StateWander" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("flyComponent", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("5_r6g1q")
@@ -240,6 +238,7 @@ animationName = "fly"
 script = ExtResource("3_0f3yq")
 buddy = NodePath("../..")
 amplitude = 2.0
+frequency = 30.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="DetectionArea" to="StateMachine/StateIdle" method="_on_detection_area_area_entered"]

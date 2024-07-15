@@ -19,6 +19,6 @@ func _on_body_entered(body):
 
 func _on_area_entered(area):
 	if area is Buddy:
-		print("inventory!")
+		print("detecting buddy")
 		var inventory = (area as Buddy).get_inventory()
 		collect(inventory)

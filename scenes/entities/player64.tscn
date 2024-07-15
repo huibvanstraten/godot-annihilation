@@ -1389,7 +1389,7 @@ shape = SubResource("RectangleShape2D_d1lte")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(20, -10)
-limit_bottom = 850
+limit_bottom = 1660
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
 position = Vector2(-13, -13)

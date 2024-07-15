@@ -10,6 +10,11 @@ func insert(collectable: CollectableResource):
 	for i in range(collectables.size()):
 		if !collectables[i]:
 			collectables[i] = collectable
+			print("inserting collectable" + str(collectable))
 			break
 		
+	emit_signal("inventory_updated")
+
+func remove(index: int):
+	collectables[index] = null
 	emit_signal("inventory_updated")

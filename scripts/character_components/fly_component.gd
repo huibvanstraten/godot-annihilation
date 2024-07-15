@@ -23,7 +23,7 @@ func fly(delta):
 	
 	var direction = (buddy.targetPosition - buddy.position).normalized()
 	buddy.position += direction * speed * delta
-	#buddy.position.y += amplitude * sin(frequency * timePassed)
+	buddy.position.y += amplitude * sin(frequency * timePassed)
 	
 	if buddy.position.distance_to(buddy.targetPosition) < 10:
 		if isReturning:
