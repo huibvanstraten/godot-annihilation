@@ -8,3 +8,7 @@ extends Collectable
 func _ready():
 	super()
 	animationPlayer.play(animationName)
+
+func use_item():
+	print("used potion!")
+	

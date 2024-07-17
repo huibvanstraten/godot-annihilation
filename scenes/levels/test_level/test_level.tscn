@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8sdp2c28i5gh" path="res://scenes/levels/test_level/test_level_area_1.tscn" id="6_fnesj"]
 [ext_resource type="PackedScene" uid="uid://bnuccua0xa65r" path="res://scenes/levels/test_level/test_level_area_2.tscn" id="7_fcneu"]
 [ext_resource type="Script" path="res://scripts/level/area.gd" id="8_8k85w"]
-[ext_resource type="PackedScene" uid="uid://bfnqmywhscq27" path="res://scenes/levels/ui_layer.tscn" id="8_vwy11"]
+[ext_resource type="PackedScene" uid="uid://bfnqmywhscq27" path="res://scenes/UI/ui_layer.tscn" id="8_vwy11"]
 [ext_resource type="PackedScene" uid="uid://covtgmcgbqaue" path="res://scenes/entities/slime.tscn" id="8_wtaap"]
 [ext_resource type="PackedScene" uid="uid://j411yjbwlx61" path="res://scenes/levels/test_level/attributes/streets_tile_map.tscn" id="9_od5c0"]
 [ext_resource type="PackedScene" uid="uid://dgjyb5pl4fqj2" path="res://scenes/levels/transition_area.tscn" id="10_sp5l5"]
@@ -36,14 +36,15 @@ script = ExtResource("1_wfxty")
 levelId = 1
 startPosition = NodePath("StartPosition")
 
+[node name="Slime2" parent="." instance=ExtResource("8_wtaap")]
+position = Vector2(1704, 792)
+
 [node name="Slime" parent="." instance=ExtResource("8_wtaap")]
 position = Vector2(1522, 814)
 scale = Vector2(0.5, 0.5)
 
 [node name="UILayer" parent="." instance=ExtResource("8_vwy11")]
 process_mode = 3
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("11_ygvlp")
 
 [node name="BackgroundCity" parent="." instance=ExtResource("5_oap6s")]
@@ -52,7 +53,7 @@ script = ExtResource("11_ygvlp")
 position = Vector2(1198, 973)
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(2229, 730)
+position = Vector2(203, 238)
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -182,7 +183,7 @@ shape = SubResource("RectangleShape2D_8ikxu")
 position = Vector2(308, 507)
 
 [node name="Potion2" parent="Areas/Area3" instance=ExtResource("16_yijvk")]
-position = Vector2(223, 780)
+position = Vector2(766, 760)
 
 [node name="Potion3" parent="Areas/Area3" instance=ExtResource("16_yijvk")]
 position = Vector2(995, 523)

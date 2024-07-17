@@ -1,6 +1,7 @@
-[gd_scene load_steps=57 format=3 uid="uid://covtgmcgbqaue"]
+[gd_scene load_steps=58 format=3 uid="uid://covtgmcgbqaue"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/slime.gd" id="1_atecj"]
+[ext_resource type="PackedScene" uid="uid://c8fj8qflc6dso" path="res://scenes/UI/enemy_health_bar.tscn" id="2_bsgdo"]
 [ext_resource type="Script" path="res://scripts/state/enemy_state/die_state.gd" id="2_cxk5o"]
 [ext_resource type="Script" path="res://scripts/state/enemy_state/enemy_state_machine.gd" id="2_swugj"]
 [ext_resource type="Script" path="res://scripts/character_components/health_component.gd" id="3_6a47f"]
@@ -546,9 +547,9 @@ animationName = "attack"
 
 [node name="Components" type="Node2D" parent="."]
 
-[node name="Health" type="Node2D" parent="Components"]
+[node name="Health" type="Node2D" parent="Components" node_paths=PackedStringArray("entity")]
 script = ExtResource("3_6a47f")
-defaultHealth = 200.0
+entity = NodePath("../..")
 
 [node name="Physics" type="Node2D" parent="Components"]
 script = ExtResource("9_it2n0")
@@ -612,6 +613,13 @@ monitorable = false
 position = Vector2(0, -15.25)
 shape = SubResource("RectangleShape2D_xelvx")
 debug_color = Color(0.456999, 0.448491, 0.997384, 0.42)
+
+[node name="EnemyHealthBar" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_bsgdo")]
+offset_left = -13.0
+offset_top = -8.0
+offset_right = 26.0
+offset_bottom = -3.0
+entity = NodePath("..")
 
 [connection signal="timeout" from="StateMachine/StateIdle/Timer" to="StateMachine/StateIdle" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/StateWalk/Timer" to="StateMachine/StateWalk" method="_on_timer_timeout"]

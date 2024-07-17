@@ -4,7 +4,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventManager.connect("play_next_song", change_song_label)
+	EventManager.play_next_song.connect(change_song_label)
 
 func change_song_label(songName: String):
 	songLabel.text = songName
