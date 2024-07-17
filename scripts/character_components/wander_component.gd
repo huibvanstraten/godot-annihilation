@@ -2,7 +2,7 @@ class_name WanderComponent
 extends Node
 
 @export var lastWanderDirection: float = -1.0
-@export var wanderSpeed: float = 100.0
+@export var wanderSpeed: float = 70.0
 
 @onready var groundContactChecker: RayCast2D = $"../../FlipMarker/GroundContactChecker"
 @export var physicsComponent: PhysicsComponent = null

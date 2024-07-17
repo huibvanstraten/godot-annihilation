@@ -1,7 +1,7 @@
 class_name MovingCamera
 extends Camera2D
 
-@export var scroll_speed: float = 200.0  # Speed at which the camera moves
+@export var scroll_speed: float = 100.0  # Speed at which the camera moves
 
 var startPoint: float
 

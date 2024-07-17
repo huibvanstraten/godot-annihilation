@@ -1,11 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqrx1crqntpe0"]
+[gd_scene load_steps=26 format=3 uid="uid://bqrx1crqntpe0"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/buddy.gd" id="1_xbak1"]
-[ext_resource type="Texture2D" uid="uid://b1xnj38wsj310" path="res://assets/textures/objects/crow/crow.png" id="2_1vorx"]
 [ext_resource type="Resource" uid="uid://rqxdybbi5xpe" path="res://scripts/inventory/buddy_inventory.tres" id="2_b5evn"]
 [ext_resource type="Script" path="res://scripts/character_components/fly_component.gd" id="3_0f3yq"]
+[ext_resource type="Texture2D" uid="uid://b5yiuykwiqo33" path="res://assets/textures/objects/crow/crow new fly.png" id="3_l2t8u"]
 [ext_resource type="Script" path="res://scripts/state/buddy_state/buddy_state_machine.gd" id="4_1nps1"]
 [ext_resource type="Script" path="res://scripts/state/buddy_state/idle_state.gd" id="4_g3418"]
+[ext_resource type="Texture2D" uid="uid://bkg2bi24jlvl5" path="res://assets/textures/objects/crow/crow new idle.png" id="4_p485t"]
 [ext_resource type="Script" path="res://scripts/state/buddy_state/wander_state.gd" id="5_r6g1q"]
 [ext_resource type="Script" path="res://scripts/state/buddy_state/fetch_state.gd" id="6_od8va"]
 [ext_resource type="Script" path="res://scripts/state/buddy_state/return_state.gd" id="7_sh2fj"]
@@ -13,44 +14,46 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5iqpp"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hx85u"]
-atlas = ExtResource("2_1vorx")
-region = Rect2(26, 0, 13, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sssww"]
+atlas = ExtResource("3_l2t8u")
+region = Rect2(0, 0, 31, 23)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rlk2"]
-atlas = ExtResource("2_1vorx")
-region = Rect2(39, 0, 13, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_set1k"]
+atlas = ExtResource("3_l2t8u")
+region = Rect2(31, 0, 31, 23)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5reo"]
-atlas = ExtResource("2_1vorx")
-region = Rect2(52, 0, 13, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbenc"]
+atlas = ExtResource("4_p485t")
+region = Rect2(0, 0, 30, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a4u0s"]
-atlas = ExtResource("2_1vorx")
-region = Rect2(65, 0, 13, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tppt"]
+atlas = ExtResource("4_p485t")
+region = Rect2(30, 0, 30, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2lofh"]
-atlas = ExtResource("2_1vorx")
-region = Rect2(0, 0, 13, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gunvy"]
+atlas = ExtResource("4_p485t")
+region = Rect2(60, 0, 30, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahawy"]
-atlas = ExtResource("2_1vorx")
-region = Rect2(13, 0, 13, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqcfc"]
+atlas = ExtResource("4_p485t")
+region = Rect2(90, 0, 30, 19)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_n68tp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8msig"]
+atlas = ExtResource("4_p485t")
+region = Rect2(120, 0, 30, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df8ux"]
+atlas = ExtResource("4_p485t")
+region = Rect2(150, 0, 30, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66xyo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hx85u")
+"texture": SubResource("AtlasTexture_sssww")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6rlk2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5reo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a4u0s")
+"texture": SubResource("AtlasTexture_set1k")
 }],
 "loop": true,
 "name": &"fly",
@@ -58,74 +61,90 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2lofh")
+"texture": SubResource("AtlasTexture_rbenc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ahawy")
+"texture": SubResource("AtlasTexture_2tppt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gunvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqcfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8msig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df8ux")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_gdx17"]
+[sub_resource type="Animation" id="Animation_l688r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="Animation" id="Animation_vfkly"]
-resource_name = "fly"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"fly"]
 }
+
+[sub_resource type="Animation" id="Animation_jx1ft"]
+resource_name = "fly"
+length = 0.8
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
+tracks/1/path = NodePath(".:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 2, 1]
+"values": [&"fly"]
 }
 
-[sub_resource type="Animation" id="Animation_db4l8"]
+[sub_resource type="Animation" id="Animation_5ax1l"]
 resource_name = "idle"
+length = 6.0
+loop_mode = 1
+step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -145,28 +164,27 @@ tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.9, 1.2, 2.1, 2.7, 3.3, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [0, 1, 0, 5, 2, 3, 2, 0, 1, 0, 4, 0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_22qce"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ocow"]
 _data = {
-"RESET": SubResource("Animation_gdx17"),
-"fly": SubResource("Animation_vfkly"),
-"idle": SubResource("Animation_db4l8")
+"RESET": SubResource("Animation_l688r"),
+"fly": SubResource("Animation_jx1ft"),
+"idle": SubResource("Animation_5ax1l")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fb120"]
 radius = 181.025
 
-[node name="Buddy" type="Area2D" node_paths=PackedStringArray("animationPlayer", "flyComponent")]
+[node name="Buddy" type="Area2D" node_paths=PackedStringArray("flyComponent")]
 position = Vector2(221, 141)
 collision_layer = 256
 collision_mask = 130
 script = ExtResource("1_xbak1")
-animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
 flyComponent = NodePath("Components/FlyComponent")
 inventory = ExtResource("2_b5evn")
 
@@ -174,12 +192,12 @@ inventory = ExtResource("2_b5evn")
 shape = SubResource("CircleShape2D_5iqpp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_n68tp")
-animation = &"idle"
+sprite_frames = SubResource("SpriteFrames_66xyo")
+animation = &"fly"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_22qce")
+"": SubResource("AnimationLibrary_5ocow")
 }
 
 [node name="DetectionArea" type="Area2D" parent="."]

@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://scripts/character_components/flip_component.gd" id="12_n6cmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_150cu"]
-size = Vector2(72.5, 129.25)
+size = Vector2(72.5, 93.25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cwd5"]
 atlas = ExtResource("7_e5s4a")
@@ -463,7 +463,7 @@ _data = {
 size = Vector2(54, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xelvx"]
-size = Vector2(503, 159)
+size = Vector2(346, 93.5)
 
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "wanderComponent", "collisionShape", "rayCast", "bodyCollisionShape", "stateMachine", "physicsComponent", "attackBodyComponent", "animationComponent", "flipComponent")]
 collision_layer = 4
@@ -480,7 +480,7 @@ animationComponent = NodePath("FlipMarker/AnimatedSprite2D")
 flipComponent = NodePath("Components/Flip")
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(8, -21.375)
+position = Vector2(8, -3.375)
 shape = SubResource("RectangleShape2D_150cu")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
@@ -490,27 +490,27 @@ initialState = NodePath("StateWalk")
 
 [node name="StateIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("4_0fl3w")
-stateName = "idle"
-animationName = "idle"
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
+stateName = "idle"
+animationName = "idle"
 
 [node name="Timer" type="Timer" parent="StateMachine/StateIdle"]
 wait_time = 2.0
 
 [node name="StateDie" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("2_cxk5o")
-stateName = "die"
-animationName = "die"
-canMove = false
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
+stateName = "die"
+animationName = "die"
+canMove = false
 
 [node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("5_4nqe5")
@@ -527,22 +527,22 @@ wait_time = 3.0
 
 [node name="StateHit" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("6_mf0yb")
-stateName = "hit"
-animationName = "hit"
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
+stateName = "hit"
+animationName = "hit"
 
 [node name="StateAttack" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("7_kilnd")
-stateName = "attack"
-animationName = "attack"
 attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
+stateName = "attack"
+animationName = "attack"
 
 [node name="Components" type="Node2D" parent="."]
 
@@ -609,7 +609,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipMarker/DetectionArea"]
-position = Vector2(-1, -48)
+position = Vector2(0, -15.25)
 shape = SubResource("RectangleShape2D_xelvx")
 debug_color = Color(0.456999, 0.448491, 0.997384, 0.42)
 

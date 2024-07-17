@@ -4,10 +4,12 @@ var musicFolderPath: String = "res://assets/audio/music"
 var songs: Array
 var nextSong: String = "res://assets/audio/music/Bzzt bzzt mf 3.wav"
 
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func play_song(path: String):
 	stream = load(path)
 	if stream:
-		#self.stream = stream
 		play()
 		EventManager.emit_signal("play_next_song", path)
 	else:

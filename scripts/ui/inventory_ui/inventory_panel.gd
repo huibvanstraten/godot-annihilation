@@ -1,21 +1,22 @@
+class_name InventoryPanel
 extends Panel
 
 @onready var backgroundSprite: Sprite2D = $background
 @onready var collectableSprite: Sprite2D = $CenterContainer/Panel/item
 
-func update(collectable: CollectableResource) -> int:
-	var count = 0
+var hasItem: bool = false
+
+func update(collectable: CollectableResource):
 	
 	if !collectable:
 		backgroundSprite.frame = 0
 		collectableSprite.visible = false
+		hasItem = false
 	else:
-		count += 1
 		backgroundSprite.frame = 1
 		collectableSprite.visible = true
 		collectableSprite.texture = collectable.texture
-	
-	return count
+		hasItem = true
 
 func set_sprite_frame(isSelected: bool):
 	if isSelected:

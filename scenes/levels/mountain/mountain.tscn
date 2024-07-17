@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://sm0sect8ds2j"]
+[gd_scene load_steps=12 format=3 uid="uid://sm0sect8ds2j"]
 
 [ext_resource type="Script" path="res://scripts/level/levels/mountain.gd" id="1_cmsmn"]
 [ext_resource type="PackedScene" uid="uid://cp8sfgrl32him" path="res://scenes/levels/attributes/deathzone.tscn" id="2_j0kjm"]
 [ext_resource type="Texture2D" uid="uid://f1k2st8cam5g" path="res://assets/textures/tilesets/Forest tile set.png" id="2_tkheh"]
 [ext_resource type="Texture2D" uid="uid://c02spglh0kdff" path="res://assets/textures/backgrounds/main menu/Start screen bg 1.png" id="3_vc37i"]
+[ext_resource type="Script" path="res://scripts/level/area.gd" id="5_j38s8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42si8"]
 texture = ExtResource("2_tkheh")
@@ -1296,13 +1297,25 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 87
 sources/0 = SubResource("TileSetAtlasSource_42si8")
 
-[node name="Mountain" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkb2q"]
+size = Vector2(886, 2.99998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cos5c"]
+size = Vector2(7, 886)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6flyg"]
+size = Vector2(1245, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hslh"]
+size = Vector2(938, 2)
+
+[node name="Mountain" type="Node2D" node_paths=PackedStringArray("startPosition")]
 script = ExtResource("1_cmsmn")
 levelId = 3
-pixelformat = true
+startPosition = NodePath("StartPosition")
 
 [node name="Deathzone" parent="." instance=ExtResource("2_j0kjm")]
-position = Vector2(1621, 824)
+position = Vector2(1628, 603)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hkgds")
@@ -1320,3 +1333,46 @@ motion_scale = Vector2(0.5, 0.5)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(467, 100)
 texture = ExtResource("3_vc37i")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Area1" type="Node2D" parent="Areas"]
+script = ExtResource("5_j38s8")
+areaId = 1
+
+[node name="AreaBoundaries" type="Node2D" parent="Areas/Area1"]
+position = Vector2(-207, -331)
+
+[node name="Left" type="StaticBody2D" parent="Areas/Area1/AreaBoundaries"]
+position = Vector2(127, 85)
+rotation = 1.5708
+collision_mask = 286
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area1/AreaBoundaries/Left"]
+position = Vector2(433, 11.5)
+shape = SubResource("RectangleShape2D_gkb2q")
+
+[node name="Right" type="StaticBody2D" parent="Areas/Area1/AreaBoundaries"]
+position = Vector2(1358, 505)
+collision_mask = 511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area1/AreaBoundaries/Right"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_cos5c")
+
+[node name="Top" type="StaticBody2D" parent="Areas/Area1/AreaBoundaries"]
+position = Vector2(673, 76)
+collision_layer = 0
+collision_mask = 509
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area1/AreaBoundaries/Top"]
+position = Vector2(63.5, -6)
+shape = SubResource("RectangleShape2D_6flyg")
+
+[node name="Bottom" type="StaticBody2D" parent="Areas/Area1/AreaBoundaries"]
+position = Vector2(117, 960)
+collision_mask = 511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area1/AreaBoundaries/Bottom"]
+position = Vector2(466, 2)
+shape = SubResource("RectangleShape2D_4hslh")

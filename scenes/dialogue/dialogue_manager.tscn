@@ -10,17 +10,13 @@ unique_name_in_owner = true
 visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="UI"]
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -134.0
-offset_top = -130.0
 offset_right = 134.0
-offset_bottom = -36.0
+offset_bottom = 94.0
 grow_horizontal = 2
-grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer"]
 layout_mode = 2

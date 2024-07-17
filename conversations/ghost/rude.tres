@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_h0gik")
 texture = ExtResource("2_knjcs")
-name = "You"
+name = "Also you?"
 dialogue = "\"Rude...\""
+hasNext = false

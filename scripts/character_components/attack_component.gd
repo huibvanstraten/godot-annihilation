@@ -2,8 +2,8 @@ class_name AttackComponent
 extends Node
 
 @export var damage: float = 10
-@export var speed: float = 250.0
-@export var jumpSpeed: float = 500.0
+@export var speed: float = 150.0
+@export var jumpSpeed: float = 300.0
 @export var jumpheight: float = 50.0
 
 @export var detectionArea: Area2D = null

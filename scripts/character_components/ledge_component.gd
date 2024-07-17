@@ -21,5 +21,5 @@ func canClimbLedge() -> bool:
 
 	return canClimb
 
-func climbLedge(facingRight: bool):
-	physicsComponent.velocityY = -220
+func climbLedge(_facingRight: bool):
+	physicsComponent.velocityY = -140

@@ -12,7 +12,7 @@ func unload_level():
 	loadedLevel = null
 	
 func load_level(levelId: int):
-	print("loading level: %s" % levelId)
+	push_warning("loading level: %s" % levelId)
 	unload_level()
 	
 	var levelData = get_level_data_by_id(levelId)
@@ -32,21 +32,35 @@ func get_level_data_by_id(levelId: int) -> LevelData:
 	var levelToReturn: LevelData = null
 	
 	for level in levels:
+		print(level)
+		print(level.levelId)
 		if level.levelId == levelId:
 			levelToReturn = level
 	
 	return levelToReturn
 		
 func get_current_level():
-	return loadedLevel
+	if loadedLevel != null:
+		return loadedLevel
+	else: 
+		return get_tree().current_scene
+
+func get_current_area() -> Area:
+	var areas = get_current_level().get_node("Areas")
+	var areaId = get_current_level().currentAreaId
+	
+	var currentArea: Area
+	for i in areas.get_children():
+		if (i as Area).areaId == areaId:
+			currentArea = i as Area
+	
+	return currentArea
 
 func get_level_boundaries() -> Array[StaticBody2D]:
-	var level = get_current_level()
-	print("checcccck")
-	print(level)
-	print(level.currentArea)
-	var area = level.currentArea as Area
+	var area = get_current_area()
+	
 	var boundaries: Array[StaticBody2D] 
 	for i in area.areaBoundaries.get_children():
 		boundaries.append(i as StaticBody2D)
+		
 	return boundaries

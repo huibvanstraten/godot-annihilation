@@ -16,9 +16,8 @@ func get_inventory() -> Inventory:
 	return inventory
 	
 func _on_body_entered(body):
-	if body is Player and not inventory.collectables.is_empty():
-		var playerInventory = (body as Player).get_inventory()
-		for i in inventory.collectables:
-			print("inventorty" + str(i))
-			playerInventory.insert(i)
+	if body is Player and inventory.get_filled_collectables_amount() != 0 :
+		for collectable in inventory.collectables:
+			var playerInventory = (body as Player).get_inventory(collectable.type)
+			playerInventory.insert(collectable)
 		inventory.remove(0)
