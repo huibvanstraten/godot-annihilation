@@ -4,14 +4,14 @@ extends Node
 @export var velocityX: float
 @export var velocityY: float
 @export var gravity: float
-@export var acceleration: float = 50.0
-@export var airAcceleration: float = 50.0
-@export var friction: float = 4000.0
-@export var airFriction: float = 5.0
-@export var knockbackVelocity: Vector2 = Vector2(100, 0)
+@export var acceleration: float = 25.0
+@export var airAcceleration: float = 25.0
+@export var friction: float = 2000.0
+@export var airFriction: float = 3.0
+@export var knockbackVelocity: Vector2 = Vector2(50, 0)
 @export var knockbackDirection: int 
-@export var speed = 600.0
-@export var airSpeed =300.0
+@export var speed = 300.0
+@export var airSpeed = 150.0
 @export var direction: Vector2 = Vector2.RIGHT
 
 @export var collisionRotation: float = 0

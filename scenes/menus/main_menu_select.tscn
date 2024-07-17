@@ -40,6 +40,10 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 text = "Moving level"
 
+[node name="MountainLevel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Mountain Level"
+
 [node name="Continue" type="Button" parent="VBoxContainer"]
 modulate = Color(0.585967, 0.0613417, 0.554907, 1)
 layout_mode = 2
@@ -58,5 +62,6 @@ text = "Quit"
 [connection signal="pressed" from="VBoxContainer/CharacterTest" to="." method="_on_character_test_pressed"]
 [connection signal="pressed" from="VBoxContainer/TestLevel" to="." method="_on_test_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/MovingLevel" to="." method="_on_moving_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/MountainLevel" to="." method="_on_mountain_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

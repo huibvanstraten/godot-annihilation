@@ -12,13 +12,14 @@ func initialize():
 	flyTimer = Timer.new()
 	flyTimer.one_shot = true
 	add_child(flyTimer)
+	flyTimer.connect("timeout", _on_timer_timeout)
 
 func enter():
 	super()
 	flyComponent.land()
 	flyComponent.isFlying = false 
 	flyComponent.isReturning = false
-	flyTimer.connect("timeout", _on_timer_timeout)
+	flyComponent.timePassed = 0
 	flyTimer.wait_time = choose([3.0, 5.0, 6.5])
 	flyTimer.start()
 

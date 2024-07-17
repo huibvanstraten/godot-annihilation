@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://b8e27js58qgvx"]
+
+[ext_resource type="Resource" uid="uid://bndl5kc1ku833" path="res://conversations/ghost/5.tres" id="1_32mn3"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="2_ppwvi"]
+[ext_resource type="Texture2D" uid="uid://cu36awxgkps1r" path="res://assets/textures/objects/player/conversation normal.png" id="3_mr830"]
+
+[resource]
+script = ExtResource("2_ppwvi")
+texture = ExtResource("3_mr830")
+name = "You"
+dialogue = "No, seriously.. You are freaking gigantic! YOU\"RE HUGE!"
+next = ExtResource("1_32mn3")
+hasNext = true

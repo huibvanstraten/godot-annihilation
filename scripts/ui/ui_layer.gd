@@ -10,7 +10,7 @@ func _ready():
 	inventory = inventoryNode.instantiate()
 	add_child(inventory)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		if !levelPaused:
 			levelPaused = true

@@ -1,48 +1,52 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7p2ywbtekcub"]
 
-[ext_resource type="Texture2D" uid="uid://bf1q25cgapuir" path="res://assets/textures/backgrounds/city/Cloudy city at night 2.png" id="1_56yxs"]
-[ext_resource type="Texture2D" uid="uid://djw07d82o2cun" path="res://assets/textures/backgrounds/city/Cloudy city at night 3.png" id="2_2isms"]
-[ext_resource type="Texture2D" uid="uid://b6y0iqpxekffs" path="res://assets/textures/backgrounds/city/Cloudy city at night 4.png" id="3_pp873"]
-[ext_resource type="Texture2D" uid="uid://bjfn2jolvu063" path="res://assets/textures/backgrounds/city/Cloudy city at night 5.png" id="4_mbxow"]
-[ext_resource type="Texture2D" uid="uid://cs3hcetcfiege" path="res://assets/textures/backgrounds/city/Cloudy city at night 6.png" id="5_mnyd6"]
+[ext_resource type="Texture2D" uid="uid://vm036m7wk42j" path="res://assets/textures/backgrounds/city/Cloudy city at night 2 1280.png" id="1_j2kw4"]
+[ext_resource type="Texture2D" uid="uid://3ixgbixrq43m" path="res://assets/textures/backgrounds/city/moon.png" id="2_7dtp4"]
+[ext_resource type="Texture2D" uid="uid://gk8otcr2p57k" path="res://assets/textures/backgrounds/city/Cloudy city at night 4 1280.png" id="3_q2jp1"]
+[ext_resource type="Texture2D" uid="uid://ggy4w7jta8ws" path="res://assets/textures/backgrounds/city/Cloudy city at night 5 1280.png" id="4_ffaep"]
+[ext_resource type="Texture2D" uid="uid://bioqywst7f5vf" path="res://assets/textures/backgrounds/city/Cloudy city at night 6 1280.png" id="5_4ml6v"]
 
 [node name="BackgroundCity" type="ParallaxBackground"]
+scale = Vector2(1, 1.15)
+transform = Transform2D(1, 0, 0, 1.15, 0, 0)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(2.08165e-12, 2.08165e-12)
 motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-texture = ExtResource("1_56yxs")
+scale = Vector2(1.99355, 1)
+texture = ExtResource("1_j2kw4")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(3.33333, 0)
 motion_scale = Vector2(0.01, 0.01)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
-texture = ExtResource("2_2isms")
+texture = ExtResource("2_7dtp4")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(930, 2.08165e-12)
+motion_mirroring = Vector2(1280, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
-texture = ExtResource("3_pp873")
+texture = ExtResource("3_q2jp1")
 centered = false
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(930, 2.08165e-12)
+motion_mirroring = Vector2(1280, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
-texture = ExtResource("4_mbxow")
+texture = ExtResource("4_ffaep")
 centered = false
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(930, 2.08165e-12)
+motion_mirroring = Vector2(1280, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
-texture = ExtResource("5_mnyd6")
+texture = ExtResource("5_4ml6v")
 centered = false

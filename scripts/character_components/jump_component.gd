@@ -1,11 +1,11 @@
 class_name JumpComponent
 extends Node
 
-@export var jumpVelocity: float = -600.0
-@export var wallJumpVelocityY: float = -400.0
-@export var wallJumpVelocityX: float = 400.0
+@export var jumpVelocity: float = -400.0
+@export var wallJumpVelocityY: float = -300.0
+@export var wallJumpVelocityX: float = 300.0
 @export var characterBody: CharacterBody2D = null
-@export var jumpGravity: float = 980
+@export var jumpGravity: float = 490
 
 @onready var physicsComponent: PhysicsComponent =  $"../Physics"
 @onready var flipComponent: FlipComponent =  $"../Flip"

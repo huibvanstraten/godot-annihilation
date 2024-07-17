@@ -11,7 +11,7 @@ var animationFinished: bool = false
 func _ready():
 	animationPlayer.play("move")
 
-func _process(delta):
+func _process(_delta):
 	if attackComponent.playerInRange and attackComponent.player != null and not animationFinished:
 		animationPlayer.play("attack")
 		animationFinished = false
@@ -20,5 +20,5 @@ func _process(delta):
 		animationFinished = false
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_animName):
 	animationFinished = true

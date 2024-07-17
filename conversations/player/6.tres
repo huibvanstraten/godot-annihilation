@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://dwh4hx3sfka08"]
+
+[ext_resource type="Resource" uid="uid://sioxpgrxqsos" path="res://conversations/ghost/rude.tres" id="1_cvngn"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="2_n20gs"]
+[ext_resource type="Texture2D" uid="uid://cu36awxgkps1r" path="res://assets/textures/objects/player/conversation normal.png" id="3_veawn"]
+
+[resource]
+script = ExtResource("2_n20gs")
+texture = ExtResource("3_veawn")
+name = "You"
+dialogue = "Yeah, you know what.. i gotta go. Good luck up there"
+next = ExtResource("1_cvngn")
+hasNext = true

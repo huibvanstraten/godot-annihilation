@@ -14,11 +14,11 @@ func collect(inventory: Inventory):
 
 func _on_body_entered(body):
 	if body is Player:
-		var inventory = (body as Player).get_inventory()
+		var inventory = (body as Player).get_inventory(collectable.type)
 		collect(inventory)
 
 func _on_area_entered(area):
 	if area is Buddy:
-		print("inventory!")
+		print("detecting buddy")
 		var inventory = (area as Buddy).get_inventory()
 		collect(inventory)
