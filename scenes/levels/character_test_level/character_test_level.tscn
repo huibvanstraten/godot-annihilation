@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level/levels/character_test_level.gd" id="1_eekaq"]
 [ext_resource type="PackedScene" uid="uid://cp8sfgrl32him" path="res://scenes/levels/attributes/deathzone.tscn" id="2_072et"]
-[ext_resource type="PackedScene" uid="uid://bfnqmywhscq27" path="res://scenes/levels/ui_layer.tscn" id="3_jtxsb"]
+[ext_resource type="PackedScene" uid="uid://bfnqmywhscq27" path="res://scenes/UI/ui_layer.tscn" id="3_jtxsb"]
 [ext_resource type="Texture2D" uid="uid://bgdssso7aiewq" path="res://icon.svg" id="4_1sixd"]
 [ext_resource type="Script" path="res://scripts/level/area.gd" id="5_hp6ox"]
 

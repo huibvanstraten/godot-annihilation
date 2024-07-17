@@ -11,10 +11,13 @@ func spawn_player(spawn_position) -> Player:
 	if player == null:
 		player = preload("res://scenes/entities/player.tscn").instantiate()
 		var level = LevelManager.get_current_level()
+		EventManager.spawn_player.emit(player)
 		level.add_child(player)
+		print("spawn")
+		
 	else:
 		var health = player.find_child("Health") as HealthComponent
-		health.reset_health()
+		health.set_health()
 		var physics = player.find_child("Physics") as PhysicsComponent
 		physics.reset_velocity()
 		var camera = player.find_child("Camera2D") as Camera2D
@@ -24,6 +27,5 @@ func spawn_player(spawn_position) -> Player:
 		player.position = spawn_position
 	else:
 		player.position = last_spawn_point
-	
-	return player
 
+	return player

@@ -4,6 +4,7 @@ extends Entity
 @export var shootComponent: ShootComponent = null
 @onready var buddyComponent: BuddyComponent = $Components/Buddy
 @onready var jumpComponent: JumpComponent = $Components/Jump
+@onready var healthComponent: HealthComponent = $Components/Health
 
 @export var gunMarker: Marker2D = null
 @export var rayCast: RayCast2D = null
@@ -89,4 +90,6 @@ func _activate_collectable(collectable: CollectableResource):
 	if collectable.type == CollectableResource.CollectableType.BuddyType:
 		buddyComponent.activate(collectable.path)
 	elif collectable.type == CollectableResource.CollectableType.ItemType:
-		print("using item!")
+		var potion = load(collectable.path).instantiate()
+		potion.use_item()
+		healthComponent.set_health(healthComponent.currentHealth + 20 )
