@@ -11,8 +11,10 @@ func spawn_player(spawn_position) -> Player:
 	if player == null:
 		player = preload("res://scenes/entities/player.tscn").instantiate()
 		var level = LevelManager.get_current_level()
-		level.add_child(player)
 		EventManager.spawn_player.emit(player)
+		level.add_child(player)
+		print("spawn")
+		
 	else:
 		var health = player.find_child("Health") as HealthComponent
 		health.set_health()

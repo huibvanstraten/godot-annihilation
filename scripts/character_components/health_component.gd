@@ -7,6 +7,7 @@ var currentHealth: float = 0
 
 func _ready():
 	currentHealth = maxHealth
+	print("healthcomponent")
 	EventManager.init_health_bar.emit(entity, currentHealth)
 	
 func hit(damage: float):
@@ -16,7 +17,6 @@ func hit(damage: float):
 		EventManager.emit_signal("health_depleted", entity)
 	elif (currentHealth > 0.0):
 		EventManager.emit_signal("entity_hit", entity)
-
 
 func set_health(newHealth: float = maxHealth):
 	currentHealth = min(newHealth, maxHealth)

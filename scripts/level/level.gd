@@ -10,7 +10,7 @@ var currentAreaId: int
 
 func _ready():
 	levelData = LevelManager.get_level_data_by_id(levelId)
-	set_current_area(3)
+	set_current_area(1)
 	
 	EventManager.connect("player_died", _on_player_died)
 	EventManager.connect("game_paused", _on_game_paused)

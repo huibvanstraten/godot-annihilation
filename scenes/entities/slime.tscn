@@ -615,6 +615,10 @@ shape = SubResource("RectangleShape2D_xelvx")
 debug_color = Color(0.456999, 0.448491, 0.997384, 0.42)
 
 [node name="EnemyHealthBar" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_bsgdo")]
+offset_left = -13.0
+offset_top = -8.0
+offset_right = 26.0
+offset_bottom = -3.0
 entity = NodePath("..")
 
 [connection signal="timeout" from="StateMachine/StateIdle/Timer" to="StateMachine/StateIdle" method="_on_timer_timeout"]

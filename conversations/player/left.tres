@@ -7,5 +7,5 @@
 script = ExtResource("1_4vm5v")
 texture = ExtResource("2_ifhip")
 name = "You"
-dialogue = "Ow yeah! Secret area on the left. Ain't nobody tricking me"
+dialogue = "Ow yeah! Secret area on the left."
 hasNext = false

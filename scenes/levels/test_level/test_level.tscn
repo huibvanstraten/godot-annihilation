@@ -53,7 +53,7 @@ script = ExtResource("11_ygvlp")
 position = Vector2(1198, 973)
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(2229, 730)
+position = Vector2(203, 238)
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -183,7 +183,7 @@ shape = SubResource("RectangleShape2D_8ikxu")
 position = Vector2(308, 507)
 
 [node name="Potion2" parent="Areas/Area3" instance=ExtResource("16_yijvk")]
-position = Vector2(223, 780)
+position = Vector2(766, 760)
 
 [node name="Potion3" parent="Areas/Area3" instance=ExtResource("16_yijvk")]
 position = Vector2(995, 523)
