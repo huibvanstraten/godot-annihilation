@@ -1584,10 +1584,10 @@ script = ExtResource("33_7ss80")
 airFriction = 300000.0
 knockbackVelocity = Vector2(500, 2.08165e-12)
 
-[node name="Health" type="Node2D" parent="Components"]
+[node name="Health" type="Node2D" parent="Components" node_paths=PackedStringArray("entity")]
 position = Vector2(10, 1)
 script = ExtResource("34_0dyxf")
-defaultHealth = 200.0
+entity = NodePath("../..")
 
 [node name="Shoot" type="Node2D" parent="Components" node_paths=PackedStringArray("gunMarker")]
 position = Vector2(10, -1)

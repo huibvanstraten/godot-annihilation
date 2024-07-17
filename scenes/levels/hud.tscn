@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2xokmbsqyisy"]
+[gd_scene load_steps=3 format=3 uid="uid://b2xokmbsqyisy"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_bqo4a"]
+[ext_resource type="PackedScene" uid="uid://cnj600681kqf6" path="res://scenes/UI/player_health_bar.tscn" id="2_jvog8"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -13,15 +14,33 @@ script = ExtResource("1_bqo4a")
 
 [node name="NowPlayingLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 20.0
-offset_right = 605.0
-offset_bottom = 43.0
+offset_left = 404.0
+offset_top = 344.0
+offset_right = 504.0
+offset_bottom = 367.0
+scale = Vector2(0.5, 0.5)
 text = "Now playing:"
 
 [node name="SongLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 580.0
-offset_top = 22.0
-offset_right = 909.0
-offset_bottom = 45.0
+offset_left = 461.0
+offset_top = 338.0
+offset_right = 790.0
+offset_bottom = 361.0
+scale = Vector2(0.5, 0.5)
+
+[node name="PlayerHealthBar" parent="." instance=ExtResource("2_jvog8")]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 7.0
+offset_right = 152.0
+offset_bottom = 18.0
+
+[node name="Label" type="Label" parent="PlayerHealthBar"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -1.0
+offset_right = 19.0
+offset_bottom = 22.0
+scale = Vector2(0.5, 0.5)
+text = "health:"

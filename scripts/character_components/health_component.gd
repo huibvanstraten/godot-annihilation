@@ -1,26 +1,23 @@
 class_name HealthComponent
 extends Node
 
-signal health_depleted
-signal entity_hit
-
-@export var defaultHealth: float = 20
-
-var healthLeft: float = 0
+@export var entity: CharacterBody2D
+@export var maxHealth: float = 100
+var currentHealth: float = 0
 
 func _ready():
-	reset_health()
-
+	currentHealth = maxHealth
+	EventManager.init_health_bar.emit(entity, currentHealth)
+	
 func hit(damage: float):
-	healthLeft -= damage
-	var entity = get_parent().get_parent()
-	if entity is CharacterBody2D:
-		if (healthLeft <= 0.0):
-			EventManager.emit_signal("health_depleted", entity)
-		elif (healthLeft > 0.0):
-			EventManager.emit_signal("entity_hit", entity)
-	else:
-		push_error("entity not found")	
+	currentHealth -= damage
+	EventManager.emit_signal("health_changed", entity, currentHealth)
+	if (currentHealth <= 0.0):
+		EventManager.emit_signal("health_depleted", entity)
+	elif (currentHealth > 0.0):
+		EventManager.emit_signal("entity_hit", entity)
 
-func reset_health(amount: float = defaultHealth):
-	healthLeft = amount
+
+func set_health(newHealth: float = maxHealth):
+	currentHealth = min(newHealth, maxHealth)
+	EventManager.emit_signal("health_changed", entity, currentHealth)
