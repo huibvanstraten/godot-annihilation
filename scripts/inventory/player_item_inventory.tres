@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://b86haysw16j3h"]
+
+[ext_resource type="Resource" uid="uid://cti3riy5urdyg" path="res://scripts/inventory/potion.tres" id="1_lqsu1"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="1_ujcqp"]
+
+[resource]
+script = ExtResource("1_ujcqp")
+inventoryName = "player_item"
+inventoryType = 0
+collectables = Array[Resource("res://scripts/inventory/collectable_resource.gd")]([ExtResource("1_lqsu1"), null, null, null, null, null])

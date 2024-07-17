@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://dan24k8g8dfv"]
+
+[ext_resource type="Resource" uid="uid://b8e27js58qgvx" path="res://conversations/player/4.tres" id="1_v2ovq"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="2_0o6px"]
+[ext_resource type="Texture2D" uid="uid://cu36awxgkps1r" path="res://assets/textures/objects/player/conversation normal.png" id="3_ws8yo"]
+
+[resource]
+script = ExtResource("2_0o6px")
+texture = ExtResource("3_ws8yo")
+name = "Also you?"
+dialogue = "Hmm.. perhaps we do look alike, but that's not the point. I'm here to congra.."
+next = ExtResource("1_v2ovq")
+hasNext = true

@@ -8,7 +8,7 @@ extends Entity
 @export var gunMarker: Marker2D = null
 @export var rayCast: RayCast2D = null
 
-@export var inventory: Inventory
+@export var inventories: Array[Inventory]
 
 var justLeftLedge: bool = false
 
@@ -78,11 +78,15 @@ func on_load_game(saved_data:SavedData):
 func freeze(shouldFreeze: bool):
 	playerFreeze = shouldFreeze
 	
-func get_inventory() -> Inventory:
-	return inventory
+func get_inventory(collectableType: CollectableResource.CollectableType) -> Inventory:
+	var inventoryToReturn: Inventory
+	for inventory in inventories:
+		if inventory.inventoryType == collectableType:
+			inventoryToReturn = inventory
+	return inventoryToReturn
 	
 func _activate_collectable(collectable: CollectableResource):
-	if collectable.type == CollectableResource.CollectableType.Buddy:
+	if collectable.type == CollectableResource.CollectableType.BuddyType:
 		buddyComponent.activate(collectable.path)
-	elif collectable.type == CollectableResource.CollectableType.Item:
+	elif collectable.type == CollectableResource.CollectableType.ItemType:
 		print("using item!")

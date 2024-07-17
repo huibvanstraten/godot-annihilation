@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgjyb5pl4fqj2"]
+
+[ext_resource type="Script" path="res://scripts/level/transition.gd" id="1_rubrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsqwu"]
+size = Vector2(5, 561)
+
+[node name="TransitionArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_rubrv")
+transitionDirection = Vector2(1, 2.08165e-12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(147.5, 266.5)
+shape = SubResource("RectangleShape2D_jsqwu")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(215, 428)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

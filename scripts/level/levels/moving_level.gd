@@ -1,12 +1,14 @@
 class_name MovingLevel
 extends Level
 
-var player
-@onready var camera = $Camera2D
+var camera: Camera2D
+
+func _ready():
+	super()
+	camera = player.get_node("Camera2D")
 
 func _process(delta: float) -> void:
 	super(delta)
-	player = get_node("Player")
 	constrain_player_to_camera()
 
 func constrain_player_to_camera() -> void:

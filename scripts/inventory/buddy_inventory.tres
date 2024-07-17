@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_78lun")
-inventoryName = "buddy"
+inventoryName = "buddy_inventory"
+inventoryType = 2
 collectables = Array[Resource("res://scripts/inventory/collectable_resource.gd")]([null])

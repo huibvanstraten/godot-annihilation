@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_5dej5")
-name = "Player"
+name = "You"
 dialogue = ""
-path_option = "Ok"
-options = Array[ExtResource("1_5dej5")]([])
+hasNext = false

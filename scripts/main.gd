@@ -7,3 +7,5 @@ extends Node
 func _ready():
 	LevelManager.mainScene = level_container
 	LevelManager.levels = available_levels
+	MusicManager.stream = load("res://assets/audio/music/Extinction full.wav")
+	MusicManager.play()

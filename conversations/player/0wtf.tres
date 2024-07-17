@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://rgv2705k7b4l"]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="1_cnv6x"]
+[ext_resource type="Resource" uid="uid://lu8raqq37ffx" path="res://conversations/ghost/1.tres" id="1_cyl5y"]
+[ext_resource type="Texture2D" uid="uid://c8xmckgpq3826" path="res://assets/textures/objects/player/player suprised.png" id="2_3udpy"]
+
+[resource]
+script = ExtResource("1_cnv6x")
+texture = ExtResource("2_3udpy")
+name = "You"
+dialogue = "WTF?!"
+next = ExtResource("1_cyl5y")
+hasNext = true

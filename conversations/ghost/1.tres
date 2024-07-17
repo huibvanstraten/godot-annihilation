@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://lu8raqq37ffx"]
+
+[ext_resource type="Resource" uid="uid://dxiyh8imgv66" path="res://conversations/player/2.tres" id="1_tt8jc"]
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue.gd" id="2_7bx4s"]
+[ext_resource type="Texture2D" uid="uid://cu36awxgkps1r" path="res://assets/textures/objects/player/conversation normal.png" id="3_mdplt"]
+
+[resource]
+script = ExtResource("2_7bx4s")
+texture = ExtResource("3_mdplt")
+name = "??"
+dialogue = "Ha, you turned left!  Aren't you the completionist. That's awesome!"
+next = ExtResource("1_tt8jc")
+hasNext = true
