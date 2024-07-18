@@ -31,8 +31,8 @@ window/size/viewport_height=360
 window/size/initial_position_type=3
 window/size/transparent=true
 window/size/no_focus=true
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/window_width_override=1720
+window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
 [input]
