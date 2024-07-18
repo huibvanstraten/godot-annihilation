@@ -21,3 +21,4 @@ func _on_body_entered(body):
 			var playerInventory = (body as Player).get_inventory(collectable.type)
 			playerInventory.insert(collectable)
 		inventory.remove(0)
+		EventManager.remove_buddy.emit(self)

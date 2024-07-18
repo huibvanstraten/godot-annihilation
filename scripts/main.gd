@@ -14,17 +14,17 @@ func _ready():
 	load_input_mapping("res://input_map/input_config_8bitdo_pro2.json")
 
 
-func load_input_mapping(file_path: String) -> void:
-	var file = FileAccess.open(file_path, FileAccess.READ)
+func load_input_mapping(filePath: String) -> void:
+	var file = FileAccess.open(filePath, FileAccess.READ)
 	if not file:
-		print("Error opening file:", file_path)
+		print("Error opening file:", filePath)
 		return
 
-	var json_text = file.get_as_text()
+	var jsonText = file.get_as_text()
 	file.close()
 
 	var json = JSON.new()
-	var error = json.parse(json_text)
+	var error = json.parse(jsonText)
 	if error != OK:
 		print("Error parsing JSON file:", json.get_error_message())
 		return
@@ -43,12 +43,12 @@ func load_input_mapping(file_path: String) -> void:
 		#InputMap.erase_action(action)
 
 	# Add new actions from the configuration file
-	for action_name in config.keys():
-		if action_name != "deadzone":
-			InputMap.add_action(action_name)
-			for event_dict in config[action_name]["events"]:
-				var event = create_input_event(event_dict)
-				InputMap.action_add_event(action_name, event)
+	for actionName in config.keys():
+		if actionName != "deadzone":
+			InputMap.add_action(actionName)
+			for eventDict in config[actionName]["events"]:
+				var event = create_input_event(eventDict)
+				InputMap.action_add_event(actionName, event)
 
 
 func create_input_event(actionData: Dictionary) -> InputEvent:

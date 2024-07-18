@@ -5,10 +5,11 @@ extends Node
 
 @onready var physicsComponent: PhysicsComponent =  $"../Physics"
 
-var buddy: Buddy
+var buddy: Area2D
 
 func _ready():
 	set_physics_process(false)
+	EventManager.remove_buddy.connect(deactivate)
 
 func _physics_process(_delta):
 	if not buddy.isFlying:
@@ -27,6 +28,7 @@ func activate(path: String):
 	
 	set_physics_process(true)
 	
-func deactivate():
-	set_physics_process(false)
-	buddy.queue_free()
+func deactivate(buddyToRemove: Area2D):
+	if buddy == buddyToRemove:
+		set_physics_process(false)
+		buddy.queue_free()
