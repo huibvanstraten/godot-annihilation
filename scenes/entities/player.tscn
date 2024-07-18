@@ -1,9 +1,9 @@
 [gd_scene load_steps=112 format=3 uid="uid://tqtomsf6ut23"]
 
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/player.gd" id="1_u1gql"]
-[ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/player_item_inventory.tres" id="2_ykjdc"]
+[ext_resource type="Resource" uid="uid://b86haysw16j3h" path="res://scripts/inventory/inventory_resources/player_item_inventory.tres" id="2_ykjdc"]
+[ext_resource type="Resource" uid="uid://ceqwkpb1n7orj" path="res://scripts/inventory/inventory_resources/player_buddy_inventory.tres" id="3_6gn8o"]
 [ext_resource type="Texture2D" uid="uid://dy1fvk8yqhwha" path="res://assets/textures/objects/Save chest.png" id="3_8lp6r"]
-[ext_resource type="Resource" uid="uid://ceqwkpb1n7orj" path="res://scripts/inventory/player_buddy_inventory.tres" id="3_bbv04"]
 [ext_resource type="Texture2D" uid="uid://datippubvs0qt" path="res://assets/textures/objects/player/crouch 64.png" id="3_jbppu"]
 [ext_resource type="Texture2D" uid="uid://b56okiniidxwp" path="res://assets/textures/objects/player/fall 64.png" id="5_66h2v"]
 [ext_resource type="Texture2D" uid="uid://d3pvol3k7vnnx" path="res://assets/textures/objects/player/hit 64.png" id="6_3jvf7"]
@@ -1340,7 +1340,7 @@ script = ExtResource("1_u1gql")
 shootComponent = NodePath("Components/Shoot")
 gunMarker = NodePath("FlipMarker/GunMarker")
 rayCast = NodePath("FlipMarker/LedgeDetector")
-inventories = Array[Resource("res://scripts/inventory/inventory.gd")]([ExtResource("2_ykjdc"), ExtResource("3_bbv04")])
+inventories = Array[Resource("res://scripts/inventory/inventory.gd")]([ExtResource("2_ykjdc"), ExtResource("3_6gn8o")])
 bodyCollisionShape = NodePath("CollisionShape2D")
 stateMachine = NodePath("StateMachine")
 physicsComponent = NodePath("Components/Physics")

@@ -21,7 +21,7 @@ func load_level(levelId: int):
 		push_error("no level available")
 		return
 		
-	var levelPath = "res://scenes/%s.tscn" % levelData.levelPath
+	var levelPath = levelData.levelPath
 	var levelRes = load(levelPath)
 	
 	if levelRes:

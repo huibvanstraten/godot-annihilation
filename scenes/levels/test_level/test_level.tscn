@@ -14,9 +14,9 @@
 [ext_resource type="Script" path="res://scripts/ui/ui_layer.gd" id="11_ygvlp"]
 [ext_resource type="PackedScene" uid="uid://71jivt1m263y" path="res://scenes/dialogue/dialogue_trigger.tscn" id="12_14hvm"]
 [ext_resource type="Resource" uid="uid://rgv2705k7b4l" path="res://conversations/player/0wtf.tres" id="13_delfl"]
-[ext_resource type="PackedScene" uid="uid://cdhg6bl58vtoo" path="res://scenes/items/potion.tscn" id="16_yijvk"]
+[ext_resource type="PackedScene" uid="uid://cdhg6bl58vtoo" path="res://scenes/collectables/potion.tscn" id="16_yijvk"]
 [ext_resource type="Resource" uid="uid://cbirifle8b3ao" path="res://conversations/player/left.tres" id="17_5h70y"]
-[ext_resource type="PackedScene" uid="uid://ta4ht2w6b42r" path="res://scenes/items/crow.tscn" id="17_x3d2o"]
+[ext_resource type="PackedScene" uid="uid://ta4ht2w6b42r" path="res://scenes/collectables/crow.tscn" id="17_x3d2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nohh"]
 size = Vector2(886, 2.99998)

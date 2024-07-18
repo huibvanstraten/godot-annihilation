@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://ceqwkpb1n7orj"]
 
-[ext_resource type="Resource" uid="uid://cuw2jyqh7lxe1" path="res://scripts/inventory/crow.tres" id="1_hvxna"]
+[ext_resource type="Resource" uid="uid://cuw2jyqh7lxe1" path="res://scripts/inventory/inventory_resources/crow.tres" id="1_hvxna"]
 [ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="2_xdlvb"]
 
 [resource]
