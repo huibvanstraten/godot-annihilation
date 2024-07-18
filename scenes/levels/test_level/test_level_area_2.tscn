@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level/area.gd" id="1_wjkw0"]
 [ext_resource type="PackedScene" uid="uid://j411yjbwlx61" path="res://scenes/levels/test_level/attributes/streets_tile_map.tscn" id="2_fi0jm"]
-[ext_resource type="PackedScene" uid="uid://dgjyb5pl4fqj2" path="res://scenes/levels/transition_area.tscn" id="3_p4erm"]
+[ext_resource type="PackedScene" uid="uid://dgjyb5pl4fqj2" path="res://scenes/levels/attributes/transition_area.tscn" id="3_p4erm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udefw"]
 size = Vector2(886, 2.99998)

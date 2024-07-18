@@ -1,7 +1,7 @@
 class_name UiLayer
 extends CanvasLayer
 
-var inventoryNode = preload("res://scenes/menus/inventory_gui.tscn")
+var inventoryNode = preload("res://scenes/UI/inventory_gui.tscn")
 var inventory: Control
 
 var levelPaused: bool = false

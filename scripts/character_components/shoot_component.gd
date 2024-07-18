@@ -9,7 +9,7 @@ extends Node
 func shoot() -> bool:
 	if shootBufferTimer.time_left > 0: return false
 	else:
-		var bullet = preload("res://scenes/bullet.tscn").instantiate()
+		var bullet = preload("res://scenes/entities/bullet.tscn").instantiate()
 
 		bullet.global_position = gunMarker.global_position
 		bullet.spawnPosition = gunMarker.global_position

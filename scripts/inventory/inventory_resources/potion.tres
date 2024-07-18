@@ -7,6 +7,6 @@
 script = ExtResource("1_m7y1k")
 name = "Potion"
 texture = ExtResource("2_f1mbk")
-path = "res://scenes/items/potion.tscn"
+path = "res://scenes/collectables/potion.tscn"
 active = false
 type = 0

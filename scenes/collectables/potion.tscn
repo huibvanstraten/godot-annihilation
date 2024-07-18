@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cdhg6bl58vtoo"]
 
 [ext_resource type="Script" path="res://scripts/inventory/potion.gd" id="1_r4a8e"]
-[ext_resource type="Resource" uid="uid://cti3riy5urdyg" path="res://scripts/inventory/potion.tres" id="2_7xqyt"]
+[ext_resource type="Resource" uid="uid://cti3riy5urdyg" path="res://scripts/inventory/inventory_resources/potion.tres" id="2_7xqyt"]
 [ext_resource type="Texture2D" uid="uid://bloyogtls4kgj" path="res://assets/textures/objects/crow/items/potion_brew.png" id="2_a4syy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kh8j3"]

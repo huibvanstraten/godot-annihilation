@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ta4ht2w6b42r"]
 
 [ext_resource type="Script" path="res://scripts/inventory/crow_item.gd" id="1_igytp"]
-[ext_resource type="Resource" uid="uid://cuw2jyqh7lxe1" path="res://scripts/inventory/crow.tres" id="2_jtsr0"]
+[ext_resource type="Resource" uid="uid://cuw2jyqh7lxe1" path="res://scripts/inventory/inventory_resources/crow.tres" id="2_jtsr0"]
 [ext_resource type="Texture2D" uid="uid://cn7d65vieig2w" path="res://assets/textures/ui/crow_item.png" id="3_ioi6n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vpa7"]
