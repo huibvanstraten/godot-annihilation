@@ -4,41 +4,41 @@
 [ext_resource type="Script" path="res://scripts/level/level_data.gd" id="2_hgjbi"]
 [ext_resource type="PackedScene" uid="uid://vtjrrl027420" path="res://scenes/menus/main_menu.tscn" id="3_icji6"]
 
-[sub_resource type="Resource" id="Resource_v0rdf"]
+[sub_resource type="Resource" id="Resource_j8uyh"]
 script = ExtResource("2_hgjbi")
 levelId = 0
-levelName = "character test"
+levelName = "character_test"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/character_test_level/character_test_level"
+levelPath = "res://scenes/levels/character_test_level/character_test_level.tscn"
 
-[sub_resource type="Resource" id="Resource_a41xn"]
+[sub_resource type="Resource" id="Resource_gorvs"]
 script = ExtResource("2_hgjbi")
 levelId = 1
-levelName = "test level"
+levelName = "feature_test"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/test_level/test_level"
+levelPath = "res://scenes/levels/test_level/test_level.tscn"
 
-[sub_resource type="Resource" id="Resource_yaavu"]
+[sub_resource type="Resource" id="Resource_6i5j6"]
 script = ExtResource("2_hgjbi")
 levelId = 2
-levelName = "MovingLevel"
+levelName = "moving_level"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/moving_level/moving_level"
+levelPath = "res://scenes/levels/moving_level/moving_level.tscn"
 
-[sub_resource type="Resource" id="Resource_cw32u"]
+[sub_resource type="Resource" id="Resource_db5k4"]
 script = ExtResource("2_hgjbi")
 levelId = 3
-levelName = "Mountain"
+levelName = "mountain_level"
 levelCompleted = false
 levelUnlocked = true
-levelPath = "levels/mountain/mountain"
+levelPath = "res://scenes/levels/mountain/mountain.tscn"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h73sd")
-available_levels = Array[ExtResource("2_hgjbi")]([SubResource("Resource_v0rdf"), SubResource("Resource_a41xn"), SubResource("Resource_yaavu"), SubResource("Resource_cw32u")])
+availableLevels = Array[ExtResource("2_hgjbi")]([SubResource("Resource_j8uyh"), SubResource("Resource_gorvs"), SubResource("Resource_6i5j6"), SubResource("Resource_db5k4")])
 
 [node name="LevelContainer" type="Node2D" parent="."]
 

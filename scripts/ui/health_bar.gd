@@ -15,15 +15,11 @@ func set_health(_entity: Node2D, newHealth: int):
 		timer.start()
 	else:
 		damageBar.value = health
-			
-		#hide_bar()
 
 func _on_timer_timeout():
 	damageBar.value = health
 
 func _init_health(_entity: CharacterBody2D, startHealth: int):
-	print("init")
-	print(startHealth)
 	health = startHealth
 	max_value = health
 	value = health

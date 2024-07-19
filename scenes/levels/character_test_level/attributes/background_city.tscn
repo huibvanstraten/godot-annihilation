@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3ixgbixrq43m" path="res://assets/textures/backgrounds/city/moon.png" id="2_7dtp4"]
 [ext_resource type="Texture2D" uid="uid://gk8otcr2p57k" path="res://assets/textures/backgrounds/city/Cloudy city at night 4 1280.png" id="3_q2jp1"]
 [ext_resource type="Texture2D" uid="uid://ggy4w7jta8ws" path="res://assets/textures/backgrounds/city/Cloudy city at night 5 1280.png" id="4_ffaep"]
-[ext_resource type="Texture2D" uid="uid://bioqywst7f5vf" path="res://assets/textures/backgrounds/city/Cloudy city at night 6 1280.png" id="5_4ml6v"]
+[ext_resource type="Texture2D" uid="uid://bioqywst7f5vf" path="res://assets/textures/backgrounds/city/Cloudy_city_at_night_6_1280.png" id="5_ufwmt"]
 
 [node name="BackgroundCity" type="ParallaxBackground"]
 scale = Vector2(1, 1.15)
@@ -48,5 +48,5 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1280, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
-texture = ExtResource("5_4ml6v")
+texture = ExtResource("5_ufwmt")
 centered = false

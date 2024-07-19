@@ -8,7 +8,7 @@ extends Node
 @export var airAcceleration: float = 25.0
 @export var friction: float = 2000.0
 @export var airFriction: float = 3.0
-@export var knockbackVelocity: Vector2 = Vector2(50, 0)
+@export var knockbackVelocity: Vector2 = Vector2(20, -10)
 @export var knockbackDirection: int 
 @export var speed = 300.0
 @export var airSpeed = 150.0

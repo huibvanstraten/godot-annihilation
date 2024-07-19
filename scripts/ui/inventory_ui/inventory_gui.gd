@@ -3,8 +3,8 @@ extends Control
 
 @onready var items: GridContainer = $NinePatchRect/Items
 @onready var buddies: GridContainer = $NinePatchRect/Buddies
-@onready var itemInventory: Inventory = preload("res://scripts/inventory/player_item_inventory.tres")
-@onready var buddyInventory: Inventory = preload("res://scripts/inventory/player_buddy_inventory.tres")
+@onready var itemInventory: Inventory = preload("res://scripts/inventory/inventory_resources/player_item_inventory.tres")
+@onready var buddyInventory: Inventory = preload("res://scripts/inventory/inventory_resources/player_buddy_inventory.tres")
 @onready var itemSlots: Array = $NinePatchRect/Items.get_children()
 @onready var buddySlots: Array = $NinePatchRect/Buddies.get_children()
 
@@ -29,7 +29,6 @@ func _input(event):
 		activate_collectable()
 
 func _move_container_focus():
-	print(currentContainer.name)
 	remove_focus()
 	if currentContainer.name == "Items":
 		set_focus(buddies.get_child(0))

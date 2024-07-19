@@ -13,7 +13,6 @@ func spawn_player(spawn_position) -> Player:
 		var level = LevelManager.get_current_level()
 		EventManager.spawn_player.emit(player)
 		level.add_child(player)
-		print("spawn")
 		
 	else:
 		var health = player.find_child("Health") as HealthComponent
@@ -22,6 +21,8 @@ func spawn_player(spawn_position) -> Player:
 		physics.reset_velocity()
 		var camera = player.find_child("Camera2D") as Camera2D
 		camera.set_camera_boundaries()
+		
+		EventManager.change_background.emit(1)
 	
 	if last_spawn_point == null:
 		player.position = spawn_position

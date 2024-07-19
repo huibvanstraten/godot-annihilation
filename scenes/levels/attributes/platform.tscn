@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/platform.gd" id="1_7g8p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sapyf"]
-size = Vector2(148, 3)
+size = Vector2(67, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxerg"]
 atlas = ExtResource("1_1cscw")
@@ -111,10 +111,34 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../DetectionBody/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_woady"]
 resource_name = "break"
-length = 0.6
+length = 3.0
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -152,9 +176,34 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../DetectionBody/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_2wwcx"]
 resource_name = "move"
+length = 4.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -187,7 +236,7 @@ tracks/2/path = NodePath("../../PathFollow2D:progress_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -201,11 +250,12 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8qmu"]
-size = Vector2(162, 50.5)
+size = Vector2(92.9942, 14.7712)
 
 [node name="Platform" type="Path2D" node_paths=PackedStringArray("path", "sprite", "animation", "breakCollision")]
 script = ExtResource("1_7g8p6")
 type = 3
+speedScale = 0.5
 path = NodePath("PathFollow2D")
 sprite = NodePath("PlatformBody/AnimatedSprite2D")
 animation = NodePath("PlatformBody/AnimatedSprite2D/AnimationPlayer")
@@ -234,11 +284,12 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody/DetectionBody"]
-position = Vector2(338.476, -19.1093)
+position = Vector2(373, 18)
 shape = SubResource("RectangleShape2D_sapyf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlatformBody"]
-position = Vector2(-32.9972, -45.9972)
+position = Vector2(1.92745, -18.8998)
+scale = Vector2(0.6, 0.3)
 sprite_frames = SubResource("SpriteFrames_uxepr")
 animation = &"move"
 
@@ -248,5 +299,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody"]
-position = Vector2(-34.0251, -36)
+position = Vector2(0.921857, -16.9026)
 shape = SubResource("RectangleShape2D_u8qmu")

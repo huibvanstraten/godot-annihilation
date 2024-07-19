@@ -14,6 +14,7 @@ enum PlatformType { IDLE, MOVE, LOOP, BREAK }
 @export var breakCollision: Area2D = null
 
 var breaktimer: Timer = null
+var reversePlatform: bool = false
 
 func _ready():
 	match type: 
@@ -49,8 +50,13 @@ func _start_breaking(_body: Node2D):
 
 func _on_timer_timeout():
 	set_process(false)
+	reversePlatform = false
 	animation.play("break")
 
 func _remove_platform(animName: String):
 	if animName == "break":
-		queue_free()
+		if !reversePlatform:
+			reversePlatform = true
+			animation.play_backwards("break")
+		else: 
+			animation.play("move")
