@@ -14,9 +14,10 @@ extends Area2D
 @export var attackBodyPosition: float = 0
 
 func _ready():
-	self.connect("body_entered", _on_body_entered)
+	self.connect("body_entered", _on_bullet_entered)
+	self.connect("area_entered", _on_bullet_entered)
 
-func _on_body_entered(body):
+func _on_bullet_entered(body):
 	if removeAttackBodyAtTouch:
 		EventManager.emit_signal("remove_attack_body")
 	

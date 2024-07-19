@@ -31,7 +31,7 @@ func _input(event):
 				DialogueManager.hide_dialogue()
 				canTalk = false
 				dialogueOpened = false
-				EventManager.emit_signal("interact", false)
+				EventManager.emit_signal("interact", false, triggerArea.triggerAreaId)
 				EventManager.emit_signal("freeze_player", false)
 				if oneTime:
 					queue_free()
