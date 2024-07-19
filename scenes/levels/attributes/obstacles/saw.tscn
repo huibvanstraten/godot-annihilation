@@ -162,7 +162,7 @@ script = ExtResource("1_irirq")
 animationPlayer = NodePath("Area2D/AnimatedSprite2D/AnimationPlayer")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("attackBodyShape", "pathFollow")]
-position = Vector2(218.625, 44.4051)
+position = Vector2(39.1252, 44.9051)
 rotation = -0.00278551
 collision_layer = 8
 collision_mask = 18
@@ -191,9 +191,8 @@ position = Vector2(1.06457, -0.0480957)
 curve = SubResource("Curve2D_w5wkd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(183.435, -0.451903)
+position = Vector2(3.93543, 0.0480957)
 rotation = -0.00278551
-progress = 179.5
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 position = Vector2(34, 45)

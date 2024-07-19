@@ -550,7 +550,7 @@ animationName = "attack"
 [node name="Health" type="Node2D" parent="Components" node_paths=PackedStringArray("entity")]
 script = ExtResource("3_6a47f")
 entity = NodePath("../..")
-maxHealth = 20.0
+maxHealth = 30.0
 
 [node name="Physics" type="Node2D" parent="Components"]
 script = ExtResource("9_it2n0")

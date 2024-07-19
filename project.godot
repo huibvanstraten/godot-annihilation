@@ -23,6 +23,7 @@ EventManager="*res://scripts/managers/event_manager.gd"
 SfxManager="*res://scripts/managers/sfx_manager.gd"
 MusicManager="*res://scripts/managers/music_manager.gd"
 DialogueManager="*res://scenes/dialogue/dialogue_manager.tscn"
+InputMapManager="*res://scripts/managers/input_map_manager.gd"
 
 [display]
 

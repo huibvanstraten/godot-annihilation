@@ -2,6 +2,7 @@ extends Node
 
 signal level(levelId: int)
 signal transition_to_area(areaId: int)
+signal change_background(areaId: int)
 
 signal freeze_player(freeze: bool)
 signal game_paused(isPaused: bool)

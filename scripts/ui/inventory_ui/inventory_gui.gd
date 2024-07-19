@@ -29,7 +29,6 @@ func _input(event):
 		activate_collectable()
 
 func _move_container_focus():
-	print(currentContainer.name)
 	remove_focus()
 	if currentContainer.name == "Items":
 		set_focus(buddies.get_child(0))

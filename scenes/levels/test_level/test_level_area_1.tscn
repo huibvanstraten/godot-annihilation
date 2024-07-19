@@ -37,7 +37,7 @@ transitionAreaId = 2
 [node name="Left" type="StaticBody2D" parent="AreaBoundaries"]
 position = Vector2(127, 85)
 rotation = 1.5708
-collision_mask = 286
+collision_mask = 511
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBoundaries/Left"]
 position = Vector2(433, 11.5)
