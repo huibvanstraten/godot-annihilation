@@ -14,6 +14,7 @@ signal player_died
 signal entity_hit(entity: CharacterBody2D, newHealth: int)
 signal health_changed(entity: CharacterBody2D, newHealth: int)
 signal health_depleted(entity: CharacterBody2D)
+signal paralyze(entity: CharacterBody2D)
 
 signal remove_buddy(buddy: Area2D)
 

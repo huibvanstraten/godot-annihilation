@@ -17,6 +17,8 @@ extends Node
 
 var entityHit: bool = false
 var healthDepleted: bool = false
+var isParalyzed: bool = false
+
 # TODO: move this (jump
 var playerInRange: bool = false
 
@@ -29,6 +31,7 @@ var coyoteCounter: float = 0
 func initialize():
 	EventManager.connect("health_depleted", _on_health_depleted)
 	EventManager.connect("entity_hit", _on_entity_hit)
+	EventManager.paralyze.connect(_on_paralyze)
 
 func enter():
 	nodeAnimation.play(animationName)
@@ -48,6 +51,12 @@ func _on_entity_hit(entity: CharacterBody2D):
 	else:
 		entityHit = check_state_type(entity)
 
+func _on_paralyze(entity: CharacterBody2D):
+	if characterBody != entity:
+		isParalyzed = false
+	else:
+		isParalyzed = check_state_type(entity)
+	
 func check_state_type(entity: CharacterBody2D) -> bool:
 	var stateMachine = entity.find_child("StateMachine") as StateMachine
 	return stateMachine.currentState.stateName == stateName

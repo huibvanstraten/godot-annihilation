@@ -11,7 +11,6 @@ func _ready():
 	
 func hit(damage: float):
 	currentHealth -= damage
-	print(currentHealth)
 	EventManager.emit_signal("health_changed", entity, currentHealth)
 	if (currentHealth <= 0.0):
 		EventManager.emit_signal("health_depleted", entity)

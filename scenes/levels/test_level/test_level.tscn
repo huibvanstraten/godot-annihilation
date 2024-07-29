@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwlxmki4oym54"]
+[gd_scene load_steps=27 format=3 uid="uid://bwlxmki4oym54"]
 
 [ext_resource type="Script" path="res://scripts/level/levels/test_level.gd" id="1_wfxty"]
 [ext_resource type="PackedScene" uid="uid://cp8sfgrl32him" path="res://scenes/levels/attributes/deathzone.tscn" id="4_7tly0"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dfjdoxld3jn5a" path="res://scenes/levels/attributes/obstacles/toxic.tscn" id="19_4inrb"]
 [ext_resource type="PackedScene" uid="uid://4kwqay4240lt" path="res://scenes/levels/attributes/obstacles/saw.tscn" id="19_5dva2"]
 [ext_resource type="PackedScene" uid="uid://do7lrq07orvtb" path="res://scenes/levels/attributes/platform.tscn" id="20_uwyf3"]
+[ext_resource type="PackedScene" uid="uid://b603mpx7vdply" path="res://scenes/levels/attributes/obstacles/paralyzing_mushroom.tscn" id="21_5katc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nohh"]
 size = Vector2(2329, 5.50427)
@@ -329,3 +330,6 @@ breakCollision = NodePath("../Platform2/PlatformBody/DetectionBody")
 
 [node name="Potion" parent="Areas/Area4" instance=ExtResource("16_yijvk")]
 position = Vector2(813, -135)
+
+[node name="ParalyzingMushroom" parent="." instance=ExtResource("21_5katc")]
+position = Vector2(826, 796)

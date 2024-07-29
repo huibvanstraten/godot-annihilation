@@ -1,7 +1,7 @@
 class_name PlayerStateMachine
 extends StateMachine
 
-enum StateType { Idle, Run, Jump, Fall, Attack, Hit, Die, Wall, Crouch, Ledge, IdleShoot, RunShoot, JumpShoot, FallShoot, Invalid }
+enum StateType { Idle, Run, Jump, Fall, Attack, Hit, Die, Wall, Crouch, Ledge, IdleShoot, RunShoot, JumpShoot, FallShoot, Paralyzed, Invalid }
 
 var stateTypeDict = {
 	"Idle": StateType.Idle,
@@ -18,8 +18,9 @@ var stateTypeDict = {
 	"run_shoot": StateType.RunShoot,
 	"jump_shoot": StateType.JumpShoot,
 	"fall_shoot": StateType.FallShoot,
-	"Invalid": StateType.Invalid
-}
+	"Invalid": StateType.Invalid,
+	"Paralyzed": StateType.Paralyzed
+	}
 
 func _ready():
 	super()

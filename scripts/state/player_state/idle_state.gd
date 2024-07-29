@@ -18,6 +18,10 @@ func StatePhysicsProcess(_delta : float) -> PlayerStateMachine.StateType:
 		entityHit = false
 		return PlayerStateMachine.StateType.Hit
 	
+	elif isParalyzed:
+		isParalyzed = false
+		return PlayerStateMachine.StateType.Paralyzed
+	
 	elif healthDepleted:
 		healthDepleted = false
 		return PlayerStateMachine.StateType.Die

@@ -1,0 +1,387 @@
+[gd_scene load_steps=19 format=3 uid="uid://b603mpx7vdply"]
+
+[ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="1_g3xn8"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/paralyzing_mushroom.gd" id="1_mlr3e"]
+[ext_resource type="Texture2D" uid="uid://bkgcxvri21hnu" path="res://assets/textures/objects/paralyzing_mushroom.png" id="2_eds7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shypk"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(27, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3o6y"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(54, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnm4g"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(81, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1s5"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(162, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3njw"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(135, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohpkr"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(108, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg7ce"]
+atlas = ExtResource("2_eds7w")
+region = Rect2(0, 0, 27, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egcle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shypk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3o6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnm4g")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk1s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3njw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohpkr")
+}],
+"loop": true,
+"name": &"grow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg7ce")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nue8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"grow"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackBody/AttackBodyShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IdleBody/IdleBodyShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fqoa2"]
+resource_name = "explode"
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"explode"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackBody/AttackBodyShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IdleBody/IdleBodyShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i8p71"]
+resource_name = "grow"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"grow"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackBody/AttackBodyShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IdleBody/IdleBodyShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7lf5r"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackBody/AttackBodyShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../IdleBody/IdleBodyShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86dnj"]
+_data = {
+"RESET": SubResource("Animation_nue8c"),
+"explode": SubResource("Animation_fqoa2"),
+"grow": SubResource("Animation_i8p71"),
+"idle": SubResource("Animation_7lf5r")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a65jk"]
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvxs1"]
+radius = 7.0
+height = 18.0
+
+[node name="ParalyzingMushroom" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("1_mlr3e")
+animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_egcle")
+animation = &"grow"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_86dnj")
+}
+
+[node name="AttackBody" type="Area2D" parent="." node_paths=PackedStringArray("attackBodyShape")]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_g3xn8")
+attackBodyShape = NodePath("AttackBodyShape")
+damage = 2.08165e-12
+paralyze = true
+removeAttackBodyAtTouch = true
+
+[node name="AttackBodyShape" type="CollisionShape2D" parent="AttackBody"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_a65jk")
+debug_color = Color(0.787698, 0.217652, 0.908192, 0.42)
+
+[node name="GrowTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="IdleBody" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="IdleBodyShape" type="CollisionShape2D" parent="IdleBody"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_wvxs1")
+
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="GrowTimer" to="." method="_on_grow_timer_timeout"]
+[connection signal="body_entered" from="IdleBody" to="." method="_on_idle_body_body_entered"]
