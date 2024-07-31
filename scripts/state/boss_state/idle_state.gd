@@ -1,17 +1,16 @@
-class_name WalkState
+class_name BossIdleState
 extends State
+
+@onready var moveChoiceComponent: MoveChoiceComponent = $"../../Components/MoveChoice"
+@onready var attackComponent: AttackComponent = $"../../Components/Attack"
 
 @onready var timer: Timer = $Timer
 
-@onready var wanderComponent: WanderComponent = $"../../Components/Wander"
-@onready var attackComponent: AttackComponent = $"../../Components/Attack"
-
-var changeToIdleState = false
+var changeToNextState: bool = false
 	
 func enter():
 	super()
-	wanderComponent.wander_start()
-	timer.start(10)
+	timer.start(3)
 
 func exit():
 	super()
@@ -24,22 +23,18 @@ func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
 func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
-	wanderComponent.change_direction()
-	wanderComponent.wander(delta)
-	
 	if entityHit:
 		entityHit = false
 		return BossStateMachine.BossStateType.Hit
 	elif healthDepleted:
 		healthDepleted = false
 		return BossStateMachine.BossStateType.Die
-	if attackComponent.playerInRange:
+	elif attackComponent.playerInRange:
 		return BossStateMachine.BossStateType.DashAttack
-	elif changeToIdleState:
-		changeToIdleState = false
-		return BossStateMachine.BossStateType.Idle
-		
+	elif changeToNextState:
+		return moveChoiceComponent.choose_next_move()
+	
 	return BossStateMachine.BossStateType.Invalid
-
+	
 func _on_timer_timeout():
-	changeToIdleState = true
+	changeToNextState = true

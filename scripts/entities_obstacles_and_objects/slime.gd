@@ -16,7 +16,6 @@ func _ready():
 	defaultRayCastPosition = rayCast.position.x * -1
 	
 func _physics_process(delta):
-	# Trying out PhysicsComponent and how it should work with the entity
 	if not is_on_floor():
 		physicsComponent.set_velocity(delta)
 	

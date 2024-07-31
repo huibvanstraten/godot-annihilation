@@ -513,9 +513,8 @@ stateName = "die"
 animationName = "die"
 canMove = false
 
-[node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("5_4nqe5")
-attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")

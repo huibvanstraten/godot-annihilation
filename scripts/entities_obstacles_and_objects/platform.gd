@@ -35,7 +35,7 @@ func _ready():
 			add_child(breaktimer)
 			breaktimer.connect("timeout", _on_timer_timeout)
 
-func _process(delta):
+func _process(_delta):
 	match type:
 		PlatformType.LOOP:
 			path.progress += speed

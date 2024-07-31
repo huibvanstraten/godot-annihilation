@@ -18,6 +18,7 @@ func _ready():
 	
 func changeState(nextState: State):
 	previousState = currentState
+	print(currentState)
 	currentState.exit()
 	currentState = nextState
 	currentState.enter()

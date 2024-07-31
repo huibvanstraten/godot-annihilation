@@ -18,8 +18,8 @@ var stateTypeDict = {
 	"run_shoot": StateType.RunShoot,
 	"jump_shoot": StateType.JumpShoot,
 	"fall_shoot": StateType.FallShoot,
-	"Invalid": StateType.Invalid,
-	"Paralyzed": StateType.Paralyzed
+	"Paralyzed": StateType.Paralyzed,
+	"Invalid": StateType.Invalid
 	}
 
 func _ready():
