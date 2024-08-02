@@ -1,44 +1,45 @@
 class_name BossWalkState
-extends EnemyState
+extends State
 
 @onready var timer: Timer = $Timer
 
-@onready var wanderComponent: WanderComponent = $"../../Components/Wander"
+@onready var wanderComponent: BossWalkComponent = $"../../Components/Walk"
+@onready var attackComponent: AttackComponent = $"../../Components/Attack"
 
 var changeToIdleState = false
 	
 func enter():
 	super()
 	wanderComponent.wander_start()
-	timer.start(5)
+	timer.start(10)
 
 func exit():
 	super()
 	timer.stop()
 
-func stateInput(_event: InputEvent) -> EnemyStateMachine.StateType:
-	return EnemyStateMachine.StateType.Invalid
+func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
+	return BossStateMachine.BossStateType.Invalid
 	
-func stateMainProcess(_delta: float) -> EnemyStateMachine.StateType:
-	return EnemyStateMachine.StateType.Invalid
+func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
+	return BossStateMachine.BossStateType.Invalid
 
-func StatePhysicsProcess(delta : float) -> EnemyStateMachine.StateType:
+func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
 	wanderComponent.change_direction()
 	wanderComponent.wander(delta)
 	
 	if entityHit:
 		entityHit = false
-		return EnemyStateMachine.StateType.Hit
+		return BossStateMachine.BossStateType.Hit
 	elif healthDepleted:
 		healthDepleted = false
-		return EnemyStateMachine.StateType.Die
-	elif attackComponent.playerInRange:
-		return EnemyStateMachine.StateType.Attack
+		return BossStateMachine.BossStateType.Die
+	if attackComponent.playerInRange:
+		return BossStateMachine.BossStateType.DashAttack
 	elif changeToIdleState:
 		changeToIdleState = false
-		return EnemyStateMachine.StateType.Idle
+		return BossStateMachine.BossStateType.Idle
 		
-	return EnemyStateMachine.StateType.Invalid
+	return BossStateMachine.BossStateType.Invalid
 
 func _on_timer_timeout():
 	changeToIdleState = true

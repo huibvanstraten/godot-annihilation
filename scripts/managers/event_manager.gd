@@ -23,3 +23,10 @@ signal play_next_song(songName: String)
 signal remove_attack_body
 signal interact(canInteract: bool, triggerId: int)
 signal activate_collectable(collectable: CollectableResource)
+
+
+signal grow_mushrooms
+signal mushrooms_grown
+signal explode_mushrooms
+signal remove_mushrooms
+signal player_paralyzed

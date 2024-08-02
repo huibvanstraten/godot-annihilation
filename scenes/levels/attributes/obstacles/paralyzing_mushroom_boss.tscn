@@ -1,35 +1,35 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8djhxivyq1ii"]
+[gd_scene load_steps=19 format=3 uid="uid://cjp3qvlqbg5vw"]
 
-[ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="1_g3xn8"]
-[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/paralyzing_mushroom.gd" id="1_mlr3e"]
-[ext_resource type="Texture2D" uid="uid://bkgcxvri21hnu" path="res://assets/textures/objects/paralyzing_mushroom.png" id="2_eds7w"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/paralyzing_mushroom_boss.gd" id="1_ao6es"]
+[ext_resource type="Texture2D" uid="uid://bkgcxvri21hnu" path="res://assets/textures/objects/paralyzing_mushroom.png" id="2_1ndy4"]
+[ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="3_ilwpu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shypk"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(27, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3o6y"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(54, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnm4g"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(81, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lk1s5"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(162, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3njw"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(135, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohpkr"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(108, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hg7ce"]
-atlas = ExtResource("2_eds7w")
+atlas = ExtResource("2_1ndy4")
 region = Rect2(0, 0, 27, 29)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_egcle"]
@@ -343,7 +343,7 @@ radius = 7.0
 height = 18.0
 
 [node name="ParalyzingMushroom" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("1_mlr3e")
+script = ExtResource("1_ao6es")
 animationPlayer = NodePath("AnimatedSprite2D/AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -359,7 +359,7 @@ libraries = {
 collision_layer = 0
 collision_mask = 2
 monitorable = false
-script = ExtResource("1_g3xn8")
+script = ExtResource("3_ilwpu")
 attackBodyShape = NodePath("AttackBodyShape")
 damage = 2.08165e-12
 paralyze = true
@@ -370,10 +370,6 @@ position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_a65jk")
 debug_color = Color(0.787698, 0.217652, 0.908192, 0.42)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="IdleBody" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -383,5 +379,4 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_wvxs1")
 
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_grow_timer_timeout"]
 [connection signal="body_entered" from="IdleBody" to="." method="_on_idle_body_body_entered"]

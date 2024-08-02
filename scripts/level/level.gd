@@ -12,7 +12,7 @@ func _ready():
 	InputMapManager.load_input_mapping("res://input_map/input_config_8bitdo_pro2.json")
 	
 	levelData = LevelManager.get_level_data_by_id(levelId)
-	set_current_area(1)
+	set_current_area(5)
 	
 	EventManager.connect("player_died", _on_player_died)
 	EventManager.connect("game_paused", _on_game_paused)

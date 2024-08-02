@@ -17,29 +17,29 @@ func exit():
 	super()
 	timer.stop()
 
-func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
-	return BossStateMachine.BossStateType.Invalid
+func stateInput(_event: InputEvent) -> EnemyStateMachine.StateType:
+	return EnemyStateMachine.StateType.Invalid
 	
-func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
-	return BossStateMachine.BossStateType.Invalid
+func stateMainProcess(_delta: float) -> EnemyStateMachine.StateType:
+	return EnemyStateMachine.StateType.Invalid
 
-func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
+func StatePhysicsProcess(delta : float) -> EnemyStateMachine.StateType:
 	wanderComponent.change_direction()
 	wanderComponent.wander(delta)
 	
 	if entityHit:
 		entityHit = false
-		return BossStateMachine.BossStateType.Hit
+		return EnemyStateMachine.StateType.Hit
 	elif healthDepleted:
 		healthDepleted = false
-		return BossStateMachine.BossStateType.Die
+		return EnemyStateMachine.StateType.Die
 	if attackComponent.playerInRange:
-		return BossStateMachine.BossStateType.DashAttack
+		return EnemyStateMachine.StateType.Attack
 	elif changeToIdleState:
 		changeToIdleState = false
-		return BossStateMachine.BossStateType.Idle
+		return EnemyStateMachine.StateType.Idle
 		
-	return BossStateMachine.BossStateType.Invalid
+	return EnemyStateMachine.StateType.Invalid
 
 func _on_timer_timeout():
 	changeToIdleState = true

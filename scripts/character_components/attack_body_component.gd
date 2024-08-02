@@ -27,6 +27,7 @@ func _on_body_entered(body):
 			if paralyze:
 				if child is ParalyzeComponent:
 					child.paralyze()
+					EventManager.player_paralyzed.emit()
 					return
 			else:
 				if child is HealthComponent:

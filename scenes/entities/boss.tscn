@@ -1,10 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgj88q5g84bs7"]
+[gd_scene load_steps=39 format=3 uid="uid://cpwithb3e52h7"]
 
 [ext_resource type="Script" path="res://scripts/state/boss_state/boss_state_machine.gd" id="1_erlg2"]
 [ext_resource type="Texture2D" uid="uid://cie23iwkeusgx" path="res://assets/textures/objects/boss/idle.png" id="1_fj0kg"]
+[ext_resource type="Script" path="res://scripts/entities_obstacles_and_objects/boss.gd" id="1_nxy2p"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/idle_state.gd" id="2_bsd74"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/laser_state.gd" id="3_1busf"]
-[ext_resource type="Script" path="res://scripts/state/enemy_state/walk_state.gd" id="3_l06yc"]
+[ext_resource type="Script" path="res://scripts/state/boss_state/walk_state_boss.gd" id="3_yrfdw"]
+[ext_resource type="Script" path="res://scripts/character_components/boss_walk_component.gd" id="4_4gf7l"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/grow_state.gd" id="4_v1i6c"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/dash_attack_state.gd" id="5_84dqg"]
 [ext_resource type="Script" path="res://scripts/character_components/mushroom_component.gd" id="5_yikjx"]
@@ -12,10 +14,11 @@
 [ext_resource type="Script" path="res://scripts/state/boss_state/hit_state.gd" id="7_vfduh"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/die_state.gd" id="8_kaldw"]
 [ext_resource type="Script" path="res://scripts/character_components/state_choice_component.gd" id="9_5xwkm"]
+[ext_resource type="Script" path="res://scripts/character_components/health_component.gd" id="10_oxuax"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_component.gd" id="11_urysx"]
-[ext_resource type="Script" path="res://scripts/character_components/wander_component.gd" id="12_cdy8f"]
 [ext_resource type="Script" path="res://scripts/character_components/flip_component.gd" id="13_gf8s0"]
 [ext_resource type="Script" path="res://scripts/character_components/physics_component.gd" id="14_efmue"]
+[ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="19_22qqw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65a0m"]
 atlas = ExtResource("1_fj0kg")
@@ -97,8 +100,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_w07sj"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_7m1br"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -124,8 +127,8 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_8mxq1"]
-resource_name = "walk"
+[sub_resource type="Animation" id="Animation_mmadk"]
+resource_name = "dash_attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -136,7 +139,88 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"walk"]
+"values": [&"dash_attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_urr4x"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_53hq2"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hit"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w07sj"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -205,8 +289,8 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_mmadk"]
-resource_name = "dash_attack"
+[sub_resource type="Animation" id="Animation_8mxq1"]
+resource_name = "walk"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -217,88 +301,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"dash_attack"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_53hq2"]
-resource_name = "hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"hit"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_urr4x"]
-resource_name = "die"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"die"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_7m1br"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
+"values": [&"walk"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -328,12 +331,28 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxgk5"]
 radius = 142.172
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oreng"]
+radius = 16.0
+height = 74.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqwi2"]
 radius = 6.0
 height = 64.0
 
-[node name="Boss" type="CharacterBody2D"]
-position = Vector2(185, 161)
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "wanderComponent", "collisionShape", "rayCast", "bodyCollisionShape", "stateMachine", "physicsComponent", "attackBodyComponent", "animationComponent", "flipComponent")]
+position = Vector2(231, 246)
+collision_layer = 4
+script = ExtResource("1_nxy2p")
+attackComponent = NodePath("Components/Attack")
+wanderComponent = NodePath("Components/Walk")
+collisionShape = NodePath("FlipMarker/DetectionArea/CollisionShape2D")
+rayCast = NodePath("FlipMarker/GroundContactChecker")
+bodyCollisionShape = NodePath("Body")
+stateMachine = NodePath("StateMachine")
+physicsComponent = NodePath("Components/Physics")
+attackBodyComponent = NodePath("FlipMarker/AttackBody")
+animationComponent = NodePath("FlipMarker/AnimatedSprite2D")
+flipComponent = NodePath("Components/Flip")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("character", "initialState")]
 script = ExtResource("1_erlg2")
@@ -355,13 +374,14 @@ wait_time = 3.0
 one_shot = true
 
 [node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
-script = ExtResource("3_l06yc")
+script = ExtResource("3_yrfdw")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
 stateName = "walk"
 animationName = "walk"
+sfxName = "walk"
 
 [node name="Timer" type="Timer" parent="StateMachine/StateWalk"]
 wait_time = 3.0
@@ -377,8 +397,9 @@ animationName = "laser"
 sfxName = "laser"
 canMove = false
 
-[node name="StateMushroom" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateMushroom" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("mushroomComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("4_v1i6c")
+mushroomComponent = NodePath("../../Components/Mushroom")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -409,8 +430,9 @@ animationName = "hit"
 sfxName = "hit"
 canMove = false
 
-[node name="StateDie" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateDie" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("physicsComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("8_kaldw")
+physicsComponent = NodePath("../../Components/Physics")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -422,11 +444,25 @@ canMove = false
 
 [node name="Components" type="Node2D" parent="."]
 
+[node name="Health" type="Node2D" parent="Components" node_paths=PackedStringArray("entity")]
+script = ExtResource("10_oxuax")
+entity = NodePath("../..")
+
+[node name="Physics" type="Node2D" parent="Components"]
+script = ExtResource("14_efmue")
+knockbackVelocity = Vector2(5, 2.08165e-12)
+
 [node name="Mushroom" type="Node2D" parent="Components"]
 script = ExtResource("5_yikjx")
 
-[node name="Laser" type="Node2D" parent="Components"]
+[node name="Timer" type="Timer" parent="Components/Mushroom"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Laser" type="Node2D" parent="Components" node_paths=PackedStringArray("laserPosition", "physicsComponent")]
 script = ExtResource("6_srb8j")
+laserPosition = NodePath("../../FlipMarker/LaserPosition")
+physicsComponent = NodePath("../Physics")
 
 [node name="MoveChoice" type="Node2D" parent="Components"]
 script = ExtResource("9_5xwkm")
@@ -434,30 +470,27 @@ script = ExtResource("9_5xwkm")
 [node name="Attack" type="Node2D" parent="Components" node_paths=PackedStringArray("detectionArea", "physicsComponent")]
 script = ExtResource("11_urysx")
 detectionArea = NodePath("../../FlipMarker/DetectionArea")
-physicsComponent = NodePath("../PhysicsComponent")
+physicsComponent = NodePath("../Physics")
 
 [node name="Walk" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "flipComponent", "characterBody")]
-script = ExtResource("12_cdy8f")
-wanderSpeed = 150.0
-physicsComponent = NodePath("../PhysicsComponent")
-flipComponent = NodePath("../FlipComponent")
+script = ExtResource("4_4gf7l")
+physicsComponent = NodePath("../Physics")
+flipComponent = NodePath("../Flip")
 characterBody = NodePath("../..")
 
-[node name="FlipComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("bodyCollisionShape", "flipMarker", "stateMachine", "animationComponent", "physicsComponent")]
+[node name="Flip" type="Node2D" parent="Components" node_paths=PackedStringArray("bodyCollisionShape", "flipMarker", "stateMachine", "animationComponent", "physicsComponent")]
 script = ExtResource("13_gf8s0")
 bodyCollisionShape = NodePath("../../Body")
 flipMarker = NodePath("../../FlipMarker")
 stateMachine = NodePath("../../StateMachine")
 animationComponent = NodePath("../../FlipMarker/AnimatedSprite2D")
-physicsComponent = NodePath("../PhysicsComponent")
-
-[node name="PhysicsComponent" type="Node2D" parent="Components"]
-script = ExtResource("14_efmue")
-knockbackVelocity = Vector2(5, 2.08165e-12)
+physicsComponent = NodePath("../Physics")
 
 [node name="FlipMarker" type="Marker2D" parent="."]
+position = Vector2(0, 1)
 
 [node name="LaserPosition" type="Marker2D" parent="FlipMarker"]
+position = Vector2(9, -52)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlipMarker"]
 position = Vector2(1, -33)
@@ -482,11 +515,23 @@ debug_color = Color(0.456999, 0.448491, 0.997384, 0.42)
 
 [node name="GroundContactChecker" type="RayCast2D" parent="FlipMarker"]
 position = Vector2(12, -10)
+rotation = -1.57176
+scale = Vector2(0.958101, 1.67925)
 target_position = Vector2(0, 19)
 
+[node name="AttackBody" type="Area2D" parent="FlipMarker" node_paths=PackedStringArray("attackBodyShape")]
+script = ExtResource("19_22qqw")
+attackBodyShape = NodePath("AttackBodyShape")
+
+[node name="AttackBodyShape" type="CollisionShape2D" parent="FlipMarker/AttackBody"]
+position = Vector2(1, -36)
+shape = SubResource("CapsuleShape2D_oreng")
+debug_color = Color(0.659122, 0.349494, 0.94846, 0.42)
+
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -31)
 shape = SubResource("CapsuleShape2D_pqwi2")
 
 [connection signal="timeout" from="StateMachine/StateIdle/Timer" to="StateMachine/StateIdle" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/StateWalk/Timer" to="StateMachine/StateWalk" method="_on_timer_timeout"]
+[connection signal="timeout" from="Components/Mushroom/Timer" to="Components/Mushroom" method="_on_timer_timeout"]

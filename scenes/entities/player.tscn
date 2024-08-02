@@ -1672,7 +1672,7 @@ position = Vector2(10, 1)
 script = ExtResource("34_0dyxf")
 entity = NodePath("../..")
 
-[node name="Shoot" type="Node2D" parent="Components" node_paths=PackedStringArray("gunMarker")]
+[node name="Shoot" type="Node2D" parent="Components" node_paths=PackedStringArray("gunMarker") groups=["Player"]]
 position = Vector2(10, -1)
 script = ExtResource("35_vndvh")
 gunMarker = NodePath("../../FlipMarker/GunMarker")

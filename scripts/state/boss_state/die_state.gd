@@ -1,7 +1,7 @@
 class_name BossDieState
 extends State
 
-@onready var physicsComponent: PhysicsComponent = $"../../Components/PhysicsComponent"
+@export var physicsComponent: PhysicsComponent = null
 
 var dieAnimationFinished: bool = false
 

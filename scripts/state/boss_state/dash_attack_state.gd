@@ -13,7 +13,7 @@ func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
 func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
-func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
+func StatePhysicsProcess(_delta : float) -> BossStateMachine.BossStateType:
 	if true:
 		return BossStateMachine.BossStateType.Idle
 	
