@@ -553,6 +553,7 @@ maxHealth = 30.0
 
 [node name="Physics" type="Node2D" parent="Components"]
 script = ExtResource("9_it2n0")
+acceleration = 100.0
 
 [node name="Wander" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "flipComponent", "characterBody")]
 script = ExtResource("10_7x5c5")

@@ -1,5 +1,5 @@
 class_name BossLaserState
-extends State
+extends BossState
 
 @onready var laserComponent: LaserComponent = $"../../Components/Laser"
 
@@ -13,7 +13,8 @@ func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
 func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
-func StatePhysicsProcess(_delta : float) -> BossStateMachine.BossStateType:
+func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
+	walkComponent.stop_wander(delta)
 	if laserComponent.shouldEndLaserState:
 		laserComponent.shouldEndLaserState = false
 		return BossStateMachine.BossStateType.Idle

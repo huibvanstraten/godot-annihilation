@@ -36,7 +36,7 @@ func shoot(delta: float):
 	var target = Vector2.from_angle(currentAngle)
 	laser_move_and_collide(target)
 
-# TODO: laser collision point. figure out angle
+# TODO: figure out angle
 func laser_move_and_collide(target: Vector2):
 	var maxCastTo = target.normalized() * MAX_LENGTH
 	rayCast.target_position = maxCastTo
@@ -56,22 +56,15 @@ func laser_move_and_collide(target: Vector2):
 		end.position = rayCast.target_position
 		end.rotation = rayCast.target_position.angle()
 	
-	attackBody.position = laser.points[1] /2
-	attackBody.shape.extents = Vector2(2, laser.points[1].length() / 2)
+	attackBody.shape.extents = Vector2(laser.points[1].length(), 2)
+	attackBody.position = laser.points[1]
+	var angleTo = attackBody.transform.x.angle_to_point(laser.points[1])
+	attackBody.rotation = angleTo
 
 func set_target_angles(): 
-	var startAngleDegrees = 180 
-	var endAngleDegrees = -30
-	
-	if direction == -1:
-		startAngleDegrees = 200
-		endAngleDegrees = 330
-
-	#startPoint = Vector2.from_angle(deg_to_rad(startAngleDegrees))
-	#endPoint = Vector2.from_angle(deg_to_rad(endAngleDegrees))
 	if direction == 1:
 		startPoint = Vector2(100, -80)
 		endPoint = Vector2(100, 80)
 	else: 
-		startPoint = Vector2(-100, -80)
-		endPoint = Vector2(-40, 80)
+		startPoint = Vector2(-170, 0)
+		endPoint = Vector2(-179, 180)

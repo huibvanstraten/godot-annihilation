@@ -1,21 +1,28 @@
 class_name BossWalkState
-extends State
+extends BossState
 
 @onready var timer: Timer = $Timer
-
-@onready var wanderComponent: BossWalkComponent = $"../../Components/Walk"
 @onready var attackComponent: AttackComponent = $"../../Components/Attack"
 
-var changeToIdleState = false
+var changeToDashState = false
+
+func initialize():
+	super()
+	EventManager.position_reached.connect(
+	func(currentStateName): 
+		if currentStateName == stateName:
+			changeToDashState = true
+		)
 	
 func enter():
 	super()
-	wanderComponent.wander_start()
-	timer.start(10)
+	timer.start(5)
+	walkComponent.select_walking_position()
 
 func exit():
 	super()
 	timer.stop()
+	
 
 func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
@@ -24,8 +31,6 @@ func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
 func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
-	wanderComponent.change_direction()
-	wanderComponent.wander(delta)
 	
 	if entityHit:
 		entityHit = false
@@ -34,12 +39,9 @@ func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
 		healthDepleted = false
 		return BossStateMachine.BossStateType.Die
 	if attackComponent.playerInRange:
-		return BossStateMachine.BossStateType.DashAttack
-	elif changeToIdleState:
-		changeToIdleState = false
-		return BossStateMachine.BossStateType.Idle
+		return BossStateMachine.BossStateType.Attack
+	elif changeToDashState:
+		changeToDashState = false
+		return BossStateMachine.BossStateType.Dash
 		
 	return BossStateMachine.BossStateType.Invalid
-
-func _on_timer_timeout():
-	changeToIdleState = true

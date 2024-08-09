@@ -10,8 +10,21 @@ extends Node
 @onready var physicsComponent: PhysicsComponent =  $"../Physics"
 @onready var flipComponent: FlipComponent =  $"../Flip"
 
+@export var timeToJumpPeak: float = .4
+@export var jumpHeight: float = 128
+
+var gravity: float
+var jumpSpeed: float
+
+var positionTo: Vector2
+var isTargetReached: bool = false
+
 var wallJump: bool = false
-	
+
+func _ready():
+	gravity = (2 * jumpHeight) / pow(timeToJumpPeak, 2)
+	jumpSpeed = gravity * timeToJumpPeak
+
 func jump():
 	if wallJump:
 		wall_jump()
@@ -19,7 +32,7 @@ func jump():
 		floor_jump()
 
 func floor_jump():
-	physicsComponent.velocityY = jumpVelocity
+	physicsComponent.velocityY = -jumpSpeed
 
 func wall_jump():
 	var wall_side = characterBody.get_wall_normal()

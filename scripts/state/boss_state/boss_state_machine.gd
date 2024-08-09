@@ -1,7 +1,7 @@
 class_name BossStateMachine
 extends StateMachine
 
-enum BossStateType { Idle, Walk, Laser, Mushroom, DashAttack, Hit, Die, Invalid }
+enum BossStateType { Idle, Walk, Jump, Laser, Mushroom, Attack, Dash, Hit, Die, Invalid }
 
 const STATE_PROBABILITIES = {
 	BossStateType.Walk: 0.7,
@@ -11,12 +11,14 @@ const STATE_PROBABILITIES = {
 const STATE_DICTIONARY = {
 	"Idle": BossStateType.Idle,
 	"walk": BossStateType.Walk,
+	"jump": BossStateType.Jump,
 	"laser": BossStateType.Laser,
 	"mushroom": BossStateType.Mushroom,
-	"DashAttack": BossStateType.DashAttack,
-	"Hit": BossStateType.Hit,
-	"Die": BossStateType.Die,
-	"Invalid": BossStateType.Invalid
+	"attack": BossStateType.Attack,
+	"dash": BossStateType.Dash,
+	"hit": BossStateType.Hit,
+	"die": BossStateType.Die,
+	"invalid": BossStateType.Invalid
 }
 
 func _process(delta):

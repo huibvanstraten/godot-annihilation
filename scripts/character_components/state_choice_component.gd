@@ -25,8 +25,6 @@ func get_next_state() -> BossStateMachine.BossStateType:
 	var randomValue = randf() * totalWeight
 	
 	for i in range(cumulativeWeights.size()):
-		if enumKeys[i] == previousState:
-			continue  # Skip the previous value
 		if randomValue <= cumulativeWeights[i]:
 			previousState = enumKeys[i]
 			return enumKeys[i]

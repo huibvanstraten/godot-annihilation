@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cpwithb3e52h7"]
+[gd_scene load_steps=47 format=3 uid="uid://cpwithb3e52h7"]
 
 [ext_resource type="Script" path="res://scripts/state/boss_state/boss_state_machine.gd" id="1_erlg2"]
 [ext_resource type="Texture2D" uid="uid://cie23iwkeusgx" path="res://assets/textures/objects/boss/idle.png" id="1_fj0kg"]
@@ -8,17 +8,26 @@
 [ext_resource type="Script" path="res://scripts/state/boss_state/walk_state_boss.gd" id="3_yrfdw"]
 [ext_resource type="Script" path="res://scripts/character_components/boss_walk_component.gd" id="4_4gf7l"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/grow_state.gd" id="4_v1i6c"]
-[ext_resource type="Script" path="res://scripts/state/boss_state/dash_attack_state.gd" id="5_84dqg"]
 [ext_resource type="Script" path="res://scripts/character_components/mushroom_component.gd" id="5_yikjx"]
 [ext_resource type="Script" path="res://scripts/character_components/laser_component.gd" id="6_srb8j"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/hit_state.gd" id="7_vfduh"]
+[ext_resource type="Script" path="res://scripts/state/boss_state/attack_state.gd" id="8_c8awm"]
 [ext_resource type="Script" path="res://scripts/state/boss_state/die_state.gd" id="8_kaldw"]
 [ext_resource type="Script" path="res://scripts/character_components/state_choice_component.gd" id="9_5xwkm"]
+[ext_resource type="Script" path="res://scripts/state/boss_state/dash_state.gd" id="9_8fmd8"]
+[ext_resource type="Script" path="res://scripts/state/boss_state/jump_state.gd" id="10_ojqkf"]
 [ext_resource type="Script" path="res://scripts/character_components/health_component.gd" id="10_oxuax"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_component.gd" id="11_urysx"]
 [ext_resource type="Script" path="res://scripts/character_components/flip_component.gd" id="13_gf8s0"]
 [ext_resource type="Script" path="res://scripts/character_components/physics_component.gd" id="14_efmue"]
+[ext_resource type="Script" path="res://scripts/character_components/boss_jump_component.gd" id="18_2csy1"]
 [ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="19_22qqw"]
+[ext_resource type="Script" path="res://scripts/character_components/position_component.gd" id="20_jn2jo"]
+[ext_resource type="Script" path="res://scripts/character_components/dash_component.gd" id="21_r5tcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0on6s"]
+atlas = ExtResource("1_fj0kg")
+region = Rect2(0, 0, 64, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65a0m"]
 atlas = ExtResource("1_fj0kg")
@@ -29,6 +38,10 @@ atlas = ExtResource("1_fj0kg")
 region = Rect2(0, 0, 64, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3go5"]
+atlas = ExtResource("1_fj0kg")
+region = Rect2(0, 0, 64, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl1e0"]
 atlas = ExtResource("1_fj0kg")
 region = Rect2(0, 0, 64, 73)
 
@@ -46,7 +59,10 @@ region = Rect2(0, 0, 64, 73)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ngciy"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0on6s")
+}],
 "loop": true,
 "name": &"dash_attack",
 "speed": 5.0
@@ -73,6 +89,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl1e0")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -235,6 +259,33 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_lse58"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_k5gsn"]
 resource_name = "laser"
 tracks/0/type = "value"
@@ -323,13 +374,14 @@ _data = {
 "die": SubResource("Animation_urr4x"),
 "hit": SubResource("Animation_53hq2"),
 "idle": SubResource("Animation_w07sj"),
+"jump": SubResource("Animation_lse58"),
 "laser": SubResource("Animation_k5gsn"),
 "mushroom": SubResource("Animation_5w7b5"),
 "walk": SubResource("Animation_8mxq1")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cxgk5"]
-radius = 142.172
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isl2g"]
+size = Vector2(54, 75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oreng"]
 radius = 16.0
@@ -339,13 +391,16 @@ height = 74.0
 radius = 6.0
 height = 64.0
 
-[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "wanderComponent", "collisionShape", "rayCast", "bodyCollisionShape", "stateMachine", "physicsComponent", "attackBodyComponent", "animationComponent", "flipComponent")]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("attackComponent", "wanderComponent", "jumpComponent", "dashComponent", "collisionShape", "positionComponent", "rayCast", "bodyCollisionShape", "stateMachine", "physicsComponent", "attackBodyComponent", "animationComponent", "flipComponent")]
 position = Vector2(231, 246)
 collision_layer = 4
 script = ExtResource("1_nxy2p")
 attackComponent = NodePath("Components/Attack")
 wanderComponent = NodePath("Components/Walk")
+jumpComponent = NodePath("Components/Jump")
+dashComponent = NodePath("Components/Dash")
 collisionShape = NodePath("FlipMarker/DetectionArea/CollisionShape2D")
+positionComponent = NodePath("Components/Position")
 rayCast = NodePath("FlipMarker/GroundContactChecker")
 bodyCollisionShape = NodePath("Body")
 stateMachine = NodePath("StateMachine")
@@ -359,8 +414,10 @@ script = ExtResource("1_erlg2")
 character = NodePath("..")
 initialState = NodePath("StateIdle")
 
-[node name="StateIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateIdle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("physicsComponent", "walkComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("2_bsd74")
+physicsComponent = NodePath("../../Components/Physics")
+walkComponent = NodePath("../../Components/Walk")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -373,8 +430,9 @@ sfxName = "idle"
 wait_time = 3.0
 one_shot = true
 
-[node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateWalk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("walkComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("3_yrfdw")
+walkComponent = NodePath("../../Components/Walk")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -386,8 +444,19 @@ sfxName = "walk"
 [node name="Timer" type="Timer" parent="StateMachine/StateWalk"]
 wait_time = 3.0
 
-[node name="StateLaser" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateJump" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+script = ExtResource("10_ojqkf")
+characterBody = NodePath("../..")
+nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
+nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
+collisionshape = NodePath("../../Body")
+stateName = "jump"
+animationName = "jump"
+sfxName = "jump"
+
+[node name="StateLaser" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("walkComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("3_1busf")
+walkComponent = NodePath("../../Components/Walk")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -397,9 +466,10 @@ animationName = "laser"
 sfxName = "laser"
 canMove = false
 
-[node name="StateMushroom" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("mushroomComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+[node name="StateMushroom" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("mushroomComponent", "walkComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
 script = ExtResource("4_v1i6c")
 mushroomComponent = NodePath("../../Components/Mushroom")
+walkComponent = NodePath("../../Components/Walk")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
@@ -409,13 +479,30 @@ animationName = "mushroom"
 sfxName = "mushroom"
 canMove = false
 
-[node name="StateDashAttack" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
-script = ExtResource("5_84dqg")
+[node name="StateAttack" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("attackComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+script = ExtResource("8_c8awm")
+attackComponent = NodePath("../../Components/Attack")
 characterBody = NodePath("../..")
 nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
 nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
 collisionshape = NodePath("../../Body")
 stateName = "dash_attack"
+animationName = "dash_attack"
+sfxName = "dash_attack"
+
+[node name="Timer" type="Timer" parent="StateMachine/StateAttack"]
+wait_time = 10.0
+one_shot = true
+
+[node name="StateDash" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("dashComponent", "walkComponent", "characterBody", "nodeAnimationSprite", "nodeAnimation", "collisionshape")]
+script = ExtResource("9_8fmd8")
+dashComponent = NodePath("../../Components/Dash")
+walkComponent = NodePath("../../Components/Walk")
+characterBody = NodePath("../..")
+nodeAnimationSprite = NodePath("../../FlipMarker/AnimatedSprite2D")
+nodeAnimation = NodePath("../../FlipMarker/AnimatedSprite2D/AnimationPlayer")
+collisionshape = NodePath("../../Body")
+stateName = "dash"
 animationName = "dash_attack"
 sfxName = "dash_attack"
 
@@ -450,7 +537,11 @@ entity = NodePath("../..")
 
 [node name="Physics" type="Node2D" parent="Components"]
 script = ExtResource("14_efmue")
+airAcceleration = 800.0
+airFriction = 2.08165e-12
 knockbackVelocity = Vector2(5, 2.08165e-12)
+airSpeed = 400.0
+direction = Vector2(-1, 2.08165e-12)
 
 [node name="Mushroom" type="Node2D" parent="Components"]
 script = ExtResource("5_yikjx")
@@ -472,10 +563,11 @@ script = ExtResource("11_urysx")
 detectionArea = NodePath("../../FlipMarker/DetectionArea")
 physicsComponent = NodePath("../Physics")
 
-[node name="Walk" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "flipComponent", "characterBody")]
+[node name="Walk" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "flipComponent", "positionComponent", "characterBody")]
 script = ExtResource("4_4gf7l")
 physicsComponent = NodePath("../Physics")
 flipComponent = NodePath("../Flip")
+positionComponent = NodePath("../Position")
 characterBody = NodePath("../..")
 
 [node name="Flip" type="Node2D" parent="Components" node_paths=PackedStringArray("bodyCollisionShape", "flipMarker", "stateMachine", "animationComponent", "physicsComponent")]
@@ -486,11 +578,24 @@ stateMachine = NodePath("../../StateMachine")
 animationComponent = NodePath("../../FlipMarker/AnimatedSprite2D")
 physicsComponent = NodePath("../Physics")
 
+[node name="Jump" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "positionComponent")]
+script = ExtResource("18_2csy1")
+physicsComponent = NodePath("../Physics")
+positionComponent = NodePath("../Position")
+
+[node name="Position" type="Node2D" parent="Components"]
+script = ExtResource("20_jn2jo")
+
+[node name="Dash" type="Node2D" parent="Components" node_paths=PackedStringArray("positionComponent", "physicsComponent")]
+script = ExtResource("21_r5tcs")
+positionComponent = NodePath("../Position")
+physicsComponent = NodePath("../Physics")
+
 [node name="FlipMarker" type="Marker2D" parent="."]
 position = Vector2(0, 1)
 
 [node name="LaserPosition" type="Marker2D" parent="FlipMarker"]
-position = Vector2(9, -52)
+position = Vector2(19, -75)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlipMarker"]
 position = Vector2(1, -33)
@@ -509,8 +614,8 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipMarker/DetectionArea"]
-position = Vector2(-9, -44)
-shape = SubResource("CircleShape2D_cxgk5")
+position = Vector2(-9, -48.5)
+shape = SubResource("RectangleShape2D_isl2g")
 debug_color = Color(0.456999, 0.448491, 0.997384, 0.42)
 
 [node name="GroundContactChecker" type="RayCast2D" parent="FlipMarker"]
@@ -534,4 +639,7 @@ shape = SubResource("CapsuleShape2D_pqwi2")
 
 [connection signal="timeout" from="StateMachine/StateIdle/Timer" to="StateMachine/StateIdle" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/StateWalk/Timer" to="StateMachine/StateWalk" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/StateAttack/Timer" to="StateMachine/StateAttack" method="_on_timer_timeout"]
 [connection signal="timeout" from="Components/Mushroom/Timer" to="Components/Mushroom" method="_on_timer_timeout"]
+[connection signal="body_entered" from="FlipMarker/DetectionArea" to="Components/Attack" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="FlipMarker/DetectionArea" to="Components/Attack" method="_on_detection_area_body_exited"]

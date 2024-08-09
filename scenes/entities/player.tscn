@@ -1664,7 +1664,8 @@ characterBody = NodePath("../..")
 [node name="Physics" type="Node2D" parent="Components"]
 position = Vector2(8, 21)
 script = ExtResource("33_7ss80")
-airFriction = 300000.0
+airAcceleration = 1000.0
+airFriction = 2.08165e-12
 knockbackVelocity = Vector2(500, 2.08165e-12)
 
 [node name="Health" type="Node2D" parent="Components" node_paths=PackedStringArray("entity")]

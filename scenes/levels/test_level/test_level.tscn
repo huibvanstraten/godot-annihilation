@@ -69,7 +69,7 @@ script = ExtResource("11_ygvlp")
 position = Vector2(1198, 973)
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(4098, -494)
+position = Vector2(4028, -501)
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -415,5 +415,13 @@ position = Vector2(4383, -315)
 [node name="Marker2D9" type="Marker2D" parent="Areas/Area5/MushroomSpawnMarkers"]
 position = Vector2(4426, -316)
 
+[node name="BossStandingPoints" type="Node2D" parent="Areas/Area5"]
+
+[node name="Left" type="Marker2D" parent="Areas/Area5/BossStandingPoints"]
+position = Vector2(3923, -315)
+
+[node name="Right" type="Marker2D" parent="Areas/Area5/BossStandingPoints"]
+position = Vector2(4461, -314)
+
 [node name="Boss" parent="." instance=ExtResource("23_ugh64")]
-position = Vector2(4449, -407)
+position = Vector2(4154, -306)

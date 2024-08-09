@@ -30,3 +30,7 @@ signal mushrooms_grown
 signal explode_mushrooms
 signal remove_mushrooms
 signal player_paralyzed
+
+signal get_positions
+signal pass_positions(positionMarkers: Array)
+signal position_reached(currentStateName: String)

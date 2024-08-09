@@ -42,7 +42,7 @@ func _physics_process(delta):
 		physicsComponent.set_velocity(delta)
 		
 		if inputAxis != 0 and stateMachine.can_move():
-			physicsComponent.move_in_air(delta, sign(inputAxis))
+			physicsComponent.move_in_air(sign(inputAxis))
 			flipComponent.flip()
 		elif jumpComponent.wallJump:
 			pass
@@ -51,7 +51,7 @@ func _physics_process(delta):
 	
 	else:
 		if inputAxis != 0 and stateMachine.can_move():
-			physicsComponent.move(delta, sign(inputAxis))
+			physicsComponent.move(sign(inputAxis))
 			flipComponent.flip()
 		elif inputAxis == 0 and currentState != HitState:
 			physicsComponent.stop(delta)

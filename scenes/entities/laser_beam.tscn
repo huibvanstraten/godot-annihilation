@@ -55,6 +55,7 @@ color_ramp = SubResource("GradientTexture1D_t660u")
 [node name="LaserBeam" type="Node2D"]
 position = Vector2(376, 231)
 script = ExtResource("1_ksirv")
+speed = 1.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(100, 2.08165e-12)

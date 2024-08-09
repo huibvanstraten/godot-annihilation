@@ -36,6 +36,16 @@ window/size/window_width_override=1720
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "teal",
+"res://conversations/": "pink",
+"res://input_map/": "orange",
+"res://scenes/": "red",
+"res://scripts/": "purple"
+}
+
 [input]
 
 ui_accept={

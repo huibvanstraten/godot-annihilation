@@ -37,23 +37,23 @@ func set_knockback_direction(knockback_direction: int):
 func knock_back(): 
 	velocityX = knockbackVelocity.x * knockbackDirection
 	
-func move(_delta, inputAxis: float = direction.x):
+func move(inputAxis: float = direction.x):
 	velocityX += acceleration * inputAxis
 	direction.x = inputAxis
 	velocityX = clampf(velocityX, -speed, speed)
 
-func move_in_air(_delta, inputAxis):
+func move_in_air(inputAxis):
 	velocityX += airAcceleration * inputAxis
 	direction.x = inputAxis
 	velocityX = clampf(velocityX, -airSpeed, airSpeed)
 
 func move_to_target(targetPosition: Vector2, delta, attackSpeed: float):
 	speed = attackSpeed
-	direction = targetPosition
-	move(delta)
+	direction.x = sign(targetPosition.x)
+	move()
 
 func stop(delta: float):
-	direction.x = 0.0
+	#direction.x = 0.0
 	velocityX = move_toward(velocityX, 0, friction * delta)
 
 #func air_resistance(delta: float):

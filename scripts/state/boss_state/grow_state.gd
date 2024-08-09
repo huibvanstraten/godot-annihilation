@@ -1,5 +1,5 @@
 class_name BossMushroomState
-extends State
+extends BossState
 
 @export var mushroomComponent: MushroomComponent = null
 
@@ -8,6 +8,7 @@ func enter():
 	mushroomComponent.grow_mushrooms()
 	mushroomComponent.isPlayerParalyzed = false
 	mushroomComponent.areMushroomsGrown = false
+	mushroomComponent.allMushroomsExploded = false
 
 func exit():
 	super()
@@ -18,13 +19,13 @@ func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
 func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
-func StatePhysicsProcess(_delta : float) -> BossStateMachine.BossStateType:
-	#if mushroomComponent.areMushroomsGrown:
-		#mushroomComponent.areMushroomsGrown = false
-		#return BossStateMachine.BossStateType.Idle
+func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
+	walkComponent.stop_wander(delta)
 		
 	if mushroomComponent.isPlayerParalyzed:
 		mushroomComponent.remove_all_mushrooms()
 		return BossStateMachine.BossStateType.Laser
+	elif mushroomComponent.allMushroomsExploded:
+		return BossStateMachine.BossStateType.Idle
 	
 	return BossStateMachine.BossStateType.Invalid

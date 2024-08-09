@@ -11,7 +11,7 @@ extends Node
 
 func wander(delta: float):
 	physicsComponent.speed = wanderSpeed
-	physicsComponent.move(delta)
+	physicsComponent.move()
 	
 func stop_wander(delta: float):
 	physicsComponent.direction.x = 0.0

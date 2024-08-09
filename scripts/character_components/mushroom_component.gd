@@ -5,6 +5,7 @@ extends Node2D
 
 var areMushroomsGrown: bool = false
 var isPlayerParalyzed: bool = false
+var allMushroomsExploded: bool = false
 
 func _ready():
 	EventManager.mushrooms_grown.connect(_on_mushrooms_grown)
@@ -27,8 +28,8 @@ func _on_timer_timeout():
 	
 func explode_all_mushrooms():
 	EventManager.explode_mushrooms.emit()
-	await get_tree().create_timer(3.0).timeout
-	isPlayerParalyzed = true
+	await get_tree().create_timer(4.0).timeout
+	allMushroomsExploded = true
 
 func remove_all_mushrooms():
 	EventManager.remove_mushrooms.emit()
