@@ -22,10 +22,6 @@ func _physics_process(delta):
 		physicsComponent.set_velocity(delta)
 		physicsComponent.move_in_air(sign(physicsComponent.facingDirection))
 		flipComponent.flip()
-	
-	#if stateMachine.currentState is EnemyHitState: 
-		#physicsComponent.knock_back()
-		#flipComponent.flip()
 
 	if stateMachine.currentState is BossIdleState:
 		physicsComponent.velocityX = 0.0
@@ -33,7 +29,7 @@ func _physics_process(delta):
 	if stateMachine.currentState is BossWalkState:
 		var targetPosition = positionComponent.nextPosition.global_position
 		var positionToTravel = (targetPosition - global_position)
-		wanderComponent.walkTo(positionToTravel, delta)
+		wanderComponent.walkTo(positionToTravel)
 		flipComponent.flip()
 		
 		if global_position.distance_to(targetPosition) < 45.0:
@@ -53,17 +49,14 @@ func _physics_process(delta):
 				physicsComponent.direction.x = sign(positionToTravel.x) * -1
 				flipComponent.flip()
 				jumpComponent.get_to_target()
-				print(global_position.distance_to(targetPosition))
 		else:
 			targetReachedTolerance = 5.0
 			if positionToTravel.x < targetReachedTolerance:
 				physicsComponent.direction.x = sign(positionToTravel.x) * -1
 				flipComponent.flip()
 				jumpComponent.get_to_target()
-				print(global_position.distance_to(targetPosition))
 				
 		if global_position.distance_to(targetPosition) < 13.0:
-			print("emitting")
 			EventManager.position_reached.emit(stateMachine.currentState.stateName)
 
 
@@ -71,7 +64,7 @@ func _physics_process(delta):
 		var targetPosition = positionComponent.nextPosition.global_position
 		var positionToTravel = (targetPosition - global_position)
 		physicsComponent.direction.x = sign(positionToTravel.x)
-		dashComponent.dash_to(positionToTravel, delta)
+		dashComponent.dash_to(positionToTravel)
 		flipComponent.flip()
 		if global_position.distance_to(targetPosition) < 45.0:
 			physicsComponent.stop(delta)
@@ -80,7 +73,7 @@ func _physics_process(delta):
 	if stateMachine.currentState is BossAttackState and attackComponent.player != null:
 		var playerPosition = attackComponent.get_target_position()
 		var positionToTravel = (playerPosition - position).normalized()
-		attackComponent.attack(positionToTravel, delta)
+		attackComponent.attack(positionToTravel)
 		flipComponent.flip()
 	
 	velocity.x = physicsComponent.velocityX

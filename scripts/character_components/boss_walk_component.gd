@@ -9,8 +9,8 @@ extends Node
 @export var positionComponent: PositionComponent = null
 @export var characterBody: CharacterBody2D = null
 
-func walkTo(positionToTravel: Vector2, delta: float):
-	physicsComponent.move_to_target(positionToTravel, delta, wanderSpeed)
+func walkTo(positionToTravel: Vector2):
+	physicsComponent.move_to_target(positionToTravel, wanderSpeed)
 	
 func stop_wander(delta: float):
 	#physicsComponent.direction.x = 0.0

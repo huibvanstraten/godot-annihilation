@@ -52,9 +52,6 @@ startPosition = NodePath("StartPosition")
 position = Vector2(3565, 598)
 scale = Vector2(0.5, 0.5)
 
-[node name="Slime2" parent="." instance=ExtResource("8_wtaap")]
-position = Vector2(1704, 792)
-
 [node name="Slime" parent="." instance=ExtResource("8_wtaap")]
 position = Vector2(1522, 814)
 scale = Vector2(0.5, 0.5)
@@ -69,7 +66,7 @@ script = ExtResource("11_ygvlp")
 position = Vector2(1198, 973)
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(4028, -501)
+position = Vector2(4048, -531)
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -300,7 +297,7 @@ position = Vector2(-365, 608)
 scale = Vector2(4, 1)
 
 [node name="Saw" parent="Areas/Area4" instance=ExtResource("19_5dva2")]
-position = Vector2(394, 329)
+position = Vector2(391, 502)
 rotation = 1.57792
 scale = Vector2(0.5, 0.5)
 
@@ -314,7 +311,7 @@ position = Vector2(243.5, 114.5)
 scale = Vector2(0.5, 0.5)
 
 [node name="Saw2" parent="Areas/Area4" instance=ExtResource("19_5dva2")]
-position = Vector2(446, 45)
+position = Vector2(519, 174)
 scale = Vector2(0.5, 0.5)
 
 [node name="Crow" parent="Areas/Area4" instance=ExtResource("17_x3d2o")]

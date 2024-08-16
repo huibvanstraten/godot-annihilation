@@ -1,7 +1,7 @@
 class_name BossIdleState
 extends BossState
 
-@onready var moveChoiceComponent: MoveChoiceComponent = $"../../Components/MoveChoice"
+@onready var stateComponent: StateComponent = $"../../Components/State"
 @onready var attackComponent: AttackComponent = $"../../Components/Attack"
 @export var physicsComponent: PhysicsComponent = null
 
@@ -25,7 +25,7 @@ func stateInput(_event: InputEvent) -> BossStateMachine.BossStateType:
 func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
-func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
+func StatePhysicsProcess(_delta : float) -> BossStateMachine.BossStateType:
 
 	if entityHit:
 		entityHit = false
@@ -33,11 +33,9 @@ func StatePhysicsProcess(delta : float) -> BossStateMachine.BossStateType:
 	elif healthDepleted:
 		healthDepleted = false
 		return BossStateMachine.BossStateType.Die
-	elif attackComponent.playerInRange:
-		return BossStateMachine.BossStateType.Attack
 	elif changeToNextState:
 		changeToNextState = false
-		return moveChoiceComponent.choose_next_move()
+		return stateComponent.choose_next_move()
 	
 	return BossStateMachine.BossStateType.Invalid
 	

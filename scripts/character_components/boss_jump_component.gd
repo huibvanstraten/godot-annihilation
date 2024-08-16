@@ -10,8 +10,6 @@ extends Node2D
 var gravity: float
 var jumpSpeed: float
 
-var positionTo: Vector2
-
 func _ready():
 	gravity = (2 * jumpHeight) / pow(timeToJumpPeak, 2)
 	jumpSpeed = gravity * timeToJumpPeak

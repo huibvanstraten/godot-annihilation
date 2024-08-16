@@ -2,6 +2,7 @@ class_name BossAttackState
 extends State
 
 @onready var timer: Timer = $Timer
+@onready var stateComponent = $"../../Components/State"
 @export var attackComponent: AttackComponent = null
 
 var changeState: bool = false
@@ -25,9 +26,10 @@ func StatePhysicsProcess(_delta : float) -> BossStateMachine.BossStateType:
 	if changeState:
 		changeState = false
 		return BossStateMachine.BossStateType.Idle
-	
+	elif stateComponent.toWalkState:
+		return BossStateMachine.BossStateType.Walk
+		
 	return BossStateMachine.BossStateType.Invalid
-
 
 func _on_timer_timeout():
 	changeState = true

@@ -4,6 +4,7 @@ extends State
 @onready var physicsComponent: PhysicsComponent = $"../../Components/Physics"
 @onready var jumpComponent: BossJumpComponent = $"../../Components/Jump"
 @onready var positionComponent: PositionComponent = $"../../Components/Position"
+@onready var bombComponent: BombComponent = $"../../Components/Bomb"
 
 var sfxPath: String = "res://assets/audio/sfx/player/jump.wav"
 
@@ -32,6 +33,7 @@ func stateMainProcess(_delta: float) -> BossStateMachine.BossStateType:
 	return BossStateMachine.BossStateType.Invalid
 
 func StatePhysicsProcess(_delta : float) -> BossStateMachine.BossStateType:
+	bombComponent.shoot()
 	if entityHit:
 		entityHit = false
 		return BossStateMachine.BossStateType.Hit

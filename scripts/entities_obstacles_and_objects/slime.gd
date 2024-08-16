@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if stateMachine.currentState is AttackingState and attackComponent.player != null:
 		var playerPosition = attackComponent.get_target_position()
 		var positionToTravel = (playerPosition - position).normalized()
-		attackComponent.attack(positionToTravel, delta)
+		attackComponent.attack(positionToTravel)
 		flipComponent.flip()
 	
 	velocity.x = physicsComponent.velocityX

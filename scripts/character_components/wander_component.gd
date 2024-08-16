@@ -9,7 +9,7 @@ extends Node
 @export var flipComponent: FlipComponent = null
 @export var characterBody: CharacterBody2D = null
 
-func wander(delta: float):
+func wander():
 	physicsComponent.speed = wanderSpeed
 	physicsComponent.move()
 	

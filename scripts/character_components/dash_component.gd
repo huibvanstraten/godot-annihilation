@@ -9,5 +9,5 @@ extends Node2D
 func dash_position():
 	positionComponent.select_position()
 
-func dash_to(targetPosition: Vector2, delta: float):
-	physicsComponent.move_to_target(targetPosition, delta, dashSpeed)
+func dash_to(targetPosition: Vector2):
+	physicsComponent.move_to_target(targetPosition, dashSpeed)

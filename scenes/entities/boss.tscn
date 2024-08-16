@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cpwithb3e52h7"]
+[gd_scene load_steps=48 format=3 uid="uid://cpwithb3e52h7"]
 
 [ext_resource type="Script" path="res://scripts/state/boss_state/boss_state_machine.gd" id="1_erlg2"]
 [ext_resource type="Texture2D" uid="uid://cie23iwkeusgx" path="res://assets/textures/objects/boss/idle.png" id="1_fj0kg"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://scripts/character_components/attack_body_component.gd" id="19_22qqw"]
 [ext_resource type="Script" path="res://scripts/character_components/position_component.gd" id="20_jn2jo"]
 [ext_resource type="Script" path="res://scripts/character_components/dash_component.gd" id="21_r5tcs"]
+[ext_resource type="Script" path="res://scripts/character_components/bomb_component.gd" id="23_5n2lj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0on6s"]
 atlas = ExtResource("1_fj0kg")
@@ -381,7 +382,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isl2g"]
-size = Vector2(54, 75)
+size = Vector2(181, 75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oreng"]
 radius = 16.0
@@ -555,16 +556,25 @@ script = ExtResource("6_srb8j")
 laserPosition = NodePath("../../FlipMarker/LaserPosition")
 physicsComponent = NodePath("../Physics")
 
-[node name="MoveChoice" type="Node2D" parent="Components"]
+[node name="State" type="Node2D" parent="Components"]
 script = ExtResource("9_5xwkm")
+
+[node name="Timer" type="Timer" parent="Components/State"]
+wait_time = 9.638
+one_shot = true
 
 [node name="Attack" type="Node2D" parent="Components" node_paths=PackedStringArray("detectionArea", "physicsComponent")]
 script = ExtResource("11_urysx")
+damage = null
+speed = null
+jumpSpeed = null
+jumpheight = null
 detectionArea = NodePath("../../FlipMarker/DetectionArea")
 physicsComponent = NodePath("../Physics")
 
 [node name="Walk" type="Node2D" parent="Components" node_paths=PackedStringArray("physicsComponent", "flipComponent", "positionComponent", "characterBody")]
 script = ExtResource("4_4gf7l")
+wanderSpeed = null
 physicsComponent = NodePath("../Physics")
 flipComponent = NodePath("../Flip")
 positionComponent = NodePath("../Position")
@@ -590,12 +600,21 @@ script = ExtResource("20_jn2jo")
 script = ExtResource("21_r5tcs")
 positionComponent = NodePath("../Position")
 physicsComponent = NodePath("../Physics")
+dashSpeed = null
+
+[node name="Bomb" type="Node2D" parent="Components" node_paths=PackedStringArray("bombMarker")]
+script = ExtResource("23_5n2lj")
+bombMarker = NodePath("../../FlipMarker/BombMarker")
+
+[node name="ShootBufferTimer" type="Timer" parent="Components/Bomb"]
+wait_time = 0.2
+one_shot = true
 
 [node name="FlipMarker" type="Marker2D" parent="."]
 position = Vector2(0, 1)
 
 [node name="LaserPosition" type="Marker2D" parent="FlipMarker"]
-position = Vector2(19, -75)
+position = Vector2(19, -56)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlipMarker"]
 position = Vector2(1, -33)
@@ -614,7 +633,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipMarker/DetectionArea"]
-position = Vector2(-9, -48.5)
+position = Vector2(-12.5, -48.5)
 shape = SubResource("RectangleShape2D_isl2g")
 debug_color = Color(0.456999, 0.448491, 0.997384, 0.42)
 
@@ -625,6 +644,7 @@ scale = Vector2(0.958101, 1.67925)
 target_position = Vector2(0, 19)
 
 [node name="AttackBody" type="Area2D" parent="FlipMarker" node_paths=PackedStringArray("attackBodyShape")]
+collision_layer = 0
 script = ExtResource("19_22qqw")
 attackBodyShape = NodePath("AttackBodyShape")
 
@@ -632,6 +652,9 @@ attackBodyShape = NodePath("AttackBodyShape")
 position = Vector2(1, -36)
 shape = SubResource("CapsuleShape2D_oreng")
 debug_color = Color(0.659122, 0.349494, 0.94846, 0.42)
+
+[node name="BombMarker" type="Marker2D" parent="FlipMarker"]
+position = Vector2(-1, 8)
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(0, -31)
@@ -641,5 +664,6 @@ shape = SubResource("CapsuleShape2D_pqwi2")
 [connection signal="timeout" from="StateMachine/StateWalk/Timer" to="StateMachine/StateWalk" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/StateAttack/Timer" to="StateMachine/StateAttack" method="_on_timer_timeout"]
 [connection signal="timeout" from="Components/Mushroom/Timer" to="Components/Mushroom" method="_on_timer_timeout"]
+[connection signal="timeout" from="Components/State/Timer" to="Components/State" method="_on_timer_timeout"]
 [connection signal="body_entered" from="FlipMarker/DetectionArea" to="Components/Attack" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="FlipMarker/DetectionArea" to="Components/Attack" method="_on_detection_area_body_exited"]

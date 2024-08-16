@@ -563,6 +563,10 @@ characterBody = NodePath("../..")
 
 [node name="Attack" type="Node2D" parent="Components" node_paths=PackedStringArray("detectionArea", "physicsComponent")]
 script = ExtResource("11_r8sv1")
+damage = null
+speed = null
+jumpSpeed = null
+jumpheight = null
 detectionArea = NodePath("../../FlipMarker/DetectionArea")
 physicsComponent = NodePath("../Physics")
 

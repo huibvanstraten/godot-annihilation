@@ -20,7 +20,8 @@ func _ready():
 
 func _on_body_entered(body):
 	if removeAttackBodyAtTouch:
-		EventManager.emit_signal("remove_attack_body")
+		var attackBody = get_parent()
+		EventManager.emit_signal("remove_attack_body", attackBody)
 	
 	if body is CharacterBody2D:
 		for child in body.find_child("Components").get_children():

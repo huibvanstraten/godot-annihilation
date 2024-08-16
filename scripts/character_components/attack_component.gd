@@ -12,8 +12,8 @@ extends Node
 var playerInRange: bool = false
 var player: CharacterBody2D = null
 
-func attack(targetPosition: Vector2, delta):
-	physicsComponent.move_to_target(targetPosition, delta, speed)
+func attack(targetPosition: Vector2):
+	physicsComponent.move_to_target(targetPosition, speed)
 
 func get_target_position() -> Vector2:
 	return Vector2(player.position.x, player.position.y)

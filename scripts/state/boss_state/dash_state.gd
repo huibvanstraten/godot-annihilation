@@ -1,7 +1,7 @@
 class_name BossDashState
 extends BossState
 
-@export var dashComponent: DashComponent= null
+@export var dashComponent: DashComponent = null
 
 var changeToJumpState: bool = false
 

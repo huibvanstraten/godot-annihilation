@@ -9,7 +9,8 @@ var player: Player
 var currentAreaId: int
 
 func _ready():
-	InputMapManager.load_input_mapping("res://input_map/input_config_8bitdo_pro2.json")
+	run_scene_on_screen()
+	#InputMapManager.load_input_mapping("res://input_map/input_config_8bitdo_pro2.json")
 	
 	levelData = LevelManager.get_level_data_by_id(levelId)
 	set_current_area(5)
@@ -40,3 +41,18 @@ func _on_player_died():
 
 func _on_game_paused(isPaused: bool):
 	get_tree().paused = isPaused
+
+func run_scene_on_screen():
+	var target_screen = 2  # Set this to the index of your desired screen
+	if target_screen < DisplayServer.get_screen_count():
+		# Move the window to the target screen
+		DisplayServer.window_set_current_screen(target_screen)
+		
+		# Optional: Adjust the window size to match the target screen's resolution
+		var screen_size = DisplayServer.screen_get_size(target_screen)
+		DisplayServer.window_set_size(screen_size)
+		
+		# Optionally, center the window on the target screen
+		DisplayServer.window_set_position(Vector2(0, 0))
+	else:
+		print("Target screen index out of range")

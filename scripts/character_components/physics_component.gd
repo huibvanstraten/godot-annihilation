@@ -47,7 +47,7 @@ func move_in_air(inputAxis):
 	direction.x = inputAxis
 	velocityX = clampf(velocityX, -airSpeed, airSpeed)
 
-func move_to_target(targetPosition: Vector2, delta, attackSpeed: float):
+func move_to_target(targetPosition: Vector2, attackSpeed: float):
 	speed = attackSpeed
 	direction.x = sign(targetPosition.x)
 	move()

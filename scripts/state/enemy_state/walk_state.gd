@@ -23,9 +23,9 @@ func stateInput(_event: InputEvent) -> EnemyStateMachine.StateType:
 func stateMainProcess(_delta: float) -> EnemyStateMachine.StateType:
 	return EnemyStateMachine.StateType.Invalid
 
-func StatePhysicsProcess(delta : float) -> EnemyStateMachine.StateType:
+func StatePhysicsProcess(_delta : float) -> EnemyStateMachine.StateType:
 	wanderComponent.change_direction()
-	wanderComponent.wander(delta)
+	wanderComponent.wander()
 	
 	if entityHit:
 		entityHit = false

@@ -20,7 +20,7 @@ signal remove_buddy(buddy: Area2D)
 
 signal play_next_song(songName: String)
 
-signal remove_attack_body
+signal remove_attack_body(body: Node2D)
 signal interact(canInteract: bool, triggerId: int)
 signal activate_collectable(collectable: CollectableResource)
 

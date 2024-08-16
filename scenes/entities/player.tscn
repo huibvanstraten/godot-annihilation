@@ -1657,9 +1657,12 @@ script = ExtResource("31_rhmuv")
 entity = NodePath("../..")
 
 [node name="Jump" type="Node2D" parent="Components" node_paths=PackedStringArray("characterBody")]
-position = Vector2(-26, -42)
+position = Vector2(-25, -38)
 script = ExtResource("32_q8anw")
+jumpVelocity = -200.0
 characterBody = NodePath("../..")
+timeToJumpPeak = 0.3
+jumpHeight = 64.0
 
 [node name="Physics" type="Node2D" parent="Components"]
 position = Vector2(8, 21)
